@@ -6,14 +6,13 @@ using System.Web;
 
 namespace DonaldsonMotorsThree.Models
 {
-    public class User
+    public class Supplier
     {
-        // Declare User Properties // 
-        [Required]
-        public string FirstName { get; set; }
+        [Key]
+        public int SupplierId { get; set; }
 
         [Required]
-        public string LastName { get; set; }
+        public string SupplierName { get; set; }
 
         [Required]
         public string AddressLine1 { get; set; }
@@ -25,8 +24,13 @@ namespace DonaldsonMotorsThree.Models
         [Required]
         public string Postcode { get; set; }
 
+        [Required]
         public string TelephoneNumber { get; set; }
 
+        [Required]
+        public string ContactName { get; set; }
 
+        [Required]
+        public string EmailAddress { get; set; }
     }
 }

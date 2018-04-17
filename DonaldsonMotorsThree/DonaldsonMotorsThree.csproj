@@ -195,7 +195,9 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Staff.cs" />
+    <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\VehicleDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
