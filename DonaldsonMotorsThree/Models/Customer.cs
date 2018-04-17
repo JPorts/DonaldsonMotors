@@ -6,7 +6,7 @@ using System.Web;
 
 namespace DonaldsonMotorsThree.Models
 {
-    public class Customer
+    public class Customer : User
     {
         [Key]
         public int CustomerId { get; set; }
