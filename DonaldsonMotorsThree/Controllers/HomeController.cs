@@ -20,6 +20,12 @@ namespace DonaldsonMotorsThree.Controllers
 
             return View();
         }
+        public ActionResult ViewJobs()
+        {
+            ViewBag.Message = "Jobs";
+
+            return View();
+        }
 
         public ActionResult Contact()
         {
