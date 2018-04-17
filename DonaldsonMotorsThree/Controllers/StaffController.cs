@@ -6,6 +6,8 @@ using System.Web.Mvc;
 
 namespace DonaldsonMotorsThree.Controllers
 {
+
+    [Authorize]
     public class StaffController : Controller
     {
         // GET: Staff
