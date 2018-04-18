@@ -6,7 +6,7 @@ using System.Web;
 
 namespace DonaldsonMotorsThree.Models
 {
-    public class User
+    public class User 
     {
         // Declare User Properties // 
         [Required]
@@ -25,6 +25,7 @@ namespace DonaldsonMotorsThree.Models
         [Required]
         public string Postcode { get; set; }
 
+        [Required]
         public string TelephoneNumber { get; set; }
 
 

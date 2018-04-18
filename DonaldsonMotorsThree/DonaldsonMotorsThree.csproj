@@ -196,6 +196,10 @@
     <Compile Include="Migrations\201804171858264_InitialModel.Designer.cs">
       <DependentUpon>201804171858264_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804180037307_UserAnnotations.cs" />
+    <Compile Include="Migrations\201804180037307_UserAnnotations.Designer.cs">
+      <DependentUpon>201804180037307_UserAnnotations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -338,6 +342,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201804171858264_InitialModel.resx">
       <DependentUpon>201804171858264_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804180037307_UserAnnotations.resx">
+      <DependentUpon>201804180037307_UserAnnotations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
