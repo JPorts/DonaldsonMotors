@@ -30,7 +30,7 @@ namespace DonaldsonMotorsThree.Models
         [Required]
         public int Milage { get; set; }
 
-        public int type  { get; set; }
+
 
 
 
