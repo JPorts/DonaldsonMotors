@@ -52,11 +52,7 @@ namespace DonaldsonMotorsThree
             //    clientId: "",
             //    clientSecret: "");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
-            // Add Keys and Certs for Twitter Auth //
-
+ 
             app.UseTwitterAuthentication(new TwitterAuthenticationOptions
             {
                 ConsumerKey = "NsPxj9QykdkUj36h24dcSr09z",
@@ -72,15 +68,16 @@ namespace DonaldsonMotorsThree
                 })
             });
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+              appId: "1641872219228192",
+             appSecret: "34965027f72897d973a9e1aa9356d70c");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+               ClientId = "1021641281085-gtishgea2lnto7sd7tn341v4tukoof47.apps.googleusercontent.com",
+                ClientSecret = "qH87Pc516Mf2OBmHt7BY_-mL"
+            });
         }
     }
 }
