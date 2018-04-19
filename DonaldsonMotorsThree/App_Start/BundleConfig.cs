@@ -25,6 +25,8 @@ namespace DonaldsonMotorsThree
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-lumen.css",
+                      "~/Content/bootstrap-social.css",
+                      "~/Content/fontawesome.css",
                       "~/Content/site.css"));
         }
     }

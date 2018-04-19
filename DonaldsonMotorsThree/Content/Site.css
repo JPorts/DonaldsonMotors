@@ -1,9 +1,11 @@
-﻿body {
-    padding-top: 50px;
+﻿
+body {
     padding-bottom: 20px;
+    padding-top: 50px;
 }
 
 /* Set padding to keep content from hitting the edges */
+
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
@@ -12,8 +14,93 @@
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
+
 .dl-horizontal dt {
     white-space: normal;
+}
+
+/*
+    Login Form
+*/
+.btn-facebook {
+    background: #305c99;
+    color: #fff;
+}
+
+.btn-google:hover {
+    background: #b22222;
+    color: #fff;
+}
+
+.btn-facebook:hover {
+    background: #2b4db1;
+    color: #fff;
+}
+
+.btn-twitter:hover {
+    background: #007bb6;
+    color: #fff;
+}
+
+.btn-twitter {
+    background: #00cdff;
+    color: #fff;
+}
+
+.btn-google {
+    background: #d24228;
+    color: #fff;
+}
+
+.btn-linkedin {
+    background: #007bb6;
+    color: #fff;
+}
+
+.btn-block {
+    margin: 3px 0 !important;
+}
+
+.form-group {
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+}
+
+#loginForm {
+    align-items: center;
+}
+
+.remember-me {
+    margin-bottom: 8px;
+}
+
+.split-div {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    position: relative;
+}
+
+.split-span {
+    background-color: white;
+    display: block;
+    left: 40%;
+    margin-left: -1.5em;
+    position: absolute;
+    text-align: center;
+    top: -0.3em;
+    width: 8em;
+}
+
+.split-hr {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.social-icon {
+    margin-right: 15px;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
