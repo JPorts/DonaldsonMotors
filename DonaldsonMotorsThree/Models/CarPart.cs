@@ -12,8 +12,10 @@ namespace DonaldsonMotorsThree.Models
         [Key]
         public int PartId { get; set; }
 
-        [ForeignKey("Supplier")]
+      
         public int SupplierId { get; set; }
+
+        public string Name { get; set; }
 
         [Required]
         public string Description { get; set; }
