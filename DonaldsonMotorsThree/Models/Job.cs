@@ -19,6 +19,7 @@ namespace DonaldsonMotorsThree.Models
 
         public string CompletedBy { get; set; }
 
+        [DataType(DataType.Date)]
         public DateTime DateCompleted { get; set; }
 
         [Required]

@@ -7,13 +7,13 @@ namespace DonaldsonMotorsThree.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialSeedDatabase : IMigrationMetadata
+    public sealed partial class PopulateTablesWithSeedData : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialSeedDatabase));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(PopulateTablesWithSeedData));
         
         string IMigrationMetadata.Id
         {
-            get { return "201804211720338_InitialSeedDatabase"; }
+            get { return "201804211855024_PopulateTablesWithSeedData"; }
         }
         
         string IMigrationMetadata.Source

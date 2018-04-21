@@ -200,9 +200,13 @@
     <Compile Include="Migrations\201804211430279_InitialModel.Designer.cs">
       <DependentUpon>201804211430279_InitialModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804211720338_InitialSeedDatabase.cs" />
-    <Compile Include="Migrations\201804211720338_InitialSeedDatabase.Designer.cs">
-      <DependentUpon>201804211720338_InitialSeedDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\201804211745458_InitialSeed.cs" />
+    <Compile Include="Migrations\201804211745458_InitialSeed.Designer.cs">
+      <DependentUpon>201804211745458_InitialSeed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804211855024_PopulateTablesWithSeedData.cs" />
+    <Compile Include="Migrations\201804211855024_PopulateTablesWithSeedData.Designer.cs">
+      <DependentUpon>201804211855024_PopulateTablesWithSeedData.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -365,8 +369,11 @@
     <EmbeddedResource Include="Migrations\201804211430279_InitialModel.resx">
       <DependentUpon>201804211430279_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804211720338_InitialSeedDatabase.resx">
-      <DependentUpon>201804211720338_InitialSeedDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804211745458_InitialSeed.resx">
+      <DependentUpon>201804211745458_InitialSeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804211855024_PopulateTablesWithSeedData.resx">
+      <DependentUpon>201804211855024_PopulateTablesWithSeedData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
