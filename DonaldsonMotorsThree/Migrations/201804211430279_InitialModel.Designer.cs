@@ -7,13 +7,13 @@ namespace DonaldsonMotorsThree.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class DbInitializedHopefully : IMigrationMetadata
+    public sealed partial class InitialModel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DbInitializedHopefully));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialModel));
         
         string IMigrationMetadata.Id
         {
-            get { return "201804200024129_DbInitializedHopefully"; }
+            get { return "201804211430279_InitialModel"; }
         }
         
         string IMigrationMetadata.Source

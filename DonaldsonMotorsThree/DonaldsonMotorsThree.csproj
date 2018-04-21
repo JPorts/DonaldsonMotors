@@ -192,21 +192,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804171858264_InitialModel.cs" />
-    <Compile Include="Migrations\201804171858264_InitialModel.Designer.cs">
-      <DependentUpon>201804171858264_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\201804211218111_InitialCreate.cs" />
+    <Compile Include="Migrations\201804211218111_InitialCreate.Designer.cs">
+      <DependentUpon>201804211218111_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804180037307_UserAnnotations.cs" />
-    <Compile Include="Migrations\201804180037307_UserAnnotations.Designer.cs">
-      <DependentUpon>201804180037307_UserAnnotations.cs</DependentUpon>
+    <Compile Include="Migrations\201804211430279_InitialModel.cs" />
+    <Compile Include="Migrations\201804211430279_InitialModel.Designer.cs">
+      <DependentUpon>201804211430279_InitialModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804192155224_DonaldsonInitializerSet.cs" />
-    <Compile Include="Migrations\201804192155224_DonaldsonInitializerSet.Designer.cs">
-      <DependentUpon>201804192155224_DonaldsonInitializerSet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804200024129_DbInitializedHopefully.cs" />
-    <Compile Include="Migrations\201804200024129_DbInitializedHopefully.Designer.cs">
-      <DependentUpon>201804200024129_DbInitializedHopefully.cs</DependentUpon>
+    <Compile Include="Migrations\201804211720338_InitialSeedDatabase.cs" />
+    <Compile Include="Migrations\201804211720338_InitialSeedDatabase.Designer.cs">
+      <DependentUpon>201804211720338_InitialSeedDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -214,8 +210,6 @@
     <Compile Include="Models\CarPart.cs" />
     <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\DonaldsonDbInitializer.cs" />
-    <Compile Include="Models\DonaldsonMotorsDataContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -295,7 +289,9 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -363,17 +359,14 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804171858264_InitialModel.resx">
-      <DependentUpon>201804171858264_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804211218111_InitialCreate.resx">
+      <DependentUpon>201804211218111_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804180037307_UserAnnotations.resx">
-      <DependentUpon>201804180037307_UserAnnotations.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804211430279_InitialModel.resx">
+      <DependentUpon>201804211430279_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804192155224_DonaldsonInitializerSet.resx">
-      <DependentUpon>201804192155224_DonaldsonInitializerSet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804200024129_DbInitializedHopefully.resx">
-      <DependentUpon>201804200024129_DbInitializedHopefully.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804211720338_InitialSeedDatabase.resx">
+      <DependentUpon>201804211720338_InitialSeedDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

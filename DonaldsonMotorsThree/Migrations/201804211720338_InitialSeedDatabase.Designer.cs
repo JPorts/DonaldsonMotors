@@ -6,14 +6,14 @@ namespace DonaldsonMotorsThree.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class UserAnnotations : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    public sealed partial class InitialSeedDatabase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UserAnnotations));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialSeedDatabase));
         
         string IMigrationMetadata.Id
         {
-            get { return "201804180037307_UserAnnotations"; }
+            get { return "201804211720338_InitialSeedDatabase"; }
         }
         
         string IMigrationMetadata.Source

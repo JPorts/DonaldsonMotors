@@ -3,7 +3,7 @@ namespace DonaldsonMotorsThree.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialModel : DbMigration
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
@@ -20,7 +20,7 @@ namespace DonaldsonMotorsThree.Migrations
                         AddressLine2 = c.String(),
                         Town = c.String(),
                         Postcode = c.String(nullable: false),
-                        TelephoneNumber = c.String(),
+                        TelephoneNumber = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.CustomerId);
             

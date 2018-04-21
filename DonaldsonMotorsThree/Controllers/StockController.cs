@@ -11,7 +11,9 @@ namespace DonaldsonMotorsThree.Controllers
 {
     public class StockController : Controller
     {
-        DonaldsonMotorsDataContext context = new DonaldsonMotorsDataContext();
+        private ApplicationDbContext context = new ApplicationDbContext();
+       
+
         // GET: Stock
         public ActionResult Index()
         {

@@ -3,7 +3,7 @@ namespace DonaldsonMotorsThree.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class DonaldsonInitializerSet : DbMigration
+    public partial class InitialSeedDatabase : DbMigration
     {
         public override void Up()
         {

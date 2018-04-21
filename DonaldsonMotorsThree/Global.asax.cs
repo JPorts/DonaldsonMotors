@@ -16,7 +16,7 @@ namespace DonaldsonMotorsThree
         {
             // Set Database Initializer to Drop and Create the database each time// 
             // This is an easy way to keep the database in sync with changes to models // 
-            Database.SetInitializer(new DonaldsonDbInitializer());
+            
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

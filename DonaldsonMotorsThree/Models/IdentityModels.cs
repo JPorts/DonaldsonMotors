@@ -11,8 +11,10 @@ namespace DonaldsonMotorsThree.Models
     {
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
+
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            
             // Add custom user claims here
             return userIdentity;
         }
@@ -22,8 +24,16 @@ namespace DonaldsonMotorsThree.Models
     {
         public DbSet<Customer> Customers { get; set; }
 
+        public DbSet<CarPart> CarParts { get; set; }
+
+        public DbSet<Job> Jobs { get; set; }
+
+        public DbSet<Supplier> Suppliers { get; set; }
+
+
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+
+            : base("DonaldsonMotorsDb", throwIfV1Schema: false)
         {
         }
 
