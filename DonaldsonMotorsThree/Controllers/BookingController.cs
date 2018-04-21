@@ -14,5 +14,13 @@ namespace DonaldsonMotorsThree.Controllers
         {
             return View();
         }
+
+        // GET: Booking/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+
     }
 }

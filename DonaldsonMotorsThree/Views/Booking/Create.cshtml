@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Book Job";
+}
+
+<h2><b><em>Book a Job</em></b></h2>
+
+<br/>
+<br/>
+<form>
+    <div class="form-group">
+        <label>Job(s)</label>
+        <input type="text" id="job"  required value="" class="form-control" />
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+
+            <ul id="job" class="list-group"></ul>
+
+        </div>
+    </div>
+   
+
+    <div class="form-group">
+        <label>Payment Method</label>
+        <input type="text" required value="" class="form-control" />
+    </div>
+    
+    <div class="form-group">
+        <label>Total:</label>
+        <input type="text" value="" class="form-control" />
+    </div>
+    
+    <button class="btn-success"> Book Job </button>
+</form>
+@section scripts
+{
+@Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        // When DOM is Ready //
+        $(document).ready(function() {
+            // Initialise ViewModel with Array for JobIds //
+            var vm = {
+                jobIds: [] 
+            };
+            // Bloodhound engine for search optimization // 
+            var jobs = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('JobRequirements'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                prefetch: '../data/films/post_1960.json',
+                remote: {
+                    url: '/api/jobs?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            // Start typeahead when length = 3 chars name:<> display:<> source:<> //
+            $('#job').typeahead({
+                    minLength: 3,
+                    highlight: true
+                },
+                {
+                    name: 'jobs',
+                    display: 'JobRequirements',
+                    source: jobs
+                });
+        }).on("typeahead:select",
+            //When a Job item has been selected, append selected job onto list //
+            function(e, job) {
+                $("#job").append("<li class='list-group-item'>" + job.jobrequirements + "</li>");
+
+                $("#job").typeahead("val", "");
+
+                vm.jobIds.push(job.id);
+            });
+
+    </script>
+
+}
+
