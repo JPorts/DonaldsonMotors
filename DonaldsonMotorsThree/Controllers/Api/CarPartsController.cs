@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 using AutoMapper;
 using DonaldsonMotorsThree.Dtos;
 using DonaldsonMotorsThree.Models;
@@ -28,34 +29,35 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
         //GET /api/carparts/1
-        public CarPartDto GetCarPart(int id)
+        public IHttpActionResult GetCarPart(int id)
         {
             var carPart = _context.CarParts.SingleOrDefault(c => c.PartId == id);
-          
+
 
             if (carPart == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
-            return Mapper.Map<CarPart,CarPartDto>(carPart);
+            return Ok(Mapper.Map<CarPart,CarPartDto>(carPart));
         }
 
 
         //POST /api/carparts
-        [HttpPost]
-        public CarPartDto CreateCarPart(CarPartDto carPartDto)
+        [System.Web.Http.HttpPost]
+        public IHttpActionResult CreateCarPart(CarPartDto carPartDto)
         {
-            if(!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
-            var carPart = Mapper.Map<CarPartDto, CarPart>(carPartDto);
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+          var carPart = Mapper.Map<CarPartDto, CarPart>(carPartDto);
             _context.CarParts.Add(carPart);
             _context.SaveChanges();
             carPartDto.PartId = carPart.PartId;
-            return carPartDto;
+            return Created(new Uri(Request.RequestUri + "/" +  carPart.PartId), carPartDto);
         }
 
 
         //PUT /api/carparts/1
-        [HttpPut]
+        [System.Web.Http.HttpPut]
         public void updateCarPart(int id, CarPartDto carPartDto)
         {
             if (!ModelState.IsValid)
@@ -73,7 +75,7 @@ namespace DonaldsonMotorsThree.Controllers.Api
         }
 
         //DELETE /api/carparts/1
-        [HttpDelete]
+        [System.Web.Http.HttpDelete]
         public void DeleteCarPart(int id)
         {
             var carPartInDb = _context.CarParts.SingleOrDefault(c => c.PartId == id);
