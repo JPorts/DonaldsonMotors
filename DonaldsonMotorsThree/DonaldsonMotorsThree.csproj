@@ -202,6 +202,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CarPartsController.cs" />
+    <Compile Include="Controllers\Api\JobsController.cs" />
+    <Compile Include="Controllers\Api\SuppliersController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -210,6 +212,8 @@
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Dtos\CarPartDto.cs" />
+    <Compile Include="Dtos\JobDto.cs" />
+    <Compile Include="Dtos\SupplierDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
