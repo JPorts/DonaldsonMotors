@@ -15,7 +15,8 @@ namespace DonaldsonMotorsThree
                 "~/Scripts/typeahead.bundle.js",
                 "~/Scripts/toastr.js",
                 "~/Scripts/datatables/jquery.datatables.js",
-                "~/Scripts/datatables/datatables.bootstrap.js"
+                "~/Scripts/datatables/datatables.bootstrap.js",
+                "~/Scripts/bootbox.js"
                 ));
    
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -27,7 +28,7 @@ namespace DonaldsonMotorsThree
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-lumen.css",
+                      "~/Content/bootstrap-readable.css",
                       "~/Content/bootstrap-social.css",
                       "~/Content/fontawesome.css",
                       "~/Content/typeahead.css",
