@@ -237,6 +237,10 @@
     <Compile Include="Migrations\201804220200021_ApiAndDtosImplmented.Designer.cs">
       <DependentUpon>201804220200021_ApiAndDtosImplmented.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804222012202_EntriesDeletedFromCarParts.cs" />
+    <Compile Include="Migrations\201804222012202_EntriesDeletedFromCarParts.Designer.cs">
+      <DependentUpon>201804222012202_EntriesDeletedFromCarParts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -659,6 +663,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804220200021_ApiAndDtosImplmented.resx">
       <DependentUpon>201804220200021_ApiAndDtosImplmented.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804222012202_EntriesDeletedFromCarParts.resx">
+      <DependentUpon>201804222012202_EntriesDeletedFromCarParts.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
