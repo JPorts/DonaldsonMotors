@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<DonaldsonMotorsThree.Models.CarPart>
 
 @{
-    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<br/>
 <h2>Stock</h2>
 
-
+<br/>
 <table class="table" id="carparts">
+    <thead>
     <tr>
 
         <th>
@@ -33,32 +33,35 @@
             Delete
         </th>
     </tr>
-
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Colour)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReorderLevel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReorderQuantity)
-            </td>
-            <td>
-                <button data-carpart-id="@item.PartId" class="btn btn-link js-delete">Delete</button>
-            </td>
-        </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Colour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReorderLevel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReorderQuantity)
+                </td>
+                <td>
+                    <button data-carpart-id="@item.PartId" class="btn btn-link js-delete">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>
 
