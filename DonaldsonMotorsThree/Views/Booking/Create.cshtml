@@ -1,4 +1,6 @@
-﻿
+﻿@model DonaldsonMotorsThree.ViewModels.CreateBookingViewModel
+
+
 @{
     ViewBag.Title = "Book Job";
 }
@@ -8,16 +10,20 @@
 <br/>
 <br/>
 <form>
-    <div class="form-group">
-        <label>Job(s)</label>
-        <input type="text" id="job"  required value="" class="form-control" />
-    </div>
+    <div class="form-group" >
     <div class="row">
         <div class="col-md-4 col-sm-4">
 
-            <ul id="job" class="list-group"></ul>
+            <ul id="job" class="list-group">
+
+                @Html.LabelFor(m => m.Job)
+                
+                @Html.DropDownListFor(m => m.Job, new SelectList(Model.Jobs, "JobId", "JobRequirements"), "Select Job", new {@class = "form-control"})
+
+            </ul>
 
         </div>
+    </div>
     </div>
    
 
@@ -31,7 +37,7 @@
         <input type="text" value="" class="form-control" />
     </div>
     
-    <button class="btn-success"> Book Job </button>
+    <button class="btn btn-success">Continue</button>
 </form>
 @section scripts
 {

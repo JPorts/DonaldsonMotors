@@ -261,6 +261,7 @@
     <Compile Include="Models\VehicleDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CreateBookingViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-readable.css" />
@@ -633,7 +634,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="Views\Customer\" />
     <Folder Include="Views\Staff\" />
   </ItemGroup>
