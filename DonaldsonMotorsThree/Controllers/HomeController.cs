@@ -4,16 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DonaldsonMotorsThree.Models;
+using DonaldsonMotorsThree.Models.Repositories;
 
 namespace DonaldsonMotorsThree.Controllers
 {
     [AllowAnonymous]
     public class HomeController : Controller
     {
-        private ApplicationDbContext _context;
+        private JobRepository repository;
+       // private ApplicationDbContext _context;
         public HomeController()
         {
-            _context = new ApplicationDbContext();
+            repository = new JobRepository();
         }
         public ActionResult Index()
         {
@@ -29,8 +31,9 @@ namespace DonaldsonMotorsThree.Controllers
         public ActionResult ViewJobs()
         {
             ViewBag.Message = "Jobs";
-            var jobList = _context.Jobs.ToList();
-            return View(jobList);
+
+            
+            return View(repository.GetAll());
         }
 
         public ActionResult Contact()

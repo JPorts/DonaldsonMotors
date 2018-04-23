@@ -6,19 +6,20 @@ using System.Data.Entity;
 using System.Web.Mvc;
 using System.Data.SqlClient;
 using DonaldsonMotorsThree.Models;
+using DonaldsonMotorsThree.Models.Repositories;
 
 namespace DonaldsonMotorsThree.Controllers
 {
     public class StockController : Controller
     {
-        private ApplicationDbContext _context = new ApplicationDbContext();
-       
+       // private ApplicationDbContext _context = new ApplicationDbContext();
+       CarPartRepository repository = new CarPartRepository();
 
         // GET: Stock
         public ActionResult Index()
         {
-            var partList = _context.CarParts.ToList();
-            return View(partList);
+            
+            return View(repository.GetAll());
         }
     }
 }

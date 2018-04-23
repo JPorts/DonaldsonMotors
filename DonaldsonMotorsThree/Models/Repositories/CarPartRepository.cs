@@ -5,7 +5,7 @@ using System.Web;
 
 namespace DonaldsonMotorsThree.Models.Repositories
 {
-    public class CarPartRepository
+    public class CarPartRepository : Repository<CarPart>
     {
     }
 }
