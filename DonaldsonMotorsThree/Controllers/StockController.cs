@@ -11,13 +11,13 @@ namespace DonaldsonMotorsThree.Controllers
 {
     public class StockController : Controller
     {
-        private ApplicationDbContext context = new ApplicationDbContext();
+        private ApplicationDbContext _context = new ApplicationDbContext();
        
 
         // GET: Stock
         public ActionResult Index()
         {
-            var partList = context.CarParts.ToList();
+            var partList = _context.CarParts.ToList();
             return View(partList);
         }
     }

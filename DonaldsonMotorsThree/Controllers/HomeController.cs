@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DonaldsonMotorsThree.Models;
 
 namespace DonaldsonMotorsThree.Controllers
 {
     [AllowAnonymous]
     public class HomeController : Controller
     {
+        private ApplicationDbContext _context;
+        public HomeController()
+        {
+            _context = new ApplicationDbContext();
+        }
         public ActionResult Index()
         {
             return View();
@@ -23,8 +29,8 @@ namespace DonaldsonMotorsThree.Controllers
         public ActionResult ViewJobs()
         {
             ViewBag.Message = "Jobs";
-
-            return View();
+            var jobList = _context.Jobs.ToList();
+            return View(jobList);
         }
 
         public ActionResult Contact()
