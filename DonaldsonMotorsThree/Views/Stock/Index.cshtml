@@ -30,7 +30,7 @@
             @Html.DisplayNameFor(model => model.ReorderQuantity)
         </th>
         <th>
-            Delete
+            Options
         </th>
     </tr>
     </thead>
@@ -58,6 +58,9 @@
                 </td>
                 <td>
                     <button data-carpart-id="@item.PartId" class="btn btn-link js-delete">Delete</button>
+                    <button class="btn btn-link">  @Html.ActionLink("Edit", "Edit", new { id = item.PartId })</button>
+                    
+                    
                 </td>
             </tr>
         }
@@ -68,12 +71,13 @@
 @section scripts
 {
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
 
 
             $("#carparts").DataTable();
 
-            $("#carparts").on("click",".js-delete",
+            $("#carparts").on("click",
+                ".js-delete",
                 function() {
                     var button = $(this);
 
@@ -83,7 +87,7 @@
                                 $.ajax({
                                     url: "/api/carparts/" + button.attr("data-carpart-id"),
                                     method: "DELETE",
-                                    success: function () {
+                                    success: function() {
                                         button.parents("tr").remove();
                                     }
                                 });
@@ -92,5 +96,24 @@
                 });
 
         });
+
+        //$("#carparts").on("click",
+        //    ".js-edit",
+        //    function() {
+        //        var editButton = $(this);
+
+        //        bootbox.confirm("Edit this item?",
+        //            function (result)
+        //            {
+        //                if (result)
+        //                {
+        //                    $.ajax({ url: "/stock/edit/" + editButton.attr("data-carpart-id"), method: "Edit" });
+        //                }
+        //            });
+        //    });
+
+
     </script>
 }
+
+

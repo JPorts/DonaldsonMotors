@@ -12,7 +12,7 @@ namespace DonaldsonMotorsThree.Controllers
     public class HomeController : Controller
     {
         private JobRepository repository;
-       // private ApplicationDbContext _context;
+       
         public HomeController()
         {
             repository = new JobRepository();
@@ -24,7 +24,6 @@ namespace DonaldsonMotorsThree.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
 
             return View();
         }

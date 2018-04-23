@@ -634,6 +634,8 @@
     <Content Include="Views\Booking\Index.cshtml" />
     <Content Include="Views\Stock\Index.cshtml" />
     <Content Include="Views\Booking\Create.cshtml" />
+    <Content Include="Views\Stock\Details.cshtml" />
+    <Content Include="Views\Stock\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
