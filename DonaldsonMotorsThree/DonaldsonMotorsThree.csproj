@@ -253,7 +253,10 @@
     <Compile Include="Models\JqueryDatePicker.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Payment.cs" />
+    <Compile Include="Models\Repositories\CarPartRepository.cs" />
+    <Compile Include="Models\Repositories\JobRepository.cs" />
     <Compile Include="Models\Repositories\Repository.cs" />
+    <Compile Include="Models\Repositories\SupplierRepository.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\Supplier.cs" />

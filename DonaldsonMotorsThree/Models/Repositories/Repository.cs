@@ -13,7 +13,8 @@ namespace DonaldsonMotorsThree.Models.Repositories
         // Initialise Context //
         private ApplicationDbContext _context = new ApplicationDbContext();
 
-        // Initialise generic DbSet // 
+
+        // Initialise Generic DbSet // 
         protected DbSet<T> DbSet { get; set; }
 
 
@@ -22,6 +23,8 @@ namespace DonaldsonMotorsThree.Models.Repositories
         {
             DbSet = _context.Set<T>();
         }
+
+
 
         // Repository base methods //
         public List<T> GetAll()
