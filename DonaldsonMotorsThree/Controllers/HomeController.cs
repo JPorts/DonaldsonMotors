@@ -17,16 +17,13 @@ namespace DonaldsonMotorsThree.Controllers
         {
             repository = new JobRepository();
         }
+
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
-        {
 
-            return View();
-        }
         public ActionResult ViewJobs()
         {
             ViewBag.Message = "Jobs";
@@ -35,11 +32,13 @@ namespace DonaldsonMotorsThree.Controllers
             return View(repository.GetAll());
         }
 
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Contact Us.";
 
             return View();
         }
+
     }
 }

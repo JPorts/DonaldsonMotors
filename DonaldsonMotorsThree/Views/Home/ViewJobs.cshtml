@@ -46,7 +46,7 @@
             @Html.DisplayNameFor(model => model.PartId)
         </th>
         <th>
-            Delete
+            Options
         </th>
     </tr>
     </thead>
@@ -54,7 +54,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+            <tr class="notfirst">
                 <td>
                     @Html.DisplayFor(modelItem => item.JobId)
                 </td>

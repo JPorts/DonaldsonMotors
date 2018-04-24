@@ -37,7 +37,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+            <tr class="notfirst">
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
@@ -97,20 +97,7 @@
 
         });
 
-        //$("#carparts").on("click",
-        //    ".js-edit",
-        //    function() {
-        //        var editButton = $(this);
 
-        //        bootbox.confirm("Edit this item?",
-        //            function (result)
-        //            {
-        //                if (result)
-        //                {
-        //                    $.ajax({ url: "/stock/edit/" + editButton.attr("data-carpart-id"), method: "Edit" });
-        //                }
-        //            });
-        //    });
 
 
     </script>

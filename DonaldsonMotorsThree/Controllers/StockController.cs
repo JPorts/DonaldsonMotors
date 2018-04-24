@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Web.Mvc;
 using System.Data.SqlClient;
 using System.Net;
+using System.Web.Http;
 using DonaldsonMotorsThree.Models;
 using DonaldsonMotorsThree.Models.Repositories;
 
@@ -38,12 +39,13 @@ namespace DonaldsonMotorsThree.Controllers
             return View(repository.Get(id));
         }
 
-        //GET: Stock/Edit/1
         public ActionResult Edit(int id)
         {
 
             return View();
         }
+
+
 
     }
 }

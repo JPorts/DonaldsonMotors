@@ -27,22 +27,22 @@ namespace DonaldsonMotorsThree.Models.Repositories
 
 
         // Repository base methods //
-        public List<T> GetAll()
+        public virtual List<T> GetAll()
         {
             return DbSet.ToList();
         }
 
-        public T Get(int id)
+        public virtual T Get(int id)
         {
             return DbSet.Find(id);
         }
 
-        public void Add(T entity)
+        public virtual void Add(T entity)
         {
             DbSet.Add(entity);
         }
 
-        public void SaveChanges()
+        public virtual void SaveChanges()
         {
             _context.SaveChanges();
         }

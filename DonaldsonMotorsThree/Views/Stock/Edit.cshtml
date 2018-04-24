@@ -6,7 +6,7 @@
 
 <h2>Edit Stock Details</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit","Stock"))
 {
     @Html.AntiForgeryToken()
     
@@ -90,27 +90,20 @@
 {
     <script>
 
-        $(document).ready(function () {
-
+        $(document).ready(function() {
 
 
             $("#js-edit").on("click",
                 ".js-edit",
-                function () {
+                function() {
                     var button = $(this);
 
-                    
-                                $.ajax({
-                                    url: "/api/carparts/" + button.attr("data-carpart-id"),
-                                    method: "PUT",
-                                    success: function () {
-                                        bootbox.success("Item Updated");
-                                    }
-                               
-                            
-                        });
-                });
+                    $.ajax({
+                        url: "/api/carparts/" + button.attr("data-carpart-id"),
+                        method: "PUT"
+                    });
 
+                });
         });
     </script>
 }

@@ -116,3 +116,5 @@ pad-bottom {
 viewJobsText {
     align-content: center
 }
+
+.notfirst:hover{background: lightskyblue}
