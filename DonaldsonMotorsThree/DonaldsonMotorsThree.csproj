@@ -241,6 +241,10 @@
     <Compile Include="Migrations\201804222012202_EntriesDeletedFromCarParts.Designer.cs">
       <DependentUpon>201804222012202_EntriesDeletedFromCarParts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804241729252_EditBookingModel.cs" />
+    <Compile Include="Migrations\201804241729252_EditBookingModel.Designer.cs">
+      <DependentUpon>201804241729252_EditBookingModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -629,12 +633,13 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Home\ViewJobs.cshtml" />
-    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Report\GenerateReport.cshtml" />
     <Content Include="Views\Booking\Index.cshtml" />
     <Content Include="Views\Stock\Index.cshtml" />
     <Content Include="Views\Booking\Create.cshtml" />
     <Content Include="Views\Stock\Details.cshtml" />
     <Content Include="Views\Stock\Edit.cshtml" />
+    <Content Include="Views\Account\DisplayEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -671,6 +676,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804222012202_EntriesDeletedFromCarParts.resx">
       <DependentUpon>201804222012202_EntriesDeletedFromCarParts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804241729252_EditBookingModel.resx">
+      <DependentUpon>201804241729252_EditBookingModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

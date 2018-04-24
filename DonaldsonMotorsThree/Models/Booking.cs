@@ -15,6 +15,10 @@ namespace DonaldsonMotorsThree.Models
 
         public int DurationInDays { get; set; }
 
+        public virtual Customer Customer { get; set; }
+
+        public  virtual Job Job { get; set; }
+
 
     }
 }

@@ -9,7 +9,7 @@ namespace DonaldsonMotorsThree.Controllers
     public class ReportController : Controller
     {
         // GET: Report
-        public ActionResult Index()
+        public ActionResult GenerateReport()
         {
             return View();
         }
