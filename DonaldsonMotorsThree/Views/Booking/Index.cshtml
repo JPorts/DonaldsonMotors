@@ -1,8 +1,13 @@
-﻿
+﻿@using DonaldsonMotorsThree.Models
+@model DonaldsonMotorsThree.ViewModels.CreateBookingViewModel
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Bookings</h2>
+
+
+@Html.ActionLink("Create Booking", "Create", "Booking", new { id = C }),new { @class = "btn btn-success" })
 

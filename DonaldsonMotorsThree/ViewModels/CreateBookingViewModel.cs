@@ -14,5 +14,9 @@ namespace DonaldsonMotorsThree.ViewModels
 
         public Job Job { get; set; }
 
+        public Customer Customer { get; set; }
+
+        public Booking Booking { get; set; }
+
     }
 }

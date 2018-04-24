@@ -36,7 +36,12 @@
         <label>Total:</label>
         <input type="text" value="" class="form-control" />
     </div>
-    
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer)
+        @Html.ViewData.Model.Customer.CustomerId
+        @Html.ViewDataContainer.ViewData 
+    </div>
     <button class="btn btn-success">Continue</button>
 </form>
 @section scripts
