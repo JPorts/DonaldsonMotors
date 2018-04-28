@@ -11,8 +11,10 @@ namespace DonaldsonMotorsThree.Models
         [Key]
         public int BookingId { get; set; }
 
+        [Display(Name="Booking Paid")]
         public bool PaidFor { get; set; }
 
+        [Display(Name = "Duration")]
         public int DurationInDays { get; set; }
 
         public virtual Customer Customer { get; set; }

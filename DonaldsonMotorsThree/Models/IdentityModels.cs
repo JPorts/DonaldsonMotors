@@ -17,21 +17,22 @@ namespace DonaldsonMotorsThree.Models
         private ApplicationUserManager userManager;
         // Declare User Properties // 
       
+        [Display(Name= "First Name")]
         public string FirstName { get; set; }
 
-       
+        [Display(Name="Surname")]
         public string LastName { get; set; }
 
-       
+       [Display(Name="Address")]
         public string AddressLine1 { get; set; }
-
+        [Display(Name="Address Line 2")]
         public string AddressLine2 { get; set; }
 
         public string Town { get; set; }
         
         public string Postcode { get; set; }
 
-       
+        [Display(Name = "Home Phone Number")]
         public string TelephoneNumber { get; set; }
 
         [NotMapped]

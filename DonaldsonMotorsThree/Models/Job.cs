@@ -15,12 +15,14 @@ namespace DonaldsonMotorsThree.Models
 
         public int PartId { get; set; }
 
+        [Display(Name = "Completed By:")]
         public string CompletedBy { get; set; }
 
-
+        [Display(Name = "Date Completed")]
         [DataType(DataType.Date)]
         public DateTime? DateCompleted { get; set; }
 
+        [Display(Name = "Job Requirements")]
         [Required]
         public string JobRequirements { get; set; }
 
