@@ -11,16 +11,15 @@ namespace DonaldsonMotorsThree.Models
         [Key]
         public int JobId { get; set; }
 
-        public int CustomerId { get; set; }
-
-        public int VehicleId { get; set; }
+        public int? CustomerId { get; set; }
 
         public int PartId { get; set; }
 
         public string CompletedBy { get; set; }
 
+
         [DataType(DataType.Date)]
-        public DateTime DateCompleted { get; set; }
+        public DateTime? DateCompleted { get; set; }
 
         [Required]
         public string JobRequirements { get; set; }

@@ -113,8 +113,27 @@ textarea {
 pad-bottom {
     padding-bottom:25px
 }
-viewJobsText {
+.viewJobsText {
     align-content: center
 }
 
 .notfirst:hover{background: lightskyblue}
+
+.donaldsonHome {
+    text-align: center;
+    list-style-type: none;
+    
+}
+.donaldsonHome:hover {
+
+    background: lightskyblue;
+
+}
+
+.blankLi {
+    background: none;
+    list-style-type: none;
+    text-align: center;
+}
+
+

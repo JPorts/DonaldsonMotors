@@ -5,10 +5,10 @@ using System.Web;
 
 namespace DonaldsonMotorsThree.Models
 {
-    public class Staff
+    public class Staff : User
     {
         // Declare Staff Properties // 
-        public string EmployeeId { get; set; }
+        public int EmployeeId { get; set; }
 
         public DateTime Dob { get; set; }
 

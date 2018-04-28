@@ -28,7 +28,9 @@ namespace DonaldsonMotorsThree.Controllers
             return View();
         }
 
-        // GET: Booking/Create
+
+        // POST: Booking/Create
+        [System.Web.Http.HttpPost]
         public ActionResult Create(int id)
         {
             // If Model is not valid, throw bad request //

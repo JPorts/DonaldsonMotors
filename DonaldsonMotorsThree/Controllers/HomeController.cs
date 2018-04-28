@@ -32,6 +32,10 @@ namespace DonaldsonMotorsThree.Controllers
             return View(repository.GetAll());
         }
 
+        public ActionResult EditJob(int id)
+        {
+            return View();
+        }
 
         public ActionResult Contact()
         {

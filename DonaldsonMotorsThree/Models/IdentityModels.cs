@@ -1,15 +1,53 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace DonaldsonMotorsThree.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-    public class ApplicationUser : IdentityUser
+    public abstract class User : IdentityUser
     {
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+        private ApplicationUserManager userManager;
+        // Declare User Properties // 
+      
+        public string FirstName { get; set; }
+
+       
+        public string LastName { get; set; }
+
+       
+        public string AddressLine1 { get; set; }
+
+        public string AddressLine2 { get; set; }
+
+        public string Town { get; set; }
+        
+        public string Postcode { get; set; }
+
+       
+        public string TelephoneNumber { get; set; }
+
+        [NotMapped]
+        public string currentRole
+        {
+            get
+            {
+                if (userManager == null)
+                {
+                    userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                }
+                return userManager.GetRoles(Id).Single();
+
+            }
+        }
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
 
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -20,26 +58,6 @@ namespace DonaldsonMotorsThree.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public DbSet<Customer> Customers { get; set; }
 
-        public DbSet<CarPart> CarParts { get; set; }
-
-        public DbSet<Job> Jobs { get; set; }
-
-        public DbSet<Supplier> Suppliers { get; set; }
-
-
-        public ApplicationDbContext()
-
-            : base("DonaldsonMotorsDb", throwIfV1Schema: false)
-        {
-        }
-
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
-    }
+ 
 }
