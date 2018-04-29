@@ -233,6 +233,18 @@
     <Compile Include="Migrations\201804282147155_AddTotalPropToDatabase.Designer.cs">
       <DependentUpon>201804282147155_AddTotalPropToDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804290008354_TruncateToFixTableIdIssue.cs" />
+    <Compile Include="Migrations\201804290008354_TruncateToFixTableIdIssue.Designer.cs">
+      <DependentUpon>201804290008354_TruncateToFixTableIdIssue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804290014355_DeleteAllFromJobs.cs" />
+    <Compile Include="Migrations\201804290014355_DeleteAllFromJobs.Designer.cs">
+      <DependentUpon>201804290014355_DeleteAllFromJobs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804290016349_ReAddJobsData.cs" />
+    <Compile Include="Migrations\201804290016349_ReAddJobsData.Designer.cs">
+      <DependentUpon>201804290016349_ReAddJobsData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -665,6 +677,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804282147155_AddTotalPropToDatabase.resx">
       <DependentUpon>201804282147155_AddTotalPropToDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804290008354_TruncateToFixTableIdIssue.resx">
+      <DependentUpon>201804290008354_TruncateToFixTableIdIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804290014355_DeleteAllFromJobs.resx">
+      <DependentUpon>201804290014355_DeleteAllFromJobs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804290016349_ReAddJobsData.resx">
+      <DependentUpon>201804290016349_ReAddJobsData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
