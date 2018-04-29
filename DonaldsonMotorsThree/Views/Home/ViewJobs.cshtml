@@ -52,32 +52,39 @@
     </thead>
 
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr class="notfirst">
-                <td>
-                    @Html.DisplayFor(modelItem => item.JobId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.JobRequirements)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.JobCost)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.JobStatus)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PartId)
-                </td>
-                <td>
-                    <button data-job-id="@item.JobId" class="btn btn-link js-delete">Delete</button>
-                </td>
-            </tr>
-        }
+    @foreach (var item in Model)
+    {
+        <tr class="notfirst">
+            <td>
+                @Html.DisplayFor(modelItem => item.JobId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobRequirements)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PartId)
+            </td>
+            <td>
+                <button data-job-id="@item.JobId" class="btn btn-link js-delete">Delete</button>
+            </td>
+        </tr>
+    }
     </tbody>
 
 </table>
+<br/>
+<div class="row">
+    <div class="col-md-offset-10">
+ 
+        <button class="btn btn-link"> @Html.ActionLink("Add New Job", "CreateJob")</button>
+    </div>
+</div>
 
 @section scripts
 {

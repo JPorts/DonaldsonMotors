@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using System.Data.SqlClient;
 using System.Net;
 using System.Web.Http;
+using AutoMapper;
+using DonaldsonMotorsThree.Controllers.Api;
 using DonaldsonMotorsThree.Dtos;
 using DonaldsonMotorsThree.Models;
 using DonaldsonMotorsThree.Models.Repositories;
@@ -42,10 +44,13 @@ namespace DonaldsonMotorsThree.Controllers
         //GET: Stock/Details/1
         public ActionResult Details(int id)
         {
-            if(id == 0)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var carPart = PartRepo.Get(id);//_context.CarParts.SingleOrDefault(c => c.PartId == id);
 
-            return View(PartRepo.Get(id));
+            if (carPart == null)
+                return HttpNotFound();
+
+
+            return View(carPart);
         }
 
        
@@ -65,7 +70,17 @@ namespace DonaldsonMotorsThree.Controllers
             return View("Edit", viewModel);
         }
 
-        
+        //public ActionResult UpdateCarPart(CarPart carPart)
+        //{
+
+        //    CarPartDto carPartDto = new CarPartDto();
+        //    carPartDto = Mapper.Map<CarPart, CarPartDto>(carPart);
+            
+
+        //    return View();
+        //}
+
+
 
         // Sets up View Model and returns CreateCarPart View // 
         public ActionResult CreateCarPart()

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<DonaldsonMotorsThree.Models.CarPart>
+﻿@using DonaldsonMotorsThree.Models
+@model IEnumerable<DonaldsonMotorsThree.Models.CarPart>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -36,7 +37,8 @@
     {
         <tr class="notfirst">
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+
+                @Html.ActionLink(item.Name, "Details", "Stock", new {id = item.PartId}, null)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)

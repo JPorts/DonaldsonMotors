@@ -33,6 +33,21 @@ namespace DonaldsonMotorsThree.Controllers
             return View(repository.GetAll());
         }
 
+        public ActionResult CreateJob()
+        {
+            
+            return View();
+        }
+
+        [System.Web.Http.HttpPost]
+        public ActionResult AddJob(Job job)
+        {
+            if (job.JobId == 0)
+                repository.Add(job);
+            repository.SaveChanges();
+            return RedirectToAction("ViewJobs", "Home");
+        }
+
         public ActionResult EditJob(int id)
         {
             // Get Job From Repo //
