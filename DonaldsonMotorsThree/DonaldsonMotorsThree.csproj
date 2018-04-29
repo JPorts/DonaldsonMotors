@@ -229,6 +229,10 @@
     <Compile Include="Migrations\201804272237166_PopulateSupplierCarPartAndJobsTable.Designer.cs">
       <DependentUpon>201804272237166_PopulateSupplierCarPartAndJobsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804282147155_AddTotalPropToDatabase.cs" />
+    <Compile Include="Migrations\201804282147155_AddTotalPropToDatabase.Designer.cs">
+      <DependentUpon>201804282147155_AddTotalPropToDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -630,6 +634,8 @@
     <Content Include="Views\Staff\Create.cshtml" />
     <Content Include="Views\Home\EditJob.cshtml" />
     <Content Include="Views\Staff\Index.cshtml" />
+    <Content Include="Views\Booking\ViewAll.cshtml" />
+    <Content Include="Views\Booking\GetBookingHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -656,6 +662,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804272237166_PopulateSupplierCarPartAndJobsTable.resx">
       <DependentUpon>201804272237166_PopulateSupplierCarPartAndJobsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804282147155_AddTotalPropToDatabase.resx">
+      <DependentUpon>201804282147155_AddTotalPropToDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

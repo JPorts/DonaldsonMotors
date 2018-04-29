@@ -17,6 +17,8 @@ namespace DonaldsonMotorsThree.Models
         [Display(Name = "Duration")]
         public int DurationInDays { get; set; }
 
+        public decimal? Total { get; set; }
+
         public virtual Customer Customer { get; set; }
 
         public  virtual Job Job { get; set; }

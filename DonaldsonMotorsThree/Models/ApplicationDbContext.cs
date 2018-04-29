@@ -21,6 +21,8 @@ namespace DonaldsonMotorsThree.Models
                 public DbSet<Supplier> Suppliers { get; set; }
 
                 public DbSet<Staff> Staff { get; set; }
+                
+                public DbSet<Booking> Bookings { get; set; }
 
                 public ApplicationDbContext()
 
@@ -34,7 +36,9 @@ namespace DonaldsonMotorsThree.Models
                 {
                     return new ApplicationDbContext();
                 }
-            }
+
+        
+    }
            
         }
     
