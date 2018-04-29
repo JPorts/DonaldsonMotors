@@ -272,6 +272,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CreateBookingViewModel.cs" />
+    <Compile Include="ViewModels\CarPartViewModel.cs" />
+    <Compile Include="ViewModels\CreateStaffViewModel.cs" />
+    <Compile Include="ViewModels\JobViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-readable.css" />

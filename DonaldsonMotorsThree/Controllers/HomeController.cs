@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using DonaldsonMotorsThree.Models;
 using DonaldsonMotorsThree.Models.Repositories;
+using DonaldsonMotorsThree.ViewModels;
 
 namespace DonaldsonMotorsThree.Controllers
 {
@@ -34,8 +35,25 @@ namespace DonaldsonMotorsThree.Controllers
 
         public ActionResult EditJob(int id)
         {
-            return View();
+            // Get Job From Repo //
+            var job = repository.Get(id);
+            // Check If job is not null //
+            if (job == null)
+                return HttpNotFound();
+            //Construct VM //
+            var viewModel = new JobViewModel
+            {
+                Job = job
+            };
+            // Return View //
+            return View("EditJob", viewModel);
         }
+
+        //public ActionResult UpdateJob(int id)
+        //{
+
+        //    return;
+        //}
 
         public ActionResult Contact()
         {

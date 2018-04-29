@@ -58,7 +58,7 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
         //PUT /api/carparts/1
         [System.Web.Http.HttpPut]
-        public void UpdateCarPart(int id, CarPartDto carPartDto)
+        public void UpdateCarPart(CarPartDto carPartDto, int id)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
