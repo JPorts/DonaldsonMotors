@@ -45,6 +45,11 @@ namespace DonaldsonMotorsThree.Controllers
             return View();
         }
 
+        public ActionResult CreateCarPart()
+        {
+            return View();
+        }
+
 
 
     }

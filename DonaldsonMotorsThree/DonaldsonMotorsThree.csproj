@@ -648,6 +648,8 @@
     <Content Include="Views\Staff\Index.cshtml" />
     <Content Include="Views\Booking\ViewAll.cshtml" />
     <Content Include="Views\Booking\GetBookingHistory.cshtml" />
+    <Content Include="Views\Staff\Details.cshtml" />
+    <Content Include="Views\Stock\CreateCarPart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

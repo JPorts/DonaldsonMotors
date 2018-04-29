@@ -27,9 +27,6 @@
             @Html.DisplayNameFor(model => model.ReorderLevel)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReorderQuantity)
-        </th>
-        <th>
             Options
         </th>
     </tr>
@@ -54,13 +51,12 @@
                     @Html.DisplayFor(modelItem => item.ReorderLevel)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ReorderQuantity)
-                </td>
-                <td>
+                    <button class="btn btn-link">  @Html.ActionLink("Add", "CreateCarPart", new { id = item.PartId })</button>
+                    <button class="btn btn-link"> @Html.ActionLink("Edit", "Edit", new {id = item.PartId})</button>
                     <button data-carpart-id="@item.PartId" class="btn btn-link js-delete">Delete</button>
-                    <button class="btn btn-link">  @Html.ActionLink("Edit", "Edit", new { id = item.PartId })</button>
-                    
-                    
+
+
+
                 </td>
             </tr>
         }

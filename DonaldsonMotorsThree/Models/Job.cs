@@ -9,10 +9,13 @@ namespace DonaldsonMotorsThree.Models
     public class Job
     {
         [Key]
+        [Display(Name = "Job Id")]
         public int JobId { get; set; }
 
+        [Display(Name = "Customer Id")]
         public int? CustomerId { get; set; }
 
+        [Display(Name = "Part Id")]
         public int PartId { get; set; }
 
         [Display(Name = "Completed By:")]
@@ -26,9 +29,11 @@ namespace DonaldsonMotorsThree.Models
         [Required]
         public string JobRequirements { get; set; }
 
+        [Display(Name = "Price")]
         [Required]
         public decimal JobCost { get; set; }
 
+        [Display(Name = "Status")]
         [Required]
         public int JobStatus { get; set; }
     }
