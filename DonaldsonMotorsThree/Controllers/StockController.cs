@@ -44,7 +44,7 @@ namespace DonaldsonMotorsThree.Controllers
         //GET: Stock/Details/1
         public ActionResult Details(int id)
         {
-            var carPart = PartRepo.Get(id);//_context.CarParts.SingleOrDefault(c => c.PartId == id);
+            var carPart = PartRepo.Get(id);
 
             if (carPart == null)
                 return HttpNotFound();
@@ -56,7 +56,7 @@ namespace DonaldsonMotorsThree.Controllers
        
         public ActionResult Edit(int id)
         {
-            var carPart = _context.CarParts.SingleOrDefault(c => c.PartId == id);
+            var carPart = PartRepo.Get(id);
 
             if (carPart == null)
                 return HttpNotFound();
@@ -97,6 +97,7 @@ namespace DonaldsonMotorsThree.Controllers
         [System.Web.Http.HttpPost]
         public ActionResult AddCarPart(CarPart carPart, Supplier supplier)
         {
+            carPart.SupplierId = supplier.SupplierId;
             if(carPart.PartId == 0)
                 PartRepo.Add(carPart);           
                  PartRepo.SaveChanges();
