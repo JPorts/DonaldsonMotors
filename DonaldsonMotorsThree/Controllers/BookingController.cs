@@ -60,6 +60,12 @@ namespace DonaldsonMotorsThree.Controllers
 
             return View();
         }
+
+        public ActionResult ActiveBookings()
+        {
+            return View();
+        }
+
         public ActionResult GetBookingHistory()
         {
             return View();

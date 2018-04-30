@@ -79,6 +79,44 @@ namespace DonaldsonMotorsThree.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Address Line 1")]
+        public string AddressLine1 { get; set; }
+
+        [Required]
+        [Display(Name = "Address Line 2")]
+        public string AddressLine2 { get; set; }
+
+        [Required]
+        [Display(Name = "Town")]
+        public string Town { get; set; }
+
+        [Required]
+        [Display(Name = "Postcode")]
+        public string Postcode { get; set; }
+
+        [Required]
+        [Display(Name = "Customer Id")]
+        public int CustomerId { get; set; }
+
+        [Required]
+        [Display(Name = "My Bookings")]
+        public List<Booking> Bookings { get; set; }
+
+        [Required]
+        [Display(Name = "Vehicle Id")]
+        public int VehicleId { get; set; }
+
+
     }
 
     public class ResetPasswordViewModel

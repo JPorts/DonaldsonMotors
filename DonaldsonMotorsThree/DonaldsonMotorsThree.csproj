@@ -654,6 +654,7 @@
     <Content Include="Views\Staff\Details.cshtml" />
     <Content Include="Views\Stock\CreateCarPart.cshtml" />
     <Content Include="Views\Home\CreateJob.cshtml" />
+    <Content Include="Views\Booking\ActiveBookings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
