@@ -17,15 +17,19 @@ namespace DonaldsonMotorsThree.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext _context;
 
         public AccountController()
         {
+
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationDbContext _context )
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _context = new ApplicationDbContext();
+            
         }
 
         public ApplicationSignInManager SignInManager
@@ -163,9 +167,19 @@ namespace DonaldsonMotorsThree.Controllers
                 // Hash password using password hasher // 
                 var passwordHasher = new PasswordHasher();
                 var password = passwordHasher.HashPassword(model.Password);
+                
+
+
+
+                    
+
+
+
+
                 // Create new Customer Object // 
                 var user = new Customer
                 {
+                    
                     UserName = model.Email,
                     Email = model.Email,
                     FirstName = model.FirstName,

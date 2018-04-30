@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DonaldsonMotorsThree.Models
 {
@@ -112,6 +114,10 @@ namespace DonaldsonMotorsThree.Models
         [StringLength(18, ErrorMessage = "Max length is 18")]
         [Display(Name = "Phone Number")]
         public string TelephoneNumber { get; set; }
+
+        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int CustomerId { get; set; }
 
 
     }

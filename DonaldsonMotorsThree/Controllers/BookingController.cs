@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using DonaldsonMotorsThree.Models;
 using DonaldsonMotorsThree.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace DonaldsonMotorsThree.Controllers
 {
@@ -38,11 +39,12 @@ namespace DonaldsonMotorsThree.Controllers
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
             // Grab customer from DB // 
-            var customer = _context.Customers.SingleOrDefault(m => m.CustomerId == id);
+            var customer = _context.Customers.SingleOrDefault(c => c.CustomerId == id);
 
             // If Customer is null, through not found //
             if(customer == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
+
 
 
             var jobs = _context.Jobs.ToList();
