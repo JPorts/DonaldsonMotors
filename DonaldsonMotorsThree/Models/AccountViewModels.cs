@@ -89,32 +89,29 @@ namespace DonaldsonMotorsThree.Models
         public string LastName { get; set; }
 
         [Required]
+        [StringLength(200, ErrorMessage = "Address Line Max Length is 200 Characters")]
         [Display(Name = "Address Line 1")]
         public string AddressLine1 { get; set; }
 
         [Required]
+        [StringLength(200, ErrorMessage = "Address Line Max Length is 200 Characters")]
         [Display(Name = "Address Line 2")]
         public string AddressLine2 { get; set; }
 
         [Required]
+        [StringLength(200, ErrorMessage = "Town Max Length is 200 Characters")]
         [Display(Name = "Town")]
         public string Town { get; set; }
 
         [Required]
         [Display(Name = "Postcode")]
+        [RegularExpression("([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z]))))\\s?[0-9][A-Za-z]{2})")]
         public string Postcode { get; set; }
 
         [Required]
-        [Display(Name = "Customer Id")]
-        public int CustomerId { get; set; }
-
-        [Required]
-        [Display(Name = "My Bookings")]
-        public List<Booking> Bookings { get; set; }
-
-        [Required]
-        [Display(Name = "Vehicle Id")]
-        public int VehicleId { get; set; }
+        [StringLength(18, ErrorMessage = "Max length is 18")]
+        [Display(Name = "Phone Number")]
+        public string TelephoneNumber { get; set; }
 
 
     }

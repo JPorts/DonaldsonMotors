@@ -160,7 +160,23 @@ namespace DonaldsonMotorsThree.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new Customer { UserName = model.Email, Email = model.Email };
+                // Hash password using password hasher // 
+                var passwordHasher = new PasswordHasher();
+                var password = passwordHasher.HashPassword(model.Password);
+                // Create new Customer Object // 
+                var user = new Customer
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    AddressLine1 = model.AddressLine1,
+                    AddressLine2 = model.AddressLine2,
+                    Town = model.Town,
+                    Postcode = model.Postcode,
+                    PasswordHash = password,
+                    TelephoneNumber = model.TelephoneNumber
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
