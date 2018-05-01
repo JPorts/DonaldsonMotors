@@ -204,6 +204,7 @@
     <Compile Include="Controllers\Api\CarPartsController.cs" />
     <Compile Include="Controllers\Api\JobsController.cs" />
     <Compile Include="Controllers\Api\ReviewsController.cs" />
+    <Compile Include="Controllers\Api\StaffDataController.cs" />
     <Compile Include="Controllers\Api\SuppliersController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
@@ -214,7 +215,10 @@
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Dtos\CarPartDto.cs" />
+    <Compile Include="Dtos\CustomerDto.cs" />
     <Compile Include="Dtos\JobDto.cs" />
+    <Compile Include="Dtos\ReviewDto.cs" />
+    <Compile Include="Dtos\StaffDto.cs" />
     <Compile Include="Dtos\SupplierDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -271,6 +275,10 @@
     <Compile Include="Migrations\201805011402509_updateSeedMethod.Designer.cs">
       <DependentUpon>201805011402509_updateSeedMethod.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805011623133_NewReviewModelsAdded.cs" />
+    <Compile Include="Migrations\201805011623133_NewReviewModelsAdded.Designer.cs">
+      <DependentUpon>201805011623133_NewReviewModelsAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -291,6 +299,7 @@
     <Compile Include="Models\Repositories\Repository.cs" />
     <Compile Include="Models\Repositories\StaffRepository.cs" />
     <Compile Include="Models\Repositories\SupplierRepository.cs" />
+    <Compile Include="Models\Review.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\Supplier.cs" />
@@ -738,6 +747,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805011402509_updateSeedMethod.resx">
       <DependentUpon>201805011402509_updateSeedMethod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805011623133_NewReviewModelsAdded.resx">
+      <DependentUpon>201805011623133_NewReviewModelsAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

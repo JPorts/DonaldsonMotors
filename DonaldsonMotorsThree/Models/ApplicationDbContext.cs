@@ -18,6 +18,8 @@ namespace DonaldsonMotorsThree.Models
 
                 public DbSet<Job> Jobs { get; set; }
 
+                public DbSet<Review> Reviews { get; set; }
+
                 public DbSet<Supplier> Suppliers { get; set; }
 
                 public DbSet<Staff> Staff { get; set; }

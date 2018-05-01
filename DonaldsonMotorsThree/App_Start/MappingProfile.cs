@@ -35,12 +35,23 @@ namespace DonaldsonMotorsThree.App_Start
 
             Mapper.CreateMap<SupplierDto, Supplier>();
 
-            //Maps Staff to StaffDto //
 
+            //Maps Staff to StaffDto //
+            Mapper.CreateMap<Staff, StaffDto>();
+
+            Mapper.CreateMap<StaffDto, Staff>();
 
 
             // Maps Customer to CustomerDto// 
+            Mapper.CreateMap<Customer, CustomerDto>();
 
+            Mapper.CreateMap<CustomerDto, Customer>();
+
+
+            //Maps Reviews To ReviewDto // 
+            Mapper.CreateMap<Review, ReviewDto>();
+
+            Mapper.CreateMap<ReviewDto, Review>();
 
 
         }
