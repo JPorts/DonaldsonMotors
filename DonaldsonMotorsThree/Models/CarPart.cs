@@ -34,6 +34,10 @@ namespace DonaldsonMotorsThree.Models
         [Required]
         public int ReorderQuantity { get; set; }
 
+        [Display(Name = "Quantity")]
+        [Required]
+        public int CurrentQuantity { get; set; }
+
 
     }
 }

@@ -19,12 +19,27 @@ namespace DonaldsonMotorsThree.Controllers.Api
         }
 
 
-        //[HttpPost]
-        //public IHttpActionResult CreateBooking(BookingDto bookingDto)
-        //{
-        //    var customer = _context.Customers.Single(c => c.CustomerId == bookingDto.Customer.CustomerId);
 
-        //    // var jobs = _context.Jobs.Where(j => bookingDto.Job.JobId.Co)
-        //}
+        [HttpPost]
+        public IHttpActionResult CreateBooking(BookingDto bookingDto)
+        {
+            //
+            var customer = _context.Customers.Single(c => c.CustomerId == bookingDto.Customer.CustomerId);
+            var jobs = _context.Jobs.Where(j => bookingDto.JobIds.Contains(j.JobId));
+            //
+            foreach (var job in jobs)
+            {
+                var part = _context.CarParts.Find(job.PartId);
+               // part.
+                var booking = new Booking
+                {
+                    Customer = customer,
+                    Job = job
+                };
+                _context.Bookings.Add(booking);
+            }
+            //
+            return Ok();
+        }
     }
 }

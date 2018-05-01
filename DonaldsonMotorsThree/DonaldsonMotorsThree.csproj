@@ -289,6 +289,10 @@
     <Compile Include="Migrations\201805012217029_updateBookingModelWithJobIdList.Designer.cs">
       <DependentUpon>201805012217029_updateBookingModelWithJobIdList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805012245351_addPropQuantityToCarpart.cs" />
+    <Compile Include="Migrations\201805012245351_addPropQuantityToCarpart.Designer.cs">
+      <DependentUpon>201805012245351_addPropQuantityToCarpart.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -767,6 +771,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805012217029_updateBookingModelWithJobIdList.resx">
       <DependentUpon>201805012217029_updateBookingModelWithJobIdList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805012245351_addPropQuantityToCarpart.resx">
+      <DependentUpon>201805012245351_addPropQuantityToCarpart.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
