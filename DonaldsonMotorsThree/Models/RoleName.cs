@@ -33,5 +33,8 @@ namespace DonaldsonMotorsThree.Models
         // Can produce Invoice, view working timetable, check stock levels, view all jobs//
         public const string StaffRole = "Staff";
 
+        // For Admins //
+        public const string Admin = "Administrator";
+
     }
 }

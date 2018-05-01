@@ -25,6 +25,9 @@ namespace DonaldsonMotorsThree.Controllers
         // GET: Staff/Create
         public ActionResult Create()
         {
+
+
+            
             return View();
         }
 
@@ -42,6 +45,13 @@ namespace DonaldsonMotorsThree.Controllers
             {
                 return View();
             }
+        }
+
+        
+        public ActionResult ManageJobs()
+        {
+
+            return View();
         }
 
         // GET: Staff/Edit/5

@@ -12,11 +12,24 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
+                
                 <li>@Html.ActionLink("Jobs", "ViewJobs", "Home")</li>
                 <li>@Html.ActionLink("Bookings", "Index", "Booking")</li>
-                <li>@Html.ActionLink("Reports", "GenerateReport", "Report")</li>
                 <li>@Html.ActionLink("Stock", "Index", "Stock")</li>
                 <li>@Html.ActionLink("Feedback", "Index", "Review")</li>
+                <li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Administrator,Staff, GarageManager, StoreManager, Mechanic, OfficeStaff"))
+                        {
+                            <li>@Html.ActionLink("Reports", "GenerateReport", "Report")</li>
+                            <li>@Html.ActionLink("Manage Staff", "Index", "Staff")</li>
+                            <li> @Html.ActionLink("Manage Jobs", "ManageJobs", "Staff")</li>
+                        }
+                    }
+
+
+                </li>
             </ul>
             @Html.Partial("_LoginPartial")
         </div>

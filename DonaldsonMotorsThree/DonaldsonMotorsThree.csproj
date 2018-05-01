@@ -267,6 +267,10 @@
     <Compile Include="Migrations\201804302041147_FixCustomerIdIssue.Designer.cs">
       <DependentUpon>201804302041147_FixCustomerIdIssue.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805011402509_updateSeedMethod.cs" />
+    <Compile Include="Migrations\201805011402509_updateSeedMethod.Designer.cs">
+      <DependentUpon>201805011402509_updateSeedMethod.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -731,6 +735,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804302041147_FixCustomerIdIssue.resx">
       <DependentUpon>201804302041147_FixCustomerIdIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805011402509_updateSeedMethod.resx">
+      <DependentUpon>201805011402509_updateSeedMethod.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
