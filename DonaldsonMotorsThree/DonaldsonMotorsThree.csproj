@@ -297,6 +297,7 @@
     <Compile Include="Models\Repositories\CustomerRepository.cs" />
     <Compile Include="Models\Repositories\JobRepository.cs" />
     <Compile Include="Models\Repositories\Repository.cs" />
+    <Compile Include="Models\Repositories\ReviewRepository.cs" />
     <Compile Include="Models\Repositories\StaffRepository.cs" />
     <Compile Include="Models\Repositories\SupplierRepository.cs" />
     <Compile Include="Models\Review.cs" />
