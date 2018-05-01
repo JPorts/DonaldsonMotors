@@ -54,6 +54,12 @@ namespace DonaldsonMotorsThree.App_Start
             Mapper.CreateMap<ReviewDto, Review>();
 
 
+            // Maps Bookings to Booking Dto //
+            Mapper.CreateMap<Booking, BookingDto>();
+
+            Mapper.CreateMap<BookingDto, Booking>();
+
+
         }
 
     }

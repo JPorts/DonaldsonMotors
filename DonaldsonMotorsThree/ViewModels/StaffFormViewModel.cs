@@ -7,7 +7,7 @@ using DonaldsonMotorsThree.Models;
 
 namespace DonaldsonMotorsThree.ViewModels
 {
-    public class CreateStaffViewModel
+    public class StaffFormViewModel
     {
         public Staff Staff { get; set; }
         

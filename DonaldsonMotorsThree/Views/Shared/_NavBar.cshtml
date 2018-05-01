@@ -20,7 +20,7 @@
                 <li>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        if (User.IsInRole("Administrator,Staff, GarageManager, StoreManager, Mechanic, OfficeStaff"))
+                        if (User.IsInRole("Administrator"))
                         {
                             <li>@Html.ActionLink("Reports", "GenerateReport", "Report")</li>
                             <li>@Html.ActionLink("Manage Staff", "Index", "Staff")</li>

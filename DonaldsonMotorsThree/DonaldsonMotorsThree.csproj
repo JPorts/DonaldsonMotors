@@ -201,6 +201,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\BookingDataController.cs" />
     <Compile Include="Controllers\Api\CarPartsController.cs" />
     <Compile Include="Controllers\Api\JobsController.cs" />
     <Compile Include="Controllers\Api\ReviewsController.cs" />
@@ -214,6 +215,7 @@
     <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\StockController.cs" />
+    <Compile Include="Dtos\BookingDto.cs" />
     <Compile Include="Dtos\CarPartDto.cs" />
     <Compile Include="Dtos\CustomerDto.cs" />
     <Compile Include="Dtos\JobDto.cs" />
@@ -279,6 +281,14 @@
     <Compile Include="Migrations\201805011623133_NewReviewModelsAdded.Designer.cs">
       <DependentUpon>201805011623133_NewReviewModelsAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805012155336_ChangeBookingDurationPropTonullable.cs" />
+    <Compile Include="Migrations\201805012155336_ChangeBookingDurationPropTonullable.Designer.cs">
+      <DependentUpon>201805012155336_ChangeBookingDurationPropTonullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805012217029_updateBookingModelWithJobIdList.cs" />
+    <Compile Include="Migrations\201805012217029_updateBookingModelWithJobIdList.Designer.cs">
+      <DependentUpon>201805012217029_updateBookingModelWithJobIdList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -307,9 +317,9 @@
     <Compile Include="Models\VehicleDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\CreateBookingViewModel.cs" />
+    <Compile Include="ViewModels\BookingFormViewModel.cs" />
     <Compile Include="ViewModels\CarPartViewModel.cs" />
-    <Compile Include="ViewModels\CreateStaffViewModel.cs" />
+    <Compile Include="ViewModels\StaffFormViewModel.cs" />
     <Compile Include="ViewModels\JobViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -751,6 +761,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805011623133_NewReviewModelsAdded.resx">
       <DependentUpon>201805011623133_NewReviewModelsAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805012155336_ChangeBookingDurationPropTonullable.resx">
+      <DependentUpon>201805012155336_ChangeBookingDurationPropTonullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805012217029_updateBookingModelWithJobIdList.resx">
+      <DependentUpon>201805012217029_updateBookingModelWithJobIdList.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

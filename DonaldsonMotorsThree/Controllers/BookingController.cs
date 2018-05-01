@@ -48,7 +48,7 @@ namespace DonaldsonMotorsThree.Controllers
             
 
             var jobs = _context.Jobs.ToList();
-            var viewModel = new CreateBookingViewModel
+            var viewModel = new BookingFormViewModel
             {
                 Jobs = jobs
             };

@@ -7,7 +7,7 @@ using DonaldsonMotorsThree.Models;
 
 namespace DonaldsonMotorsThree.ViewModels
 {
-    public class CreateBookingViewModel
+    public class BookingFormViewModel
     {
         [Display(Name = "Jobs")]
         public IEnumerable<Job> Jobs { get; set; }
