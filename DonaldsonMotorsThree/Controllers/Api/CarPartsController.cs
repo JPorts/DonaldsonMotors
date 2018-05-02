@@ -22,9 +22,16 @@ namespace DonaldsonMotorsThree.Controllers.Api
         }
 
         //GET /api/carparts
-        public IEnumerable<CarPartDto> GetCarParts()
+        public IEnumerable<CarPartDto> GetCarParts(string query = null)
         {
-            return _context.CarParts.ToList().Select(Mapper.Map<CarPart, CarPartDto>);
+
+            var partsQuery = _context.CarParts.Where(m => m.CurrentQuantity > 0);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                partsQuery = partsQuery.Where(m => m.Name.Contains(query));
+
+            return partsQuery.ToList().Select(Mapper.Map<CarPart, CarPartDto>);
+           
         }
 
 

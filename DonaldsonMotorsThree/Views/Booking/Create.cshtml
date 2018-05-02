@@ -10,14 +10,26 @@
 <br/>
 <br/>
 
-<form>
+<form id ="newBooking">
     <div class="form-group" id="job">
         <label>Job</label>
-        <input class="typeahead form-control" type="text" value=""  />
+        <div class="tt-container">
+            <input class="typeahead form-control" type="text" value="" />
+        </div>
+        
     </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <ul class="list-group" id="jobs"></ul>
+        </div>
+    </div>
+    
     <div class="form-group">
         <label>Parts</label>
-        <input type="text" value="" class="form-control" />
+        <div class="tt-container">
+            <input type="text" value="" class="form-control" />
+        </div>
+       
     </div>
     
     <div class="form-group">
@@ -34,7 +46,7 @@
 
 @section scripts
 {
-@Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryval")
 
     <script>
 
@@ -42,14 +54,14 @@
         $(document).ready(function() {
             // Initialise ViewModel with Array for JobIds //
             var vm = {
-                jobIds: [] 
+                jobIds: []
             };
 
             // Bloodhound engine for search optimization // 
             var jobs = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('jobRequirements'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
-                
+
                 remote: {
                     url: '/api/jobs?query=%QUERY',
                     wildcard: '%QUERY'
@@ -63,18 +75,35 @@
                 },
                 {
                     name: 'jobs',
-                    display: 'JobRequirements',
+                    display: 'jobRequirements',
                     source: jobs
                 });
         }).on("typeahead:select",
-            //When a Job item has been selected, append selected job onto list //
-            function(e, job) {
-                $("#job").append("<li class='list-group-item'>" + job.jobrequirements + "</li>");
+            function (e, job) {
+                //When a Job item has been selected, append selected job onto list //
+                $("#jobs").append("<li class='list-group-item'>" + job.jobRequirements + "</li>");
 
                 $("#job").typeahead("val", "");
 
-                vm.jobIds.push(job.id);
+                vm.jobIds.push(job.jobId);
+
+                $("#newBooking").submit(function(e) {
+                    e.preventDefault();
+
+                    $.ajax({
+                            url: "api/bookingData",
+                            method: "post",
+                            data: vm
+                        })
+                        .done(function() {
+                            console.log("done");
+                        })
+                        .fail(function() {
+
+                        });
+                });
             });
+
 
     </script>
 
