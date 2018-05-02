@@ -36,5 +36,9 @@ namespace DonaldsonMotorsThree.Models
         [Display(Name = "Status")]
         [Required]
         public int JobStatus { get; set; }
+
+        public virtual CarPart CarPart { get; set; }
+
+        public int? CarPartId { get; set; }
     }
 }

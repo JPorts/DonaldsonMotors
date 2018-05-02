@@ -24,9 +24,9 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
         // GET /api/jobs/        //
-        public IEnumerable<JobDto> getJobs()
+        public IEnumerable<JobDto> GetJobs(string query = null)
         {
-
+           // var jobQuery = _context.Jobs.Include(c=>c.)
             return _context.Jobs.ToList().Select(Mapper.Map<Job, JobDto>);
 
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using DonaldsonMotorsThree.Models;
 
 namespace DonaldsonMotorsThree.Dtos
 {
@@ -32,5 +33,8 @@ namespace DonaldsonMotorsThree.Dtos
         [Required]
         public int JobStatus { get; set; }
 
+        public virtual CarPart CarPart { get; set; }
+
+        public int? CarPartId { get; set; }
     }
 }
