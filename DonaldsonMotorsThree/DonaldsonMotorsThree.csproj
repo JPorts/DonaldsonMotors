@@ -297,6 +297,14 @@
     <Compile Include="Migrations\201805020142476_UpdatePartModelWithForeignKey.Designer.cs">
       <DependentUpon>201805020142476_UpdatePartModelWithForeignKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805021058507_AddRolePropToStaff.cs" />
+    <Compile Include="Migrations\201805021058507_AddRolePropToStaff.Designer.cs">
+      <DependentUpon>201805021058507_AddRolePropToStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805022049306_updateRolesAndCreateStaff.cs" />
+    <Compile Include="Migrations\201805022049306_updateRolesAndCreateStaff.Designer.cs">
+      <DependentUpon>201805022049306_updateRolesAndCreateStaff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -319,7 +327,6 @@
     <Compile Include="Models\Repositories\StaffRepository.cs" />
     <Compile Include="Models\Repositories\SupplierRepository.cs" />
     <Compile Include="Models\Review.cs" />
-    <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\VehicleDetails.cs" />
@@ -781,6 +788,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805020142476_UpdatePartModelWithForeignKey.resx">
       <DependentUpon>201805020142476_UpdatePartModelWithForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805021058507_AddRolePropToStaff.resx">
+      <DependentUpon>201805021058507_AddRolePropToStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805022049306_updateRolesAndCreateStaff.resx">
+      <DependentUpon>201805022049306_updateRolesAndCreateStaff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

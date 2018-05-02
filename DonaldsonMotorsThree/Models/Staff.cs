@@ -37,6 +37,9 @@ namespace DonaldsonMotorsThree.Models
         [Display(Name="Contract Type")]
         public IEnumerable<Contract> Contracts { get; set; }
 
+        [Display(Name = "Role")]
+        public string Rolename { get; set; }
+
 
 
 

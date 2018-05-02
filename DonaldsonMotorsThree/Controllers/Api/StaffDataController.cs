@@ -45,6 +45,7 @@ namespace DonaldsonMotorsThree.Controllers.Api
             // If model state is not valid then return bad request//
             if (!ModelState.IsValid)
                 return BadRequest();
+
             //else
             var staff = Mapper.Map<StaffDto, Staff>(staffDto);
 

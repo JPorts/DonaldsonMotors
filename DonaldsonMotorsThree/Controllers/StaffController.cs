@@ -1,15 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
+using DonaldsonMotorsThree.Models;
 
 namespace DonaldsonMotorsThree.Controllers
 {
+    
 
     [Authorize]
     public class StaffController : Controller
     {
+        // Declare Db Context 
+        private ApplicationDbContext _context;
+
+        public StaffController()
+        {
+
+            _context = new ApplicationDbContext();
+        }
+
         // GET: Staff
         public ActionResult Index()
         {
@@ -21,15 +33,16 @@ namespace DonaldsonMotorsThree.Controllers
         {
             return View();
         }
-
+        
         // GET: Staff/Create
         public ActionResult Create()
         {
-
+            ViewBag.Roles = new SelectList(_context.Roles, "Id", "Name");
 
             
             return View();
         }
+
 
         // POST: Staff/Create
         [HttpPost]
