@@ -15,6 +15,8 @@ namespace DonaldsonMotorsThree.Models
 
 
         [Display(Name = "Date of Birth")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Dob { get; set; }
 
         public List<string> Qualifications { get; set; }

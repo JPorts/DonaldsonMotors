@@ -97,7 +97,9 @@ namespace DonaldsonMotorsThree.Controllers
         [System.Web.Http.HttpPost]
         public ActionResult AddCarPart(CarPart carPart, Supplier supplier)
         {
+            // Make sure supplier Ids is the same as carpart supplier id // 
             carPart.SupplierId = supplier.SupplierId;
+            // if Id == 0 use repo pattern to add carpart and save changes //
             if(carPart.PartId == 0)
                 PartRepo.Add(carPart);           
                  PartRepo.SaveChanges();

@@ -24,40 +24,40 @@ namespace DonaldsonMotorsThree.Models
 
 
                 //Populating the Role table with user roles //
-                if (!roleManager.RoleExists("GARAGEMANAGER"))
+                if (!roleManager.RoleExists("Garage Manager"))
                 {
-                    var roleresult = roleManager.Create(new IdentityRole("GARAGEMANAGER"));
+                    var roleresult = roleManager.Create(new IdentityRole("Garage Manager"));
                 }
 
-                if (!roleManager.RoleExists("MECHANIC"))
+                if (!roleManager.RoleExists("Mechanic"))
                 {
-                    var roleresult = roleManager.Create(new IdentityRole("MECHANIC"));
+                    var roleresult = roleManager.Create(new IdentityRole("Mechanic"));
                 }
 
-                if (!roleManager.RoleExists("STOREMANAGER"))
+                if (!roleManager.RoleExists("Store Manager"))
                 {
 
-                    var roleresult = roleManager.Create(new IdentityRole("STOREMANAGER"));
+                    var roleresult = roleManager.Create(new IdentityRole("Store Manager"));
                 }
-                if (!roleManager.RoleExists("CUSTOMER"))
+                if (!roleManager.RoleExists("Customer"))
                 {
-                    var roleresult = roleManager.Create(new IdentityRole("CUSTOMER"));
-                }
-
-                if (!roleManager.RoleExists("CORPCUSTOMER"))
-                {
-                    var roleresult = roleManager.Create(new IdentityRole("CORPCUSTOMER"));
+                    var roleresult = roleManager.Create(new IdentityRole("Customer"));
                 }
 
-                if (!roleManager.RoleExists("OFFICESTAFF"))
+                if (!roleManager.RoleExists("Corporate Customer"))
                 {
-
-                    var roleresult = roleManager.Create(new IdentityRole("OFFICESTAFF"));
+                    var roleresult = roleManager.Create(new IdentityRole("Corporate Customer"));
                 }
-                if (!roleManager.RoleExists("ADMIN"))
+
+                if (!roleManager.RoleExists("Office Staff"))
                 {
 
-                    var roleresult = roleManager.Create(new IdentityRole("ADMIN"));
+                    var roleresult = roleManager.Create(new IdentityRole("Office Staff"));
+                }
+                if (!roleManager.RoleExists("Administrator"))
+                {
+
+                    var roleresult = roleManager.Create(new IdentityRole("Administrator"));
                 }
 
 

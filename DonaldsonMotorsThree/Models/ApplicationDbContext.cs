@@ -26,6 +26,8 @@ namespace DonaldsonMotorsThree.Models
                 
                 public DbSet<Booking> Bookings { get; set; }
 
+                
+
                 public ApplicationDbContext()
 
                     : base("DonaldsonMotorsDb", throwIfV1Schema: false)
