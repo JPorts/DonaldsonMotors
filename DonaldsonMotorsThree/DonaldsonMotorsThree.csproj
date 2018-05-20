@@ -520,6 +520,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\AdminMenu.js" />
     <Content Include="Scripts\bloodhound.js" />
     <Content Include="Scripts\bloodhound.min.js" />
     <Content Include="Scripts\bootbox.js" />
@@ -720,6 +721,7 @@
     <Content Include="Views\Stock\CreateCarPart.cshtml" />
     <Content Include="Views\Home\CreateJob.cshtml" />
     <Content Include="Views\Booking\ActiveBookings.cshtml" />
+    <Content Include="Views\Shared\_AdminManageMenuPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

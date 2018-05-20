@@ -22,9 +22,10 @@
                     {
                         if (User.IsInRole("Administrator"))
                         {
-                            <li>@Html.ActionLink("Reports", "GenerateReport", "Report")</li>
+                            @Html.Partial("_AdminManageMenuPartial")
+                            @*<li>@Html.ActionLink("Reports", "GenerateReport", "Report")</li>
                             <li>@Html.ActionLink("Manage Staff", "Index", "Staff")</li>
-                            <li> @Html.ActionLink("Manage Jobs", "ManageJobs", "Staff")</li>
+                            <li> @Html.ActionLink("Manage Jobs", "ManageJobs", "Staff")</li>*@
                         }
                     }
 
