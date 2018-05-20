@@ -32,20 +32,19 @@ namespace DonaldsonMotorsThree.Controllers
 
         // POST: Booking/Create
         [System.Web.Http.HttpPost]
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
             //// If Model is not valid, throw bad request //
-            //if(!ModelState.IsValid)
-            //    throw new HttpResponseException(HttpStatusCode.BadRequest);
+            if(!ModelState.IsValid)
+              throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            //// Grab customer from DB // 
-            //var customer = _context.Customers.SingleOrDefault(c => c.CustomerId == id);
+            //  Grab customer from DB // 
+            var customer = _context.Customers.SingleOrDefault(c => c.CustomerId == id);
 
             //// If Customer is null, through not found //
-            //if(customer == null)
-            //    throw new HttpResponseException(HttpStatusCode.NotFound);
-
-            
+            if (customer == null)
+                RedirectToAction("Register", "Account");
+                
 
             var jobs = _context.Jobs.ToList();
             var viewModel = new BookingFormViewModel

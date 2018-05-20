@@ -330,6 +330,7 @@
     <Compile Include="Models\Repositories\StaffRepository.cs" />
     <Compile Include="Models\Repositories\SupplierRepository.cs" />
     <Compile Include="Models\Review.cs" />
+    <Compile Include="Models\RoleDelegator.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\VehicleDetails.cs" />
