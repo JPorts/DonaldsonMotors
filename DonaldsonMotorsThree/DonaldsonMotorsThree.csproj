@@ -314,6 +314,18 @@
     <Compile Include="Migrations\201805221156437_UpdateBookingModel.Designer.cs">
       <DependentUpon>201805221156437_UpdateBookingModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805221203519_addPostDateForReviews.cs" />
+    <Compile Include="Migrations\201805221203519_addPostDateForReviews.Designer.cs">
+      <DependentUpon>201805221203519_addPostDateForReviews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805221205305_UpdateNullableDateForReview.cs" />
+    <Compile Include="Migrations\201805221205305_UpdateNullableDateForReview.Designer.cs">
+      <DependentUpon>201805221205305_UpdateNullableDateForReview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805221819294_AddEnumToBookingStatus.cs" />
+    <Compile Include="Migrations\201805221819294_AddEnumToBookingStatus.Designer.cs">
+      <DependentUpon>201805221819294_AddEnumToBookingStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -815,6 +827,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805221156437_UpdateBookingModel.resx">
       <DependentUpon>201805221156437_UpdateBookingModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805221203519_addPostDateForReviews.resx">
+      <DependentUpon>201805221203519_addPostDateForReviews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805221205305_UpdateNullableDateForReview.resx">
+      <DependentUpon>201805221205305_UpdateNullableDateForReview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805221819294_AddEnumToBookingStatus.resx">
+      <DependentUpon>201805221819294_AddEnumToBookingStatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

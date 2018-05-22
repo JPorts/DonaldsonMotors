@@ -65,8 +65,9 @@ namespace DonaldsonMotorsThree.Controllers
         // GET: Customer/Edit/5
         public ActionResult Edit(int id)
         {
-            if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //if (id == null)
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             return View();
         }
 

@@ -18,7 +18,7 @@ namespace DonaldsonMotorsThree.Models
         [Display(Name = "Duration")]
         public int? DurationInDays { get; set; }
 
-        public decimal? Total { get; set; }
+        public double? Total { get; set; }
 
         // Dates concerned with booking // 
         public DateTime? startDate { get; set; }
@@ -37,6 +37,14 @@ namespace DonaldsonMotorsThree.Models
 
         public  virtual Job Job { get; set; }
 
+        public BookingStatusEnum BookingStatus { get; set; }
+        public enum BookingStatusEnum
+        {
+            Requested,
+            Cancelled,
+            Active,
+            Complete
+        }
 
     }
 }

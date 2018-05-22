@@ -12,6 +12,8 @@ namespace DonaldsonMotorsThree.Models
 
         public string Body { get; set; }
 
+        public DateTime? PostDate { get; set; }
+
         public virtual User User { get; set; }
 
         public virtual string Id { get; set; }

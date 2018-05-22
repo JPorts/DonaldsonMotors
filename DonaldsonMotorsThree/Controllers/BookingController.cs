@@ -23,9 +23,15 @@ namespace DonaldsonMotorsThree.Controllers
             _context = new ApplicationDbContext();
         }
 
+
         // GET: Booking
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
+            // Get user from userID// 
+            var userId = User.Identity.GetUserId();
+            var user = _context.Customers.FirstOrDefault(u => u.Id == userId);
+
+            var job = _context.Jobs.SingleOrDefault(j => j.JobId == id);
             return View();
         }
 

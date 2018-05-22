@@ -19,8 +19,10 @@ namespace DonaldsonMotorsThree.Controllers
         // GET: Review
         public ActionResult Index()
         {
-
-            return View(repo.GetAll());
+            var reviews = repo.GetAll();
+            if (reviews == null)
+                return View();
+            return View(reviews);
         }
         // GET: Review
         public ActionResult AdminIndex()
@@ -42,18 +44,24 @@ namespace DonaldsonMotorsThree.Controllers
 
         // POST: Review/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Review Review)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                
+                Review.PostDate = DateTime.Now;
+                repo.Add(Review);
+            }
+                
+
+                
+                
 
                 return RedirectToAction("Index");
-            }
-            catch
-            {
+            
+           
                 return View();
-            }
+           
         }
 
         // GET: Review/Edit/5

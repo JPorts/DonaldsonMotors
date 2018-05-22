@@ -24,7 +24,13 @@ namespace DonaldsonMotorsThree.Controllers
             staffRepo = new StaffRepository();
             _context = new ApplicationDbContext();
         }
-
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _context.Dispose();
+            }
+        }
         // GET: Staff
         public ActionResult Index()
         {
