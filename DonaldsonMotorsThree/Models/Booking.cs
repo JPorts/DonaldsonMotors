@@ -8,6 +8,7 @@ namespace DonaldsonMotorsThree.Models
 {
     public class Booking
     {
+        // Booking properties // 
         [Key]
         public int BookingId { get; set; }
 
@@ -17,8 +18,20 @@ namespace DonaldsonMotorsThree.Models
         [Display(Name = "Duration")]
         public int? DurationInDays { get; set; }
 
-        public List<int> JobIds { get; set; }
         public decimal? Total { get; set; }
+
+        // Dates concerned with booking // 
+        public DateTime? startDate { get; set; }
+
+        public DateTime? DateCompleted { get; set; }
+
+
+        // IDs Linking other entitities // 
+        public List<int> JobIds { get; set; }
+
+        public int CustomerId { get; set; }
+
+        public int JobId { get; set; }
 
         public virtual Customer Customer { get; set; }
 

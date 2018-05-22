@@ -203,6 +203,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\BookingDataController.cs" />
     <Compile Include="Controllers\Api\CarPartsController.cs" />
+    <Compile Include="Controllers\Api\CustomersController.cs" />
     <Compile Include="Controllers\Api\JobsController.cs" />
     <Compile Include="Controllers\Api\ReviewsController.cs" />
     <Compile Include="Controllers\Api\StaffDataController.cs" />
@@ -309,6 +310,10 @@
     <Compile Include="Migrations\201805031402501_updateStaffModel.Designer.cs">
       <DependentUpon>201805031402501_updateStaffModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805221156437_UpdateBookingModel.cs" />
+    <Compile Include="Migrations\201805221156437_UpdateBookingModel.Designer.cs">
+      <DependentUpon>201805221156437_UpdateBookingModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -338,6 +343,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\BookingFormViewModel.cs" />
     <Compile Include="ViewModels\CarPartViewModel.cs" />
+    <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\StaffFormViewModel.cs" />
     <Compile Include="ViewModels\JobViewModel.cs" />
   </ItemGroup>
@@ -722,11 +728,12 @@
     <Content Include="Views\Home\CreateJob.cshtml" />
     <Content Include="Views\Booking\ActiveBookings.cshtml" />
     <Content Include="Views\Shared\_AdminManageMenuPartial.cshtml" />
+    <Content Include="Views\Review\AdminIndex.cshtml" />
+    <Content Include="Views\Review\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Customer\" />
-    <Folder Include="Views\Review\" />
     <Folder Include="Views\Shared\DisplayTemplates\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
@@ -805,6 +812,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805031402501_updateStaffModel.resx">
       <DependentUpon>201805031402501_updateStaffModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805221156437_UpdateBookingModel.resx">
+      <DependentUpon>201805221156437_UpdateBookingModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

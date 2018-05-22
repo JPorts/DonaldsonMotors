@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DonaldsonMotorsThree.Models;
+using DonaldsonMotorsThree.Models.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,12 +10,24 @@ namespace DonaldsonMotorsThree.Controllers
 {
     public class ReviewController : Controller
     {
+        // Declare repo and context // 
+        private ApplicationDbContext _context;
+        private ReviewRepository repo;
+
+        // Instantiate repo and context in constructor // 
+
         // GET: Review
         public ActionResult Index()
         {
+
+            return View(repo.GetAll());
+        }
+        // GET: Review
+        public ActionResult AdminIndex()
+        {
+
             return View();
         }
-
         // GET: Review/Details/5
         public ActionResult Details(int id)
         {
