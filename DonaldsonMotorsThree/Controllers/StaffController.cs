@@ -60,7 +60,7 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddStaff(Staff staff)
+        public ActionResult Create(Staff staff)
         {
             // if employee id isn't assigned, add new staff member using staffRepo //
             if(staff.EmployeeId == 0)
