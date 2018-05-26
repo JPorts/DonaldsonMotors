@@ -7,6 +7,9 @@ using System.Web.Http;
 
 namespace DonaldsonMotorsThree.Controllers.Api
 {
+    /// <summary>
+    /// Api Controller Class used to handle data services for customers. 
+    /// </summary>
     public class CustomersController : ApiController
     {
     }

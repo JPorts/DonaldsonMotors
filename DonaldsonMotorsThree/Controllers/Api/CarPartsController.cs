@@ -12,6 +12,9 @@ using Microsoft.Ajax.Utilities;
 
 namespace DonaldsonMotorsThree.Controllers.Api
 {
+    /// <summary>
+    ///  Api controller class used to handle data services for CarPart objects.
+    /// </summary>
     public class CarPartsController : ApiController
     {
         private ApplicationDbContext _context;

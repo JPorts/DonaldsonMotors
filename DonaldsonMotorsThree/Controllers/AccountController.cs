@@ -9,9 +9,14 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DonaldsonMotorsThree.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DonaldsonMotorsThree.Controllers
 {
+    /// <summary>
+    ///  Class which describes the Controller used for handling account functionality
+    ///  Jordan Porter 20/05/18
+    /// </summary>
     [Authorize]
     public class AccountController : Controller
     {
@@ -198,6 +203,75 @@ namespace DonaldsonMotorsThree.Controllers
                 {
                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
+                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    //ViewBag.Link = callbackUrl;
+
+                    return View("DisplayEmail");
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+
+        // POST: /Account/Register
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RegisterStaff(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Hash password using password hasher // 
+                var passwordHasher = new PasswordHasher();
+                var password = passwordHasher.HashPassword(model.Password);
+
+                // Create new Staff Object // 
+                var user = new Staff
+                {
+
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    AddressLine1 = model.AddressLine1,
+                    AddressLine2 = model.AddressLine2,
+                    Town = model.Town,
+                    Postcode = model.Postcode,
+                    PasswordHash = password,
+                    TelephoneNumber = model.TelephoneNumber,
+                    Dob =model.Dob,
+                    Qualifications = model.Qualifications,
+                    MobileNumber = model.MobileNumber,
+                    MedContactDetails = model.MedContactDetails,
+                    EmergContactDetails = model.EmergContactDetails,
+                    NiNumber = model.NiNumber,
+                    AreaOfExpertise = model.AreaOfExpertise,
+                    Contracts = model.Contracts,
+                    Rolename = model.Rolename
+                };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+
+                    using (var db = ApplicationDbContext.Create())
+                    {
+
+                        var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                        var roleManager = new RoleManager<IdentityRole>(roleStore);
+                      //  var membership = model.Rolename.SingleOrDefault(m => m.Id == model.)
+
+                    
+                       
+                    }
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

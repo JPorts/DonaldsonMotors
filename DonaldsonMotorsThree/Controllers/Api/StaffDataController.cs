@@ -10,6 +10,9 @@ using DonaldsonMotorsThree.Models;
 
 namespace DonaldsonMotorsThree.Controllers.Api
 {
+    /// <summary>
+    /// Api Controller Class used to handle data services for staff members.
+    /// </summary>
     public class StaffDataController : ApiController
     {
         private ApplicationDbContext _context;

@@ -9,6 +9,9 @@ using DonaldsonMotorsThree.Models;
 
 namespace DonaldsonMotorsThree.Controllers.Api
 {
+    /// <summary>
+    /// Class to control Data Services around booking functions. 
+    /// </summary>
     public class BookingDataController : ApiController
     {
         private ApplicationDbContext _context;

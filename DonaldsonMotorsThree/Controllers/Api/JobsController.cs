@@ -10,6 +10,9 @@ using DonaldsonMotorsThree.Models;
 
 namespace DonaldsonMotorsThree.Controllers.Api
 {
+    /// <summary>
+    /// Api Class handling data services for Jobs in the system. 
+    /// </summary>
     //Jobs API using Job Data Transfer Object to map to objects from Db// 
     public class JobsController : ApiController
     {

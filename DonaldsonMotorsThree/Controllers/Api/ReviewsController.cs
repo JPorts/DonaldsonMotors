@@ -11,6 +11,9 @@ using DonaldsonMotorsThree.Models;
 
 namespace DonaldsonMotorsThree.Controllers.Api
 {
+    /// <summary>
+    ///  Api controller class is used to direct data services within the application for reviews and feedback functions.
+    /// </summary>
     public class ReviewsController : ApiController
     {
         // This is the Reviews API controller // 

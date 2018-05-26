@@ -26,6 +26,9 @@ namespace DonaldsonMotorsThree.Models
                 
                 public DbSet<Booking> Bookings { get; set; }
 
+                public DbSet<Basket> Baskets { get; set; }
+
+                public DbSet<BasketItem> BasketItems { get; set; }
                 
 
                 public ApplicationDbContext()

@@ -208,9 +208,11 @@
     <Compile Include="Controllers\Api\ReviewsController.cs" />
     <Compile Include="Controllers\Api\StaffDataController.cs" />
     <Compile Include="Controllers\Api\SuppliersController.cs" />
+    <Compile Include="Controllers\BasketController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
@@ -326,8 +328,18 @@
     <Compile Include="Migrations\201805221819294_AddEnumToBookingStatus.Designer.cs">
       <DependentUpon>201805221819294_AddEnumToBookingStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805261626124_addingBasketModels.cs" />
+    <Compile Include="Migrations\201805261626124_addingBasketModels.Designer.cs">
+      <DependentUpon>201805261626124_addingBasketModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805261924231_SingleButtonPartials.cs" />
+    <Compile Include="Migrations\201805261924231_SingleButtonPartials.Designer.cs">
+      <DependentUpon>201805261924231_SingleButtonPartials.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Basket.cs" />
+    <Compile Include="Models\BasketItem.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\CarPart.cs" />
     <Compile Include="Models\Contract.cs" />
@@ -348,6 +360,7 @@
     <Compile Include="Models\Repositories\SupplierRepository.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\RoleDelegator.cs" />
+    <Compile Include="Models\SingleButtonPartial.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\VehicleDetails.cs" />
@@ -742,10 +755,17 @@
     <Content Include="Views\Shared\_AdminManageMenuPartial.cshtml" />
     <Content Include="Views\Review\AdminIndex.cshtml" />
     <Content Include="Views\Review\Index.cshtml" />
+    <Content Include="Views\Shared\_EditButtonPartial.cshtml" />
+    <Content Include="Views\Shared\_CreateButtonPartial.cshtml" />
+    <Content Include="Views\Shared\_BackToListButtonPartial.cshtml" />
+    <Content Include="Views\Shared\_SingleButtonPartial.cshtml" />
+    <Content Include="Views\_TableButtonPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Basket\" />
     <Folder Include="Views\Customer\" />
+    <Folder Include="Views\Mail\" />
     <Folder Include="Views\Shared\DisplayTemplates\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
@@ -836,6 +856,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805221819294_AddEnumToBookingStatus.resx">
       <DependentUpon>201805221819294_AddEnumToBookingStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805261626124_addingBasketModels.resx">
+      <DependentUpon>201805261626124_addingBasketModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805261924231_SingleButtonPartials.resx">
+      <DependentUpon>201805261924231_SingleButtonPartials.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
