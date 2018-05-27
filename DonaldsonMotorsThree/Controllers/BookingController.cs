@@ -25,20 +25,27 @@ namespace DonaldsonMotorsThree.Controllers
 
 
         // GET: Booking
-        public ActionResult Index(int id)
+        public ActionResult Index()
         {
-            // Get user from userID// 
-            var userId = User.Identity.GetUserId();
-            var user = _context.Customers.FirstOrDefault(u => u.Id == userId);
+            
 
-            var job = _context.Jobs.SingleOrDefault(j => j.JobId == id);
+            
             return View();
         }
 
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        public ActionResult CreateVehicleDetailsForm()
+        {
+            return View("CreateBookingTwo");
+        }
 
         // POST: Booking/Create
         [System.Web.Http.HttpPost]
-        public ActionResult Create(int id)
+        public ActionResult CreateBooking(int id)
         {
             //// If Model is not valid, throw bad request //
             if(!ModelState.IsValid)

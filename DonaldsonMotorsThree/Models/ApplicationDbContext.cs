@@ -44,7 +44,7 @@ namespace DonaldsonMotorsThree.Models
                     return new ApplicationDbContext();
                 }
 
-        
+        public System.Data.Entity.DbSet<DonaldsonMotorsThree.Models.VehicleDetails> VehicleDetails { get; set; }
     }
            
         }

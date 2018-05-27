@@ -4,8 +4,8 @@
 @{
     ViewBag.Title = "Book Job";
 }
-
-<h2><b><em>Book a Job</em></b></h2>
+<br />
+<h3><b><em>Book a Job</em></b></h3>
 
 <br/>
 <br/>
@@ -38,7 +38,7 @@
     </div>
     <br/>
     <br/>
-    <button class="btn btn-primary">Continue</button>
+    @Html.ActionLink("Continue","CreateVehicleDetailsForm", "Booking", new {@class="btn btn-primary"});
 </form>
 
    

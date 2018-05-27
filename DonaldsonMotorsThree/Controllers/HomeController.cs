@@ -48,7 +48,7 @@ namespace DonaldsonMotorsThree.Controllers
             return RedirectToAction("ViewJobs", "Home");
         }
 
-        public ActionResult EditJob(int id)
+        public ActionResult Edit(int id)
         {
             // Get Job From Repo //
             var job = repository.Get(id);
@@ -61,20 +61,33 @@ namespace DonaldsonMotorsThree.Controllers
                 Job = job
             };
             // Return View //
-            return View("EditJob", viewModel);
+            return View("Edit", viewModel);
         }
 
-        //public ActionResult UpdateJob(int id)
-        //{
 
-        //    return;
-        //}
+
+
+
 
         public ActionResult Contact()
         {
             ViewBag.Message = "Contact Us.";
 
             return View();
+        }
+
+        public ActionResult Details(int id)
+        {
+            var jobDetails = repository.Get(id);
+
+            if (jobDetails == null)
+                return HttpNotFound();
+            var JobVM = new JobViewModel
+            {
+                Job = jobDetails
+            };
+
+            return View(JobVM);
         }
 
     }

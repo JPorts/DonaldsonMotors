@@ -31,16 +31,10 @@
         <tr>
 
             <th>
-                @Html.DisplayNameFor(model => model.JobId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.JobRequirements)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.JobCost)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.JobStatus)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PartId)
@@ -56,16 +50,11 @@
             {
             <tr class="notfirst">
                 <td>
-                    @Html.DisplayFor(modelItem => item.JobId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.JobRequirements)
+                    @Html.ActionLink(item.JobRequirements,"Details","Home", new { id = item.JobId}, null)
+                    @*@Html.DisplayFor(modelItem => item.JobRequirements)*@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.JobCost)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.JobStatus)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.PartId)

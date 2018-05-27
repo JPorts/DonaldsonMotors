@@ -1,0 +1,82 @@
+﻿@model DonaldsonMotorsThree.Models.Booking
+
+@{
+    ViewBag.Title = "ConfirmBooking";
+}
+
+<h2>ConfirmBooking</h2>
+
+<div>
+    <h4>Booking Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Job.CompletedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Job.CompletedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaidFor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaidFor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DurationInDays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DurationInDays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.startDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCompleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCompleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookingStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookingStatus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BookingId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

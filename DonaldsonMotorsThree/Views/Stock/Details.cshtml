@@ -3,11 +3,11 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
+<br/>
+<br/>
 
 <div>
-    <h4>Car Part</h4>
+    <h4 style="text-align: center">Car Part Details</h4>
     <hr />
     <div class="form-border">
         <dl class="dl-horizontal">
@@ -70,6 +70,7 @@
         </dl>
     </div>
 </div>
+<br/>
 <p>
     @Html.Partial("_EditButtonPartial", Model.PartId)
     @Html.Partial("_BackToListButtonPartial")

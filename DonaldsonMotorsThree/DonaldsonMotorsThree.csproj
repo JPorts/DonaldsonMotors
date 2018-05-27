@@ -336,6 +336,10 @@
     <Compile Include="Migrations\201805261924231_SingleButtonPartials.Designer.cs">
       <DependentUpon>201805261924231_SingleButtonPartials.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805271631234_VehicleDatabaseAddition.cs" />
+    <Compile Include="Migrations\201805271631234_VehicleDatabaseAddition.Designer.cs">
+      <DependentUpon>201805271631234_VehicleDatabaseAddition.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Basket.cs" />
@@ -744,7 +748,7 @@
     <Content Include="Views\Stock\Edit.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
     <Content Include="Views\Staff\Create.cshtml" />
-    <Content Include="Views\Home\EditJob.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Staff\Index.cshtml" />
     <Content Include="Views\Booking\ViewAll.cshtml" />
     <Content Include="Views\Booking\GetBookingHistory.cshtml" />
@@ -766,6 +770,9 @@
     <Content Include="Views\Review\Details.cshtml" />
     <Content Include="Views\Review\Edit.cshtml" />
     <Content Include="Views\Customer\Create.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Booking\CreateBookingTwo.cshtml" />
+    <Content Include="Views\Booking\ConfirmBooking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -867,6 +874,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805261924231_SingleButtonPartials.resx">
       <DependentUpon>201805261924231_SingleButtonPartials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805271631234_VehicleDatabaseAddition.resx">
+      <DependentUpon>201805271631234_VehicleDatabaseAddition.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

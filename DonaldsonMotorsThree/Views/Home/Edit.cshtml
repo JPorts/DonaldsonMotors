@@ -1,0 +1,75 @@
+﻿@using DonaldsonMotorsThree.Models
+@model DonaldsonMotorsThree.ViewModels.JobViewModel
+
+@{
+    ViewBag.Title = "UpdateJobs";
+}
+
+
+
+
+@using (Html.BeginForm("UpdateJob","Jobs"))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <br/>
+        <br/>
+
+        <h4>Edit Job</h4>
+        <hr/>
+        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+        @Html.HiddenFor(model => model.Job.JobId)
+
+        <div class="form-border">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Job.PartId, htmlAttributes: new {@class = "control-label col-md-2"})
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Job.PartId, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Job.PartId, "", new {@class = "text-danger"})
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Job.JobRequirements, htmlAttributes: new {@class = "control-label col-md-2"})
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Job.JobRequirements, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Job.JobRequirements, "", new {@class = "text-danger"})
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Job.JobCost, htmlAttributes: new {@class = "control-label col-md-2"})
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Job.JobCost, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Job.JobCost, "", new {@class = "text-danger"})
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Job.JobStatus, htmlAttributes: new {@class = "control-label col-md-2"})
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Job.JobStatus, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Job.JobStatus, "", new {@class = "text-danger"})
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+            <br/>
+
+            <br/>
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("Back to List", "ViewJobs", "Home", null,new { @class = "btn btn-primary"})
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
