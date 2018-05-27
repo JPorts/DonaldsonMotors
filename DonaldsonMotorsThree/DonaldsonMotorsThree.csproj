@@ -340,6 +340,14 @@
     <Compile Include="Migrations\201805271631234_VehicleDatabaseAddition.Designer.cs">
       <DependentUpon>201805271631234_VehicleDatabaseAddition.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805272156207_addPasswordToStaff.cs" />
+    <Compile Include="Migrations\201805272156207_addPasswordToStaff.Designer.cs">
+      <DependentUpon>201805272156207_addPasswordToStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805272223034_addIncrementKeyToStaff.cs" />
+    <Compile Include="Migrations\201805272223034_addIncrementKeyToStaff.Designer.cs">
+      <DependentUpon>201805272223034_addIncrementKeyToStaff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Basket.cs" />
@@ -877,6 +885,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805271631234_VehicleDatabaseAddition.resx">
       <DependentUpon>201805271631234_VehicleDatabaseAddition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805272156207_addPasswordToStaff.resx">
+      <DependentUpon>201805272156207_addPasswordToStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805272223034_addIncrementKeyToStaff.resx">
+      <DependentUpon>201805272223034_addIncrementKeyToStaff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

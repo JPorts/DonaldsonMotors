@@ -13,7 +13,7 @@ namespace DonaldsonMotorsThree.ViewModels
     {
         public Staff Staff { get; set; }
 
-       
+       public User User { get; set; }
 
 
 

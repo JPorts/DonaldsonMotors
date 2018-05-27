@@ -26,9 +26,11 @@ namespace DonaldsonMotorsThree.Models
                 
                 public DbSet<Booking> Bookings { get; set; }
 
+                public DbSet<VehicleDetails> VehicleDetails { get; set; }
+
                 public DbSet<Basket> Baskets { get; set; }
 
-                public DbSet<BasketItem> BasketItems { get; set; }
+               public DbSet<BasketItem> BasketItems { get; set; }
                 
 
                 public ApplicationDbContext()
@@ -44,7 +46,7 @@ namespace DonaldsonMotorsThree.Models
                     return new ApplicationDbContext();
                 }
 
-        public System.Data.Entity.DbSet<DonaldsonMotorsThree.Models.VehicleDetails> VehicleDetails { get; set; }
+        
     }
            
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -11,6 +12,8 @@ namespace DonaldsonMotorsThree.Models
     {
         // Declare Staff Properties // 
         [Display(Name="Employee Id")]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EmployeeId { get; set; }
 
 
@@ -42,6 +45,7 @@ namespace DonaldsonMotorsThree.Models
         [Display(Name = "Role")]
         public string Rolename { get; set; }
 
+        public string Password { get; set; }
 
 
 

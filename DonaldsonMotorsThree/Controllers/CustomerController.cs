@@ -25,6 +25,7 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
 
+
         // GET: Customer
         public ActionResult Index()
         {
@@ -112,5 +113,15 @@ namespace DonaldsonMotorsThree.Controllers
                 return View("Delete");
             }
         }
+
+        //Dispose of db//
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _context.Dispose();
+            }
+        }
+
     }
 }

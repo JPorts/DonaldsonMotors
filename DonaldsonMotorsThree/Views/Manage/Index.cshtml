@@ -1,9 +1,9 @@
 ﻿@model DonaldsonMotorsThree.Models.IndexViewModel
-@{
+
     ViewBag.Title = "Manage";
 }
-
-<h2>@ViewBag.Title.</h2>
+<br/>
+<br/>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
@@ -28,6 +28,7 @@
             @Model.Logins.Count [
             @Html.ActionLink("Manage", "ManageLogins") ]
         </dd>
+
         @*
             Phone Numbers can used as a second factor of verification in a two-factor authentication system.
              
@@ -84,4 +85,79 @@
                 }*@
         </dd>
     </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.AddressLine1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.AddressLine1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.AddressLine2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.AddressLine2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Town)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Town)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Postcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Postcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.TelephoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.TelephoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.CustomerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.CustomerId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Email)
+        </dd>
+
+    </dl>
+
 </div>

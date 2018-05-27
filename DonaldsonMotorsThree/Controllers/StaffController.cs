@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using DonaldsonMotorsThree.Models;
 using DonaldsonMotorsThree.Models.Repositories;
 using DonaldsonMotorsThree.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace DonaldsonMotorsThree.Controllers
 {
@@ -59,16 +61,54 @@ namespace DonaldsonMotorsThree.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Create(Staff staff)
-        {
-            // if employee id isn't assigned, add new staff member using staffRepo //
-            if(staff.EmployeeId == 0)
-                staffRepo.Add(staff);
-                staffRepo.SaveChanges();
 
-            return RedirectToAction("Index", "Staff");
+        [HttpPost]
+        public ActionResult CreateStaff(Staff staff)
+        {
+            if (ModelState.IsValid)
+            {
+                    
+                // Hash password using password hasher // 
+                var passwordHasher = new PasswordHasher();
+                var password = passwordHasher.HashPassword(staff.Password);
+
+                // Create new Customer Object // 
+                var user = new Staff
+                {
+                    Id = new Guid().ToString(),
+                    UserName = staff.Email,
+                    Email = staff.Email,
+                    FirstName = staff.FirstName,
+                    LastName = staff.LastName,
+                    AddressLine1 = staff.AddressLine1,
+                    AddressLine2 = staff.AddressLine2,
+                    Town = staff.Town,
+                    Postcode = staff.Postcode,
+                    Dob = staff.Dob,
+                    TelephoneNumber = staff.TelephoneNumber,
+                    MobileNumber = staff.MobileNumber,
+                    AreaOfExpertise = staff.AreaOfExpertise,
+                    EmergContactDetails = staff.EmergContactDetails,
+                    MedContactDetails = staff.MedContactDetails,
+                    NiNumber = staff.NiNumber,
+                    PasswordHash = password,
+                    Rolename = staff.Rolename
+                };
+
+                var Account = new AccountController();
+                Account.UserManager.AddToRole(staff.Id, staff.Rolename);
+                _context.Users.Add(user);
+                
+
+
+                return View("Index");
+
+            }
+
+            return View("Create");
         }
+
+
 
 
         //[HttpGet]
