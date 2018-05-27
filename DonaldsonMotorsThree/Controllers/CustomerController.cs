@@ -48,11 +48,15 @@ namespace DonaldsonMotorsThree.Controllers
 
         // POST: Customer/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Customer customer)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (customer.CustomerId == 0)
+                {
+                    repo.Add(customer);
+                    repo.SaveChanges();
+                }
 
                 return RedirectToAction("Index");
             }
@@ -95,17 +99,17 @@ namespace DonaldsonMotorsThree.Controllers
 
         // POST: Customer/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
             try
             {
-                // TODO: Add delete logic here
+                
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("Delete");
             }
         }
     }

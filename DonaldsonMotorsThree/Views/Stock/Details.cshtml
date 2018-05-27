@@ -9,66 +9,68 @@
 <div>
     <h4>Car Part</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.SupplierId)
-        </dt>
+    <div class="form-border">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.SupplierId)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SupplierId)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.SupplierId)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Colour)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Colour)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Colour)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Colour)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ReorderLevel)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ReorderLevel)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ReorderLevel)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ReorderLevel)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ReorderQuantity)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ReorderQuantity)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ReorderQuantity)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ReorderQuantity)
+            </dd>
 
-    </dl>
+        </dl>
+    </div>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PartId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.Partial("_EditButtonPartial", Model.PartId)
+    @Html.Partial("_BackToListButtonPartial")
 </p>

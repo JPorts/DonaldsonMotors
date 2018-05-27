@@ -5,97 +5,102 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit Stock Details</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal" id="editCarPart">
-        
-        <h4>Car Part</h4>
 
-        <hr/>
-        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+    <div class="form-horizontal" id="editCarPart">
+        <br/>
+        <h4 style="text-align: center">Edit Car Part</h4>
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.CarPart.PartId)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CarPart.SupplierId, htmlAttributes: new {@class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.CarPart.SupplierId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CarPart.SupplierId, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.CarPart.SupplierId, "", new {@class = "text-danger"})
+                @Html.EditorFor(model => model.CarPart.SupplierId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CarPart.SupplierId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CarPart.Name, htmlAttributes: new {@class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.CarPart.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CarPart.Name, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.CarPart.Name, "", new {@class = "text-danger"})
+                @Html.EditorFor(model => model.CarPart.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CarPart.Name, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CarPart.Description, htmlAttributes: new {@class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.CarPart.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CarPart.Description, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.CarPart.Description, "", new {@class = "text-danger"})
+                @Html.EditorFor(model => model.CarPart.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CarPart.Description, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CarPart.Colour, htmlAttributes: new {@class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.CarPart.Colour, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CarPart.Colour, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.CarPart.Colour, "", new {@class = "text-danger"})
+                @Html.EditorFor(model => model.CarPart.Colour, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CarPart.Colour, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CarPart.Price, htmlAttributes: new {@class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.CarPart.Price, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CarPart.Price, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.CarPart.Price, "", new {@class = "text-danger"})
+                @Html.EditorFor(model => model.CarPart.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CarPart.Price, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CarPart.ReorderLevel, htmlAttributes: new {@class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.CarPart.ReorderLevel, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CarPart.ReorderLevel, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.CarPart.ReorderLevel, "", new {@class = "text-danger"})
+                @Html.EditorFor(model => model.CarPart.ReorderLevel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CarPart.ReorderLevel, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CarPart.ReorderQuantity, htmlAttributes: new {@class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.CarPart.ReorderQuantity, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CarPart.ReorderQuantity, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.CarPart.ReorderQuantity, "", new {@class = "text-danger"})
+                @Html.EditorFor(model => model.CarPart.ReorderQuantity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CarPart.ReorderQuantity, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <button  data-carpart-id="@Model.CarPart.PartId" id="js-edit" class="btn btn-success js-edit">Save Changes</button>
+                <button data-carpart-id="@Model.CarPart.PartId" id="js-edit" class="btn btn-sm btn-success js-edit">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    Save Changes
+                </button>
+                <br/>
+                <br/>
+                <div>
+                    @Html.Partial("_BackToListButtonPartial")
+                </div>
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 @section scripts
 {
     <script>
 
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             $("#editCarPart").on("click",
                 ".js-edit",
-                function() {
+                function () {
                     var button = $(this);
 
                     bootbox.confirm("Are you sure you want to update this item?",

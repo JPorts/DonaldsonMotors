@@ -53,6 +53,8 @@
                 @Html.DisplayFor(modelItem => item.ReorderLevel)
             </td>
             <td>
+               
+
                 <button class="btn btn-link"> @Html.ActionLink("Edit", "Edit", new {id = item.PartId})</button>
                 <button data-carpart-id="@item.PartId" class="btn btn-link js-delete">Delete</button>
             </td>
