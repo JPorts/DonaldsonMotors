@@ -35,18 +35,18 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
 
-        [HttpPost]
-        public ActionResult AddStaff()
-        {
-            if (ModelState.IsValid)
-            {
-            }
+        //[HttpPost]
+        //public ActionResult AddStaff()
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //    }
 
-            return null;
-        }
+        //    return null;
+        //}
 
         [HttpPost]
-        public ActionResult AddStaff(Staff staff)
+        public ActionResult AddStaff(Staff staff, FormCollection form)
         {
             if (ModelState.IsValid)
             {
@@ -54,6 +54,9 @@ namespace DonaldsonMotorsThree.Controllers
                 // Hash password using password hasher // 
                 var passwordHasher = new PasswordHasher();
                 var password = passwordHasher.HashPassword(staff.Password);
+
+                string roleName = form["Roles"].ToString();
+
 
                 // Create new Customer Object // 
                 var user = new Staff
@@ -79,7 +82,7 @@ namespace DonaldsonMotorsThree.Controllers
                 };
 
                 var Account = new AccountController();
-                Account.UserManager.AddToRole(staff.Id, staff.Rolename);
+                Account.UserManager.AddToRole(user.Id, user.Rolename);
                 _context.Users.Add(user);
 
                 return View("Index");
@@ -118,60 +121,6 @@ namespace DonaldsonMotorsThree.Controllers
             return View();
         }
 
-        ////[HttpGet]
-        ////public ActionResult AssignRolesToUsers()
-        ////{
-        ////}
-
-        //// 
-        //public ActionResult ManageJobs()
-        //{
-
-        //    return View();
-        //}
-
-        //// GET: Staff/Edit/5
-        //public ActionResult Edit(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: Staff/Edit/5
-        //[HttpPost]
-        //public ActionResult Edit(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add update logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-        //// GET: Staff/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: Staff/Delete/5
-        //[HttpPost]
-        //public ActionResult Delete(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add delete logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+       
     }
 }

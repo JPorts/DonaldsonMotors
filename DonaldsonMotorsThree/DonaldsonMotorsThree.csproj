@@ -374,6 +374,7 @@
     <Compile Include="Models\Repositories\ReviewRepository.cs" />
     <Compile Include="Models\Repositories\StaffRepository.cs" />
     <Compile Include="Models\Repositories\SupplierRepository.cs" />
+    <Compile Include="Models\Repositories\VehicleRepository.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\RoleDelegator.cs" />
     <Compile Include="Models\SingleButtonPartial.cs" />

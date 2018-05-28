@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using DonaldsonMotorsThree.Models;
+using DonaldsonMotorsThree.Models.Repositories;
 using DonaldsonMotorsThree.ViewModels;
 using Microsoft.AspNet.Identity;
 
@@ -16,11 +17,12 @@ namespace DonaldsonMotorsThree.Controllers
     {
 
         private ApplicationDbContext _context;
-
+        private VehicleRepository vehicleRepo;
 
         public BookingController()
         {
             _context = new ApplicationDbContext();
+            vehicleRepo = new VehicleRepository();
         }
 
 
@@ -41,6 +43,15 @@ namespace DonaldsonMotorsThree.Controllers
         public ActionResult CreateVehicleDetailsForm()
         {
             return View("CreateBookingTwo");
+        }
+
+        //POST: Booking/AddVehicle
+        public ActionResult AddVehicle(VehicleDetails vehicle)
+        {
+            
+            vehicleRepo.Add(vehicle);
+            vehicleRepo.SaveChanges();
+            return View("ConfirmBooking");
         }
 
         // POST: Booking/Create
