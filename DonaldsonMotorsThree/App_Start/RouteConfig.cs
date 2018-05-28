@@ -14,10 +14,16 @@ namespace DonaldsonMotorsThree
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "AddStaff",
+                url: "Staff/AddStaff",
+                defaults: new { controller = "Staff",  action = "AddStaff" });
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new {controller = "Home", action = "Index", id = UrlParameter.Optional}
             );
+
         }
     }
 }

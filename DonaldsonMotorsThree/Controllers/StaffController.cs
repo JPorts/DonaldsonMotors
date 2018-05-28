@@ -14,7 +14,7 @@ namespace DonaldsonMotorsThree.Controllers
 {
     
 
-    [Authorize]
+    //[Authorize]
     public class StaffController : Controller
     {
         // Declare Db Context and repos
@@ -33,41 +33,24 @@ namespace DonaldsonMotorsThree.Controllers
                 _context.Dispose();
             }
         }
-        // GET: Staff
-        public ActionResult Index()
-        {
-            var ViewAll = staffRepo.GetAll();
-            return View(ViewAll);
-        }
-
-        // GET: Staff/Details/5
-        public ActionResult Details(int id)
-        {
-            var staff = staffRepo.Get(id);
-            if (staff == null)
-                return HttpNotFound();
-
-
-            return View(staff);
-        }
-        
-        // POST: Staff/Create
-     
-        public ActionResult Create()
-        {
-            ViewBag.Roles = new SelectList(_context.Roles, "Id", "Name");
-            
-            
-            return View();
-        }
 
 
         [HttpPost]
-        public ActionResult CreateStaff(Staff staff)
+        public ActionResult AddStaff()
         {
             if (ModelState.IsValid)
             {
-                    
+            }
+
+            return null;
+        }
+
+        [HttpPost]
+        public ActionResult AddStaff(Staff staff)
+        {
+            if (ModelState.IsValid)
+            {
+
                 // Hash password using password hasher // 
                 var passwordHasher = new PasswordHasher();
                 var password = passwordHasher.HashPassword(staff.Password);
@@ -98,8 +81,6 @@ namespace DonaldsonMotorsThree.Controllers
                 var Account = new AccountController();
                 Account.UserManager.AddToRole(staff.Id, staff.Rolename);
                 _context.Users.Add(user);
-                
-
 
                 return View("Index");
 
@@ -109,62 +90,88 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
 
+        // GET: Staff
+        public ActionResult Index()
+        {
+            var ViewAll = staffRepo.GetAll();
+            return View(ViewAll);
+        }
+
+        // GET: Staff/Details/5
+        public ActionResult Details(int id)
+        {
+            var staff = staffRepo.Get(id);
+            if (staff == null)
+                return HttpNotFound();
 
 
-        //[HttpGet]
-        //public ActionResult AssignRolesToUsers()
+            return View(staff);
+        }
+        
+        // POST: Staff/Create
+     
+        public ActionResult Create()
+        {
+            ViewBag.Roles = new SelectList(_context.Roles, "Id", "Name");
+            
+            
+            return View();
+        }
+
+        ////[HttpGet]
+        ////public ActionResult AssignRolesToUsers()
+        ////{
+        ////}
+
+        //// 
+        //public ActionResult ManageJobs()
         //{
+
+        //    return View();
         //}
 
-        // 
-        public ActionResult ManageJobs()
-        {
+        //// GET: Staff/Edit/5
+        //public ActionResult Edit(int id)
+        //{
+        //    return View();
+        //}
 
-            return View();
-        }
+        //// POST: Staff/Edit/5
+        //[HttpPost]
+        //public ActionResult Edit(int id, FormCollection collection)
+        //{
+        //    try
+        //    {
+        //        // TODO: Add update logic here
 
-        // GET: Staff/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
-        // POST: Staff/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
+        //// GET: Staff/Delete/5
+        //public ActionResult Delete(int id)
+        //{
+        //    return View();
+        //}
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //// POST: Staff/Delete/5
+        //[HttpPost]
+        //public ActionResult Delete(int id, FormCollection collection)
+        //{
+        //    try
+        //    {
+        //        // TODO: Add delete logic here
 
-        // GET: Staff/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Staff/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
     }
 }

@@ -8,7 +8,7 @@
 
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("AddStaff", "Staff")) 
 {
     @Html.AntiForgeryToken()
 
@@ -162,7 +162,7 @@
 }
 
 <div>
-    <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("CreateStaff", "Staff")">
+    <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("AddStaff")">
         <span class="glyphicon glyphicon-plus"></span>
         <span>Add Staff Member</span>
     </a>
@@ -177,6 +177,6 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script>
 
-
+       
     </script>
 }

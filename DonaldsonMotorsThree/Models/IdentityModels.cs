@@ -35,8 +35,8 @@ namespace DonaldsonMotorsThree.Models
      
         public string TelephoneNumber { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int CustomerId { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //public int CustomerId { get; set; }
 
 
         [NotMapped]

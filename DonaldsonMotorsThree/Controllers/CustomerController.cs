@@ -5,11 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
+using DonaldsonMotorsThree.ViewModels;
 
 namespace DonaldsonMotorsThree.Controllers
 {
-    [Authorize]
+    [System.Web.Mvc.Authorize]
     public class CustomerController : Controller
     {
 
@@ -29,15 +31,23 @@ namespace DonaldsonMotorsThree.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-
-            return View(repo.GetAll());
+            var customers = repo.GetAll();
+        
+            return View(customers);
         }
 
 
         // GET: Customer/Details/5
-        public ActionResult Details(Guid id)
+        public ActionResult Details(int id)
         {
-            return View();
+            var customer = _context.Customers.SingleOrDefault(c => c.CustomerId == id);
+            if (customer == null)
+                return HttpNotFound();
+            var viewModel = new CustomerViewModel
+            {
+                Customer = customer
+            };
+            return View("Details", viewModel);
         }
 
 
@@ -48,7 +58,7 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
         // POST: Customer/Create
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public ActionResult Create(Customer customer)
         {
             try
@@ -70,14 +80,18 @@ namespace DonaldsonMotorsThree.Controllers
         // GET: Customer/Edit/5
         public ActionResult Edit(int id)
         {
-            //if (id == null)
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
-            return View();
+            var customer = _context.Customers.SingleOrDefault(c => c.CustomerId == id);
+            if (customer == null)
+                return HttpNotFound();
+            var viewModel = new CustomerViewModel
+            {
+                Customer = customer
+            };
+            return View("Edit", viewModel);
         }
 
         // POST: Customer/Edit/5
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public ActionResult Edit(Guid id, FormCollection collection)
         {
             try
@@ -99,7 +113,7 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
         // POST: Customer/Delete/5
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public ActionResult Delete(int id)
         {
             try

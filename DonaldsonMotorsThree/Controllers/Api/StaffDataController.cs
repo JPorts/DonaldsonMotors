@@ -4,9 +4,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.ModelBinding;
 using AutoMapper;
 using DonaldsonMotorsThree.Dtos;
 using DonaldsonMotorsThree.Models;
+using Microsoft.AspNet.Identity;
 
 namespace DonaldsonMotorsThree.Controllers.Api
 {
@@ -41,29 +43,66 @@ namespace DonaldsonMotorsThree.Controllers.Api
         }
 
 
+        ////POST /api/staffdata
+        //[HttpPost]
+        //public IHttpActionResult CreateStaff(StaffDto staffDto)
+        //{
+        //    // If model state is not valid then return bad request//
+        //    if (!ModelState.IsValid)
+        //        return BadRequest("Invalid Data");
+
+        //    //else
+        //    var staff = Mapper.Map<StaffDto, Staff>(staffDto);
+
+        //    // add job to database and save changes //
+        //    _context.Staff.Add(staff);
+        //    _context.SaveChanges();
+
+
+        //    // check that JobDto Id and Job Id match//
+        //   staffDto.EmployeeId = staff.EmployeeId;
+
+        //    // Return created URI //
+        //    return Created(new Uri(Request.RequestUri + "/" + staff.EmployeeId), staffDto);
+
+        //}
         //POST /api/staffdata
-        [HttpPost]
-        public IHttpActionResult CreateStaff(StaffDto staffDto)
-        {
-            // If model state is not valid then return bad request//
-            if (!ModelState.IsValid)
-                return BadRequest("Invalid Data");
+        //[HttpPost]
+        //public IHttpActionResult CreateStaff(StaffDto staffDto)
+        //if (ModelState.IsValid)
+        //{
 
-            //else
-            var staff = Mapper.Map<StaffDto, Staff>(staffDto);
+        //    // Hash password using password hasher // 
+        //    var passwordHasher = new PasswordHasher();
+        //    var password = passwordHasher.HashPassword(staff.Password);
 
-            // add job to database and save changes //
-            _context.Staff.Add(staff);
-            _context.SaveChanges();
+        //    // Create new Customer Object // 
+        //    var user = new Staff
+        //    {
+        //        Id = new Guid().ToString(),
+        //        UserName = StaffDto.Email,
+        //        Email = staff.Email,
+        //        FirstName = staff.FirstName,
+        //        LastName = staff.LastName,
+        //        AddressLine1 = staff.AddressLine1,
+        //        AddressLine2 = staff.AddressLine2,
+        //        Town = staff.Town,
+        //        Postcode = staff.Postcode,
+        //        Dob = staff.Dob,
+        //        TelephoneNumber = staff.TelephoneNumber,
+        //        MobileNumber = staff.MobileNumber,
+        //        AreaOfExpertise = staff.AreaOfExpertise,
+        //        EmergContactDetails = staff.EmergContactDetails,
+        //        MedContactDetails = staff.MedContactDetails,
+        //        NiNumber = staff.NiNumber,
+        //        PasswordHash = password,
+        //        Rolename = staff.Rolename
+        //    };
 
-
-            // check that JobDto Id and Job Id match//
-           staffDto.EmployeeId = staff.EmployeeId;
-
-            // Return created URI //
-            return Created(new Uri(Request.RequestUri + "/" + staff.EmployeeId), staffDto);
-
-        }
+        //    var Account = new AccountController();
+        //    Account.UserManager.AddToRole(staff.Id, staff.Rolename);
+        //    _context.Users.Add(user);
+        //}
 
         [HttpPut]
         public void UpdateStaff(int id, StaffDto staffDto)
@@ -80,7 +119,7 @@ namespace DonaldsonMotorsThree.Controllers.Api
             if (staffInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            // use mapper to map staffDto to staffInDb // 4
+            // use mapper to map staffDto to staffInDb // 
             Mapper.Map(staffDto, staffInDb);
 
             //Save changes //

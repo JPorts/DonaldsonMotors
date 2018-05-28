@@ -5,8 +5,10 @@
 @{
     ViewBag.Title = "Index";
 }
+<br/>
+<br/>
 
-<h2>Index</h2>
+<h4 style="text-align: center">Index</h4>
 
 
 <table class="table" id="customer">
@@ -39,51 +41,63 @@
             <th>
                 @Html.DisplayNameFor(model => model.UserName)
             </th>
-        
-
-            <th></th>
+      
         </tr>
     </thead>
 
 @foreach (var item in Model)
 {
     <tbody>
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AddressLine1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AddressLine2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Town)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Postcode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TelephoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressLine1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressLine2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Town)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Postcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelephoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            <td>
-                @Html.HiddenFor(modelItem => item.CustomerId)
-            </td>
-            <td>
-                @Html.Partial("_TableButtonPartial", new SingleButtonPartial { CustomerId = item.CustomerId})
-            </td>
-        </tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+
+        <td>
+            @Html.HiddenFor(modelItem => item.CustomerId)
+        </td>
+        
+
+
+        <td>
+            <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("Edit", new {Id = item.CustomerId})">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+            <a type="button" class="btn btn-success btn-sm" href="@Url.Action("Details", new {Id = item.CustomerId})">
+                <span class="glyphicon glyphicon-list"></span>
+
+            </a>
+            <button data-customer-id="@item.CustomerId" class="btn btn-danger btn-sm js-delete" onclick="javascript: deleteCustomer(this, @item.CustomerId);">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+
+        </td>
+    </tr>
     </tbody>
 }
 
@@ -91,13 +105,27 @@
 @Html.Partial("_CreateButtonPartial")
 
 
-@section scripts 
+@section scripts
 {
-  <script>
-      $(document).ready(function () {
+    <script>
+        function deleteCustomer(button, custId) {
 
-          $("#customer").DataTable();
+            bootbox.confirm("Are you sure you want to delete this item?",
+                function(result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/customers/" + custId.toString(),
+                            method: "DELETE",
+                            success: function() {
+                                button.closest('tr').remove();
+                            }
+                        });
+                    }
+                });
+        }
 
-    });
-</script>
-    }
+        $(document).ready(function() {
+            $("#customer").DataTable();
+        });
+    </script>
+}

@@ -348,6 +348,10 @@
     <Compile Include="Migrations\201805272223034_addIncrementKeyToStaff.Designer.cs">
       <DependentUpon>201805272223034_addIncrementKeyToStaff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805281348197_ChangeUserModelID.cs" />
+    <Compile Include="Migrations\201805281348197_ChangeUserModelID.Designer.cs">
+      <DependentUpon>201805281348197_ChangeUserModelID.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Basket.cs" />
@@ -781,6 +785,7 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Booking\CreateBookingTwo.cshtml" />
     <Content Include="Views\Booking\ConfirmBooking.cshtml" />
+    <Content Include="Views\Customer\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -891,6 +896,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805272223034_addIncrementKeyToStaff.resx">
       <DependentUpon>201805272223034_addIncrementKeyToStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805281348197_ChangeUserModelID.resx">
+      <DependentUpon>201805281348197_ChangeUserModelID.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

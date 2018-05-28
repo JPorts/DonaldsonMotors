@@ -20,8 +20,6 @@ namespace DonaldsonMotorsThree.Controllers
         public ActionResult Index()
         {
             var reviews = repo.GetAll();
-            if (reviews == null)
-                return View();
             return View(reviews);
         }
         // GET: Review
