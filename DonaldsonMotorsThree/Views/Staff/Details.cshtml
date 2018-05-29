@@ -4,220 +4,141 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<br/>
 
 <div>
-    <h4>Staff</h4>
+    <h3 style="text-align: center">Staff Member Details</h3>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+    <div class="form-border">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AddressLine1)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.AddressLine1)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AddressLine1)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.AddressLine1)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AddressLine2)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.AddressLine2)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AddressLine2)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.AddressLine2)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Town)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Town)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Town)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Town)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Postcode)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Postcode)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Postcode)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Postcode)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TelephoneNumber)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.TelephoneNumber)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TelephoneNumber)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.TelephoneNumber)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EmailConfirmed)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EmailConfirmed)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PasswordHash)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Dob)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PasswordHash)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Dob)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SecurityStamp)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.MobileNumber)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SecurityStamp)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.MobileNumber)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.MedContactDetails)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.MedContactDetails)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.EmergContactDetails)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumberConfirmed)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.EmergContactDetails)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TwoFactorEnabled)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.NiNumber)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TwoFactorEnabled)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.NiNumber)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.AreaOfExpertise)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LockoutEndDateUtc)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.AreaOfExpertise)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LockoutEnabled)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LockoutEnabled)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AccessFailedCount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AccessFailedCount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EmployeeId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EmployeeId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Dob)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Dob)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MobileNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MobileNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MedContactDetails)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MedContactDetails)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EmergContactDetails)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EmergContactDetails)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NiNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NiNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AreaOfExpertise)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AreaOfExpertise)
-        </dd>
-
-    </dl>
+        </dl>
+    </div>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
-
+        <br/>
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.Partial("_BackToListButtonPartial")
         </div>
     }
 </div>

@@ -11,10 +11,7 @@ namespace DonaldsonMotorsThree.Models
     public class Staff : User
     {
         // Declare Staff Properties // 
-        [Display(Name="Employee Id")]
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int EmployeeId { get; set; }
+
 
 
         [Display(Name = "Date of Birth")]

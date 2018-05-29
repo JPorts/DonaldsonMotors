@@ -100,9 +100,9 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
         // GET: Staff/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            var staff = staffRepo.Get(id);
+            var staff = _context.Staff.SingleOrDefault(s => s.Id == id);
             if (staff == null)
                 return HttpNotFound();
 
@@ -111,7 +111,6 @@ namespace DonaldsonMotorsThree.Controllers
         }
         
         // POST: Staff/Create
-     
         public ActionResult Create()
         {
             ViewBag.Roles = new SelectList(_context.Roles, "Id", "Name");
@@ -120,6 +119,21 @@ namespace DonaldsonMotorsThree.Controllers
             return View();
         }
 
-       
+        //DELETE VIEW//
+        public ActionResult Delete(string id)
+        {
+            var staff = _context.Staff.SingleOrDefault(s => s.Id == id);
+
+            return View(staff);
+        }
+
+        //DELETE
+        public ActionResult DeleteConfirmed(string id)
+        {
+            var staff = _context.Staff.SingleOrDefault(s => s.Id == id);
+            _context.Staff.Remove(staff);
+            return RedirectToAction("Index");
+        }
+
     }
 }

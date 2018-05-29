@@ -31,10 +31,10 @@ namespace DonaldsonMotorsThree.Controllers.Api
         }
 
         //GET /api/staffdata/1
-        public IHttpActionResult GetStaff(int id)
+        public IHttpActionResult GetStaff(string id)
         {
             // Search the context for staff using id 
-            var staff = _context.Staff.SingleOrDefault(s => s.EmployeeId == id);
+            var staff = _context.Staff.SingleOrDefault(s => s.Id == id);
 
             // if staff is null then return not found error // 
             if (staff == null)
@@ -105,7 +105,7 @@ namespace DonaldsonMotorsThree.Controllers.Api
         //}
 
         [HttpPut]
-        public void UpdateStaff(int id, StaffDto staffDto)
+        public void UpdateStaff(string id, StaffDto staffDto)
         {
             // If model state is valid, throw new bad request // 
             if(!ModelState.IsValid)
@@ -113,7 +113,7 @@ namespace DonaldsonMotorsThree.Controllers.Api
         
 
             // staffInDb is assigned to staff object through id match // 
-            var staffInDb = _context.Staff.SingleOrDefault(s => s.EmployeeId == id);
+            var staffInDb = _context.Staff.SingleOrDefault(s => s.Id == id);
 
             // if staff is null throw new http not found status code //
             if (staffInDb == null)
@@ -127,10 +127,10 @@ namespace DonaldsonMotorsThree.Controllers.Api
         }
 
         [HttpDelete]
-        public void DeleteStaff(int id)
+        public void DeleteStaff(string id)
         {
             // Create staffInDb which is assigned to staff through id match //
-            var staffInDb = _context.Staff.SingleOrDefault(s => s.EmployeeId == id);
+            var staffInDb = _context.Staff.SingleOrDefault(s => s.Id == id);
 
             // if staffInDb is null throw not found //
             if(staffInDb == null)

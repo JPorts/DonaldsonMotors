@@ -5,7 +5,7 @@
     ViewBag.Title = "Create";
 }
 
-@using (Html.BeginForm("AddStaff", "Staff", FormMethod.Post)) 
+@using (Html.BeginForm("CreateStaff", "Account", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -19,7 +19,10 @@
             <div class="form-group">
                 <div class="col-md-10">
                     @Html.HiddenFor(model => model.Staff.Id, new { htmlAttributes = new { @class = "form-control" } })
+                  
+
                     @Html.ValidationMessageFor(model => model.Staff.Id, "", new { @class = "text-danger" })
+                  
                 </div>
             </div>
 
@@ -142,6 +145,7 @@
                     @Html.ValidationMessageFor(model => model.Staff.AreaOfExpertise, "", new { @class = "text-danger" })
                 </div>
             </div>
+
             <br />
             <br />
             <div class="form-group">
@@ -152,7 +156,7 @@
                 </div>
             </div>
         </div>
-        <br/>
+        <br />
         <div>
             <a type="button" class="btn btn-primary btn-sm" href="#" onclick="$(this).closest('form').submit()">
                 <span class="glyphicon glyphicon-plus"></span>
@@ -160,12 +164,12 @@
             </a>
         </div>
     </div>
- 
+
 
 }
 
 <div>
-   
+
 
     <br />
     <br />
@@ -176,6 +180,6 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script>
 
-       
+
     </script>
 }

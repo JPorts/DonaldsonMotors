@@ -91,7 +91,7 @@ namespace DonaldsonMotorsThree.Models
                     // Staff member goes here// 
                         Email = userName,
                         PasswordHash = password,
-                        EmployeeId = 1,
+                        
                         Dob = DateTime.Today,
                         MobileNumber = "07771110492",
                         EmergContactDetails = "07778120492",
@@ -124,7 +124,7 @@ namespace DonaldsonMotorsThree.Models
                         //Initial Staff Member 2 goes here  //
                         Email = "dmstoremanager2410@gmail.com",
                         PasswordHash = passwordSM,
-                        EmployeeId = 2,
+                     
                         Dob = DateTime.Today,
                         MobileNumber = "07771110492",
                         EmergContactDetails = "07778120492",
@@ -161,7 +161,7 @@ namespace DonaldsonMotorsThree.Models
                         // Staff member 3 goes here
                         Email = "DMGARAGEMANAGER2410@gmail.com",
                         PasswordHash = passwordGM,
-                        EmployeeId = 3,
+                     
                         Dob = DateTime.Today,
                         MobileNumber = "07771110492",
                         EmergContactDetails = "07778120492",
@@ -194,7 +194,7 @@ namespace DonaldsonMotorsThree.Models
                         //Initial Staff Member 4 goes here 
                         Email = "dmofficestaff2410@gmail.com",
                         PasswordHash = passwordOS,
-                        EmployeeId = 2,
+           
                         Dob = DateTime.Today,
                         MobileNumber = "07771110492",
                         EmergContactDetails = "07778120492",
@@ -231,7 +231,7 @@ namespace DonaldsonMotorsThree.Models
                         // Staff member 3 goes here
                         Email = "DMMECHANICGary2410@gmail.com",
                         PasswordHash = passwordM,
-                        EmployeeId = 3,
+  
                         Dob = DateTime.Today,
                         MobileNumber = "07771110492",
                         EmergContactDetails = "07778120492",

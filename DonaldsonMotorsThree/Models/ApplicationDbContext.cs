@@ -46,7 +46,7 @@ namespace DonaldsonMotorsThree.Models
                     return new ApplicationDbContext();
                 }
 
-        
+        public System.Data.Entity.DbSet<DonaldsonMotorsThree.ViewModels.RoleViewModel> RoleViewModels { get; set; }
     }
            
         }

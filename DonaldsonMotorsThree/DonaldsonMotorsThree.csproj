@@ -216,6 +216,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Dtos\BookingDto.cs" />
@@ -356,6 +357,26 @@
     <Compile Include="Migrations\201805291250353_UpdateVehicleDetailsModel.Designer.cs">
       <DependentUpon>201805291250353_UpdateVehicleDetailsModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805291600246_updateModelSomewhere.cs" />
+    <Compile Include="Migrations\201805291600246_updateModelSomewhere.Designer.cs">
+      <DependentUpon>201805291600246_updateModelSomewhere.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805291748057_role.cs" />
+    <Compile Include="Migrations\201805291748057_role.Designer.cs">
+      <DependentUpon>201805291748057_role.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805291820459_roleSelection.cs" />
+    <Compile Include="Migrations\201805291820459_roleSelection.Designer.cs">
+      <DependentUpon>201805291820459_roleSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805291847008_truncateAspNetRoles.cs" />
+    <Compile Include="Migrations\201805291847008_truncateAspNetRoles.Designer.cs">
+      <DependentUpon>201805291847008_truncateAspNetRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805292025165_loseEmployeeId.cs" />
+    <Compile Include="Migrations\201805292025165_loseEmployeeId.Designer.cs">
+      <DependentUpon>201805292025165_loseEmployeeId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Basket.cs" />
@@ -390,6 +411,7 @@
     <Compile Include="ViewModels\BookingFormViewModel.cs" />
     <Compile Include="ViewModels\CarPartViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
+    <Compile Include="ViewModels\RoleViewModel.cs" />
     <Compile Include="ViewModels\StaffFormViewModel.cs" />
     <Compile Include="ViewModels\JobViewModel.cs" />
   </ItemGroup>
@@ -791,6 +813,12 @@
     <Content Include="Views\Booking\CreateBookingTwo.cshtml" />
     <Content Include="Views\Booking\ConfirmBooking.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Role\Delete.cshtml" />
+    <Content Include="Views\Role\Details.cshtml" />
+    <Content Include="Views\Staff\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -907,6 +935,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805291250353_UpdateVehicleDetailsModel.resx">
       <DependentUpon>201805291250353_UpdateVehicleDetailsModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805291600246_updateModelSomewhere.resx">
+      <DependentUpon>201805291600246_updateModelSomewhere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805291748057_role.resx">
+      <DependentUpon>201805291748057_role.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805291820459_roleSelection.resx">
+      <DependentUpon>201805291820459_roleSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805291847008_truncateAspNetRoles.resx">
+      <DependentUpon>201805291847008_truncateAspNetRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805292025165_loseEmployeeId.resx">
+      <DependentUpon>201805292025165_loseEmployeeId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -23,46 +24,107 @@ namespace DonaldsonMotorsThree.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private ApplicationDbContext _context;
-        
-            
+        private ApplicationRoleManager _roleManager;
+
+
+
 
         public AccountController()
         {
 
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationDbContext _context )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,
+            ApplicationDbContext _context, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
             _context = new ApplicationDbContext();
-            
+            RoleManager = roleManager;
         }
+
+
+        public ApplicationRoleManager RoleManager
+        {
+            get { return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>(); }
+            private set { _roleManager = value; }
+        }
+
 
         public ApplicationSignInManager SignInManager
         {
-            get
-            {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            }
-            private set 
-            { 
-                _signInManager = value; 
-            }
+            get { return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>(); }
+            private set { _signInManager = value; }
         }
 
         public ApplicationUserManager UserManager
         {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
+            get { return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
+            private set { _userManager = value; }
         }
 
+        [HttpPost]
+        public async Task<ActionResult> CreateStaff(Staff staff, FormCollection form)
+        {
+            if (ModelState.IsValid)
+            {
+                // Hash password using password hasher // 
+                var passwordHasher = new PasswordHasher();
+                var password = passwordHasher.HashPassword(staff.Password);
+
+                string roleID = form["Roles"].ToString();
+
+                ApplicationDbContext thisdb = new ApplicationDbContext();
+
+                var roleName = thisdb.Roles.Where(r => r.Id.Equals(roleID)).Select(r => r.Name).FirstOrDefault(); 
+                
+                var user = new Staff()
+                {
+                    UserName = staff.Email,
+                    Email = staff.Email,
+                    FirstName = staff.FirstName,
+                    LastName = staff.LastName,
+                    AddressLine1 = staff.AddressLine1,
+                    AddressLine2 = staff.AddressLine2,
+                    Town = staff.Town,
+                    Postcode = staff.Postcode,
+                    Dob = staff.Dob,
+                    TelephoneNumber = staff.TelephoneNumber,
+                    MobileNumber = staff.MobileNumber,
+                    AreaOfExpertise = staff.AreaOfExpertise,
+                    EmergContactDetails = staff.EmergContactDetails,
+                    MedContactDetails = staff.MedContactDetails,
+                    NiNumber = staff.NiNumber,
+                    PasswordHash = password,
+                    Rolename = roleName
+                };
+
+                var result = await UserManager.CreateAsync(user, staff.Password);
+
+                if (result.Succeeded)
+                {
+                    var role = await UserManager.AddToRoleAsync(user.Id, roleName);
+                    return RedirectToAction("Index", "Staff");
+                }
+
+                AddErrors(result);
+
+            }
+
+            return RedirectToAction("Create", "Staff");
+        }
+
+        public ActionResult AddStaff()
+        {
+            List<SelectListItem> list = new List<SelectListItem>();
+            foreach (var role in RoleManager.Roles)
+            {
+                list.Add(new SelectListItem() { Value = role.Name, Text = role.Name});
+            }
+
+            ViewBag.Roles = list;
+            return RedirectToAction("Create", "Staff");
+        }
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -177,16 +239,9 @@ namespace DonaldsonMotorsThree.Controllers
                 
 
 
-
-                    
-
-
-
-
                 // Create new Customer Object // 
                 var user = new Customer
                 {
-                    
                     UserName = model.Email,
                     Email = model.Email,
                     FirstName = model.FirstName,
@@ -220,73 +275,6 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
 
-        // POST: /Account/Register
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> RegisterStaff(RegisterViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                // Hash password using password hasher // 
-                var passwordHasher = new PasswordHasher();
-                var password = passwordHasher.HashPassword(model.Password);
-
-                // Create new Staff Object // 
-                var user = new Staff
-                {
-
-                    UserName = model.Email,
-                    Email = model.Email,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    AddressLine1 = model.AddressLine1,
-                    AddressLine2 = model.AddressLine2,
-                    Town = model.Town,
-                    Postcode = model.Postcode,
-                    PasswordHash = password,
-                    TelephoneNumber = model.TelephoneNumber,
-                    Dob =model.Dob,
-                    Qualifications = model.Qualifications,
-                    MobileNumber = model.MobileNumber,
-                    MedContactDetails = model.MedContactDetails,
-                    EmergContactDetails = model.EmergContactDetails,
-                    NiNumber = model.NiNumber,
-                    AreaOfExpertise = model.AreaOfExpertise,
-                    Contracts = model.Contracts,
-                    Rolename = model.Rolename
-                };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-
-                    using (var db = ApplicationDbContext.Create())
-                    {
-
-                        var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
-                        var roleManager = new RoleManager<IdentityRole>(roleStore);
-                      //  var membership = model.Rolename.SingleOrDefault(m => m.Id == model.)
-
-                    
-                       
-                    }
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    //ViewBag.Link = callbackUrl;
-
-                    return View("DisplayEmail");
-                }
-                AddErrors(result);
-            }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
-        }
 
         //
         // GET: /Account/ConfirmEmail
