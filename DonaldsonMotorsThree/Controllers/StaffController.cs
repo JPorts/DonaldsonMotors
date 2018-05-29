@@ -61,7 +61,6 @@ namespace DonaldsonMotorsThree.Controllers
                 // Create new Customer Object // 
                 var user = new Staff
                 {
-                    Id = new Guid().ToString(),
                     UserName = staff.Email,
                     Email = staff.Email,
                     FirstName = staff.FirstName,

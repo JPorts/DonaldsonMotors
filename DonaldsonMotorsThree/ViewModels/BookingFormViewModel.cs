@@ -19,6 +19,7 @@ namespace DonaldsonMotorsThree.ViewModels
 
         public Booking Booking { get; set; }
 
+        public VehicleDetails Vehicle { get; set; }
 
 
         //Booking ViewModel//
@@ -33,29 +34,9 @@ namespace DonaldsonMotorsThree.ViewModels
         public DateTime? DateCompleted { get; set; }
         public int CustomerId { get; set; }
         public int JobId { get; set; }
+        public int VehicleId { get; set; }
         public string BookingStatus { get; set; }
 
-
-        //Customer Properties// 
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
-        [Display(Name = "Surname")]
-        public string LastName { get; set; }
-        [Display(Name = "Address")]
-        public string AddressLine1 { get; set; }
-        [Display(Name = "Address Line 2")]
-        public string AddressLine2 { get; set; }
-        public string Town { get; set; }
-        public string Postcode { get; set; }
-        public string TelephoneNumber { get; set; }
-
-        //Vehicle Properties// 
-        public int VehicleId { get; set; }
-        public string RegNumber { get; set; }
-        public string Make { get; set; }
-        public string Model { get; set; }
-        public string EngineSize { get; set; }
-        public int Milage { get; set; }
 
     }
 }

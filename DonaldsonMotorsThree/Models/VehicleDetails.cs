@@ -30,6 +30,11 @@ namespace DonaldsonMotorsThree.Models
         [Required]
         public int Milage { get; set; }
 
+        public Customer Customer { get; set; }
+        public int CustomerId { get; set; }
+
+        public int BookingId { get; set; }
+
 
 
 

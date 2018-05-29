@@ -352,6 +352,10 @@
     <Compile Include="Migrations\201805281348197_ChangeUserModelID.Designer.cs">
       <DependentUpon>201805281348197_ChangeUserModelID.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805291250353_UpdateVehicleDetailsModel.cs" />
+    <Compile Include="Migrations\201805291250353_UpdateVehicleDetailsModel.Designer.cs">
+      <DependentUpon>201805291250353_UpdateVehicleDetailsModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Basket.cs" />
@@ -900,6 +904,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805281348197_ChangeUserModelID.resx">
       <DependentUpon>201805281348197_ChangeUserModelID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805291250353_UpdateVehicleDetailsModel.resx">
+      <DependentUpon>201805291250353_UpdateVehicleDetailsModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
