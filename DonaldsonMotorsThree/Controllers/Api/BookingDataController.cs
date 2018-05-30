@@ -59,6 +59,9 @@ namespace DonaldsonMotorsThree.Controllers.Api
                 {
                     Customer = customer,
                     Job = job
+
+
+
                 };
                 _context.Bookings.Add(booking);
             }

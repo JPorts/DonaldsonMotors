@@ -1,4 +1,5 @@
-﻿@model DonaldsonMotorsThree.ViewModels.RoleViewModel
+﻿@using DonaldsonMotorsThree.Models
+@model DonaldsonMotorsThree.ViewModels.RoleViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -21,6 +22,10 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.Partial("_SingleButtonPartial" new SingleButtonPartial
+    {
+        Action = "Edit",
+
+    })
     @Html.ActionLink("Back to List", "Index")
 </p>
