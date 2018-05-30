@@ -1,15 +1,15 @@
-﻿@model IEnumerable<DonaldsonMotorsThree.Models.Booking>
+﻿@using DonaldsonMotorsThree.Models
+@model IEnumerable<DonaldsonMotorsThree.Models.Booking>
 
 @{
     ViewBag.Title = "ViewAll";
 }
+<br/>
+<h3 style="text-align: center">View All Bookings</h3>
+<br/>
 
-<h2>ViewAll</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<table class="table" id="booking">
+    <thead>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.BookingId)
@@ -34,8 +34,10 @@
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.BookingId)
@@ -59,11 +61,18 @@
             @Html.DisplayFor(modelItem => item.Total)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {id = item.BookingId}) |
-            @Html.ActionLink("Details", "Details", new {id = item.BookingId}) |
-            @Html.ActionLink("Delete", "Delete", new {id = item.BookingId})
+            @Html.Partial("_TableButtonPartial", new SingleButtonPartial { BookingId = item.BookingId })
         </td>
     </tr>
-}
+        </tbody>
+    }
 
 </table>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#booking').dataTable();
+        });
+    </script>
+}

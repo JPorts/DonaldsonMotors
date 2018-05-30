@@ -135,5 +135,11 @@ namespace DonaldsonMotorsThree.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Edit(string id)
+        {
+            var staff = _context.Staff.SingleOrDefault(s => s.Id == id);
+            return View(staff);
+        }
+
     }
 }

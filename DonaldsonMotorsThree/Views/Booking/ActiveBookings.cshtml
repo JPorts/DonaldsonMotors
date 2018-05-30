@@ -1,16 +1,21 @@
-﻿@model IEnumerable<DonaldsonMotorsThree.Models.Booking>
+﻿@using DonaldsonMotorsThree.Models
+@model IEnumerable<DonaldsonMotorsThree.Models.Booking>
 
 @{
     ViewBag.Title = "ActiveBookings";
 }
-
-<h2>ActiveBookings</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<br />
+<h3 style="text-align: center">Active Bookings</h3>
+<br />
+<table class="table" id="booking">
+    <thead>
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobIds)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.PaidFor)
         </th>
@@ -20,26 +25,45 @@
         <th>
             @Html.DisplayNameFor(model => model.Total)
         </th>
+
+       
         <th></th>
     </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobIds)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaidFor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DurationInDays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.Partial("_TableButtonPartial", new SingleButtonPartial {BookingId = item.BookingId})
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaidFor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DurationInDays)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Total)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BookingId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BookingId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BookingId })
-        </td>
-    </tr>
-}
+            </td>
+        </tr>
+        </tbody>
+    }
 
 </table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#booking').dataTable();
+        });
+    </script>
+}

@@ -1,8 +1,86 @@
-﻿@model DonaldsonMotorsThree.Models.Booking
+﻿@using DonaldsonMotorsThree.Models
+@model IEnumerable<DonaldsonMotorsThree.Models.Booking>
 
 @{
-    ViewBag.Title = "Booking History";
+    ViewBag.Title = "GetBookingHistory";
 }
+<br/>
+<h3 style="text-align: center">Booking History</h3>
 
-<h2>Booking History</h2>
+<br/>
+<table class="table booking" id="booking">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Job.CompletedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaidFor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DurationInDays)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.startDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCompleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookingStatus)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
 
+    @foreach (var item in Model)
+    {
+        <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Job.CompletedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaidFor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DurationInDays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.startDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCompleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingStatus)
+            </td>
+            <td>
+                @Html.Partial("_TableButtonPartial", new SingleButtonPartial {BookingId = item.BookingId}) 
+            </td>
+        </tr>
+        </tbody>
+    }
+
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $('#booking').dataTable();
+        });
+    </script>
+}

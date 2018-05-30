@@ -66,8 +66,11 @@ namespace DonaldsonMotorsThree.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == userId);
+
             var model = new IndexViewModel
             {
+                Customer = customer,
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),

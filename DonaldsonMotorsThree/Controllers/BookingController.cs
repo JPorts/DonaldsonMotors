@@ -81,6 +81,7 @@ namespace DonaldsonMotorsThree.Controllers
                 var BookingVm = new BookingFormViewModel
                 {
                     Vehicle = vehicle,
+                    Customer = customer
 
                 };
                 return View("ConfirmBooking", BookingVm);
@@ -121,45 +122,59 @@ namespace DonaldsonMotorsThree.Controllers
             return View("Invoice");
         }
 
-        // POST: Booking/Create
-        [System.Web.Http.HttpPost]
-        public ActionResult CreateBooking(int id)
-        {
-            //// If Model is not valid, throw bad request //
-            if(!ModelState.IsValid)
-              throw new HttpResponseException(HttpStatusCode.BadRequest);
+        //// POST: Booking/Create
+        //[System.Web.Http.HttpPost]
+        //public ActionResult CreateBooking(int id)
+        //{
+        //    //// If Model is not valid, throw bad request //
+        //    if(!ModelState.IsValid)
+        //      throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            //  Grab customer from DB // 
-            var customer = _context.Customers.SingleOrDefault(c => c.CustomerId == id);
+        //    //  Grab customer from DB // 
+        //    var customer = _context.Customers.SingleOrDefault(c => c.CustomerId == id);
 
-            //// If Customer is null, redirect as not found //
-            if (customer == null)
-                RedirectToAction("Register", "Account");
+        //    //// If Customer is null, redirect as not found //
+        //    if (customer == null)
+        //        RedirectToAction("Register", "Account");
                 
 
-            var jobs = _context.Jobs.ToList();
-            var viewModel = new BookingFormViewModel
-            {
-                Jobs = jobs
-            };
+        //    var jobs = _context.Jobs.ToList();
+        //    var viewModel = new BookingFormViewModel
+        //    {
+        //        Jobs = jobs
+        //    };
 
-            return View(viewModel);
-        }
+        //    return View(viewModel);
+        //}
+
+
 
         public ActionResult ViewAll()
         {
-
-            return View();
+          var bookings =  _context.Bookings.ToList();
+            return View(bookings);
         }
 
         public ActionResult ActiveBookings()
         {
-            return View();
+            var ActiveBookings = _context.Bookings.Where(b => b.BookingStatus == Booking.BookingStatusEnum.Active);
+            return View(ActiveBookings);
         }
 
         public ActionResult GetBookingHistory()
         {
-            return View();
+            // Pull current user id// 
+            var userId = User.Identity.GetUserId();
+            //pull associated customer// 
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == userId);
+            //pull current customer id//
+            var customerId = customer.CustomerId;
+
+            // Pull Customers Booking History//
+            var BookingHistory = _context.Bookings.Where(b =>
+                b.BookingStatus == Booking.BookingStatusEnum.Complete && b.CustomerId == customerId).ToList();
+
+            return View(BookingHistory);
         }
 
 
