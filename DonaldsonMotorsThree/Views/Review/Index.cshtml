@@ -4,9 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 style="text-align: center">Comments</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("CreatePost","Review", FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
     
@@ -14,12 +14,6 @@
         <h4>Review</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.HiddenFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group">
             @Html.HiddenFor(model => model.ReviewId, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -46,7 +40,11 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                @Html.Partial("_CreateButtonPartial")
+                <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("CreatePost")">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span>Add Comment</span>
+                </a>
+
             </div>
         </div>
     </div>

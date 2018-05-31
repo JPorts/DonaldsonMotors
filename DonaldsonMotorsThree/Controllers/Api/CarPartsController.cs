@@ -25,6 +25,7 @@ namespace DonaldsonMotorsThree.Controllers.Api
         }
 
         //GET /api/carparts
+        [System.Web.Http.HttpGet]
         public IEnumerable<CarPartDto> GetCarParts(string query = null)
         {
 
@@ -39,6 +40,7 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
         //GET /api/carparts/1
+        [System.Web.Http.HttpGet]
         public IHttpActionResult GetCarPart(int id)
         {
             var carPart = _context.CarParts.SingleOrDefault(c => c.PartId == id);

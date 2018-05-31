@@ -1,0 +1,97 @@
+﻿@model IEnumerable<DonaldsonMotorsThree.Models.Job>
+@using DonaldsonMotorsThree.Models
+@{
+    ViewBag.Title = "Jobs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <img src="~/Content/Images/DonaldsonPhotoHome.jpeg" alt="Donaldson Motors Welcome Page" , width="320" height="250" />
+        <h3 style="text-align: center">Tyre Replacement</h3>
+    </div>
+    <div class="col-md-4">
+        <img src="~/Content/Images/DonaldsonLogo.png" alt="Donaldson Motors Logo" , width="320" height="250" />
+        <h3 style="text-align: center">Full MOT</h3>
+    </div>
+    <div class="col-md-4">
+        <img src="~/Content/Images/MotPhoto.jpg" alt="Donaldson Motors photo" , width="320" height="250" />
+        <h3 style="text-align: center">Full Oil Change</h3>
+    </div>
+</div>
+<br />
+<br />
+<h2>Jobs</h2>
+
+
+<br />
+<table class="table" id="jobs">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.JobRequirements)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PartId)
+            </th>
+            <th>
+                Options
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+            {
+            <tr class="notfirst">
+                <td>
+                    @Html.ActionLink(item.JobRequirements, "Details", "Home", new { id = item.JobId }, null)
+                    @*@Html.DisplayFor(modelItem => item.JobRequirements)*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobCost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PartId)
+                </td>
+                <td>
+                    <button data-job-id="@item.JobId" class="btn btn-link js-delete">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<br />
+<div class="row">
+    <div class="col-md-offset-10">
+        @Html.Partial("_SingleButtonPartial", new SingleButtonPartial
+   {
+       Action = "CreateJob",
+       ButtonType = "btn-primary",
+       Glyph = "plus"
+   })
+        @*<button class="btn btn-link"> @Html.ActionLink("Add New Job", "CreateJob")</button>*@
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            // Form Datatable using id selector jobs //
+            $("#jobs").DataTable();
+
+         
+        });
+    </script>
+}
+
+
+<br />

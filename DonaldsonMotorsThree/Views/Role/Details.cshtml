@@ -22,9 +22,13 @@
     </dl>
 </div>
 <p>
-    @Html.Partial("_SingleButtonPartial" new SingleButtonPartial
+   @Html.Partial("_SingleButtonPartial", new SingleButtonPartial
     {
         Action = "Edit",
+        ButtonType = "btn-primary",
+        Glyph = "pencil",
+        Text ="Edit",
+        RoleId = Model.Id
 
     })
     @Html.ActionLink("Back to List", "Index")

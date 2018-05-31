@@ -29,11 +29,14 @@ namespace DonaldsonMotorsThree.Models
         // IDs Linking other entitities // 
         public List<int> JobIds { get; set; }
 
+        public List<int> PartIds { get; set; }
         public int CustomerId { get; set; }
 
         public int JobId { get; set; }
 
         public virtual Customer Customer { get; set; }
+
+        public virtual CarPart Part { get; set; }
 
         public  virtual Job Job { get; set; }
 

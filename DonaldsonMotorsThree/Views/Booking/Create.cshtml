@@ -10,13 +10,14 @@
 <br/>
 <br/>
 
-<form id ="newBooking">
+<form id="newBooking">
+
     <div class="form-group" id="job">
         <label>Job</label>
         <div class="tt-container">
-            <input class="typeahead form-control" type="text" value="" />
+            <input class="typeahead form-control" type="text" value=""/>
         </div>
-        
+
     </div>
     <div class="row">
         <div class="col-md-4 col-sm-4">
@@ -24,28 +25,30 @@
         </div>
     </div>
     
+
     <div class="form-group" id="carpart">
         <label>Parts</label>
         <div class="tt-container">
-            <input type="text" value="" class="typeahead form-control" />
+            <input type="text" value="" class="typeahead form-control"/>
         </div>
+
         <div class="row">
             <div class="col-md-4 col-sm-4">
                 <ul class="list-group" id="carparts"></ul>
             </div>
         </div>
-       
+
     </div>
     <br/>
     <br/>
-  
+
     <div class="form-group">
-        <label>Desired Completion Date</label>
-        <input type="date" value="startDate" class="form-control" />
+        <label>Desired Start Date</label>
+        <input type="date" value="startDate" class="form-control"/>
     </div>
     <br/>
     <br/>
-    @Html.ActionLink("Continue","CreateVehicleDetailsForm", "Booking", new {@class="btn btn-primary"})
+    @Html.ActionLink("Continue", "CreateVehicleDetailsForm", "Booking", new {@class = "btn btn-primary"})
 </form>
 
    

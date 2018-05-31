@@ -17,7 +17,9 @@ namespace DonaldsonMotorsThree
                 "~/Scripts/datatables/jquery.datatables.js",
                 "~/Scripts/datatables/datatables.bootstrap.js",
                 "~/Scripts/bootbox.js",
-                "~/Scripts/AdminMenu.js"
+                "~/Scripts/AdminMenu.js",
+                "~/Scripts/GarageManagerMenu.js",
+                "~/Scripts/StoreManagerMenu.js"
                 ));
    
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(

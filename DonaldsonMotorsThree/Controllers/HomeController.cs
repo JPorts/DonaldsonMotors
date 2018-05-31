@@ -32,7 +32,13 @@ namespace DonaldsonMotorsThree.Controllers
             
             return View(repository.GetAll());
         }
+        public ActionResult CustomerViewJobs()
+        {
+            ViewBag.Message = "Jobs";
 
+
+            return View(repository.GetAll());
+        }
         public ActionResult CreateJob()
         {
             

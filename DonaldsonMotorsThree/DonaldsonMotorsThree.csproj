@@ -227,6 +227,7 @@
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\StockController.cs" />
+    <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Dtos\BookingDto.cs" />
     <Compile Include="Dtos\CarPartDto.cs" />
     <Compile Include="Dtos\CustomerDto.cs" />
@@ -385,6 +386,10 @@
     <Compile Include="Migrations\201805292025165_loseEmployeeId.Designer.cs">
       <DependentUpon>201805292025165_loseEmployeeId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805311350137_UpdateBookingModel1.cs" />
+    <Compile Include="Migrations\201805311350137_UpdateBookingModel1.Designer.cs">
+      <DependentUpon>201805311350137_UpdateBookingModel1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Basket.cs" />
@@ -419,6 +424,7 @@
     <Compile Include="ViewModels\BookingFormViewModel.cs" />
     <Compile Include="ViewModels\CarPartViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
+    <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="ViewModels\RoleViewModel.cs" />
     <Compile Include="ViewModels\StaffFormViewModel.cs" />
     <Compile Include="ViewModels\JobViewModel.cs" />
@@ -712,6 +718,7 @@
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\GarageManagerMenu.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -730,6 +737,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\StoreManagerMenu.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\typeahead.bundle.js" />
@@ -830,6 +838,16 @@
     <Content Include="Views\Booking\GetBookingHistory.cshtml" />
     <Content Include="Views\Emails\_ViewStart.cshtml" />
     <Content Include="Views\Emails\Web.config" />
+    <Content Include="Views\Report\StockReport.cshtml" />
+    <Content Include="Views\Shared\_StoreManageMenuPartial.cshtml" />
+    <Content Include="Views\Shared\_GarageManageMenuPartial.cshtml" />
+    <Content Include="Views\Stock\CustomerIndex.cshtml" />
+    <Content Include="Views\Supplier\Index.cshtml" />
+    <Content Include="Views\Supplier\Details.cshtml" />
+    <Content Include="Views\Supplier\Edit.cshtml" />
+    <Content Include="Views\Supplier\Delete.cshtml" />
+    <Content Include="Views\Supplier\Create.cshtml" />
+    <Content Include="Views\Home\CustomerViewJobs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -961,6 +979,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805292025165_loseEmployeeId.resx">
       <DependentUpon>201805292025165_loseEmployeeId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805311350137_UpdateBookingModel1.resx">
+      <DependentUpon>201805311350137_UpdateBookingModel1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

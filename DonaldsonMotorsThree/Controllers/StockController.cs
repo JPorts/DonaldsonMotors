@@ -41,6 +41,11 @@ namespace DonaldsonMotorsThree.Controllers
             return View(PartRepo.GetAll());
         }
 
+        public ActionResult CustomerIndex()
+        {
+            return View(PartRepo.GetAll());
+        }
+
         //GET: Stock/Details/1
         public ActionResult Details(int id)
         {
@@ -70,19 +75,7 @@ namespace DonaldsonMotorsThree.Controllers
             return View("Edit", viewModel);
         }
 
-        //public ActionResult UpdateCarPart(CarPart carPart)
-        //{
 
-        //    CarPartDto carPartDto = new CarPartDto();
-        //    carPartDto = Mapper.Map<CarPart, CarPartDto>(carPart);
-            
-
-        //    return View();
-        //}
-
-
-
-        // Sets up View Model and returns CreateCarPart View // 
         public ActionResult CreateCarPart()
         {
             var Suppliers = SupplierRepo.GetAll();

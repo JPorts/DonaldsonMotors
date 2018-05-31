@@ -13,6 +13,8 @@ namespace DonaldsonMotorsThree.Models
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
         public Customer Customer { get; set; }
+
+        public Staff Staff { get; set; }
     }
 
     public class ManageLoginsViewModel

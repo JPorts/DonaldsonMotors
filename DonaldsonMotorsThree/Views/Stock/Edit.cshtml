@@ -6,11 +6,12 @@
 }
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "editcarpart" }))
+ 
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal" id="editCarPart">
+    <div class="form-horizontal">
         <br/>
         <h4 style="text-align: center">Edit Car Part</h4>
 
@@ -96,20 +97,22 @@
 {
     <script>
 
-        $(document).ready(function () {
+        $(document).ready(function() {
 
-            $("#editCarPart").on("click",
+            $("#editcarpart").on("click",
                 ".js-edit",
-                function () {
+                function() {
                     var button = $(this);
 
                     bootbox.confirm("Are you sure you want to update this item?",
-                        function (result) {
+                        function(result) {
                             if (result) {
+
                                 $.ajax({
-                                    url: "/api/carparts/" + button.attr("data-carpart-id"),
+                                    url: "/api/carparts/updatecarpart" + button.attr("data-carpart-id"),
                                     method: "PUT",
-                                    success: function () {
+                                    success: function() {
+
                                         console.log("Success: Item is Updated.");
                                     }
                                 });

@@ -22,6 +22,7 @@ namespace DonaldsonMotorsThree.Models
         public int? JobId { get; set; }
         public int? BasketId { get; set; }
         public int? ReviewId { get; set; }
+        public int? SupplierId { get; set; }
         public string StaffId { get; set; }
         public string RoleId { get; set; }
 
@@ -63,6 +64,11 @@ namespace DonaldsonMotorsThree.Models
                 {
                     param.Append(String.Format("{0}", RoleId));
                 }
+                if (SupplierId != null && SupplierId > 0)
+                {
+                    param.Append(String.Format("{0}", SupplierId));
+                }
+
 
                 return param.ToString();
 

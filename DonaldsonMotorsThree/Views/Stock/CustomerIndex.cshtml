@@ -1,0 +1,73 @@
+﻿@using DonaldsonMotorsThree.Models
+@model IEnumerable<DonaldsonMotorsThree.Models.CarPart>
+@{
+    ViewBag.Title = "Customer Index";
+}
+
+<br />
+<h3 style="text-align: center">Stock</h3>
+
+<br />
+<table class="table" id="carpartlist">
+    <thead>
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Colour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr class="notfirst">
+                <td>
+
+                    @Html.ActionLink(item.Name, "Details", "Stock", new { id = item.PartId }, null)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Colour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+
+                <td>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<br />
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $("#carpartlist").DataTable();
+
+        });
+    </script>
+}
+
+
+
+

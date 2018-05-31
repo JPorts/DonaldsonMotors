@@ -42,18 +42,32 @@ namespace DonaldsonMotorsThree.Controllers
             return View();
         }
 
-        public ActionResult CreateVehicleDetailsForm(List<Job> jobs, DateTime startDate, List<CarPart> carParts)
+        public ActionResult CreateVehicleDetailsForm(List<Job> jobs, DateTime? startDate, List<CarPart> carParts)
         {
+            var JobIds = new List<int>();
+            var PartIds = new List<int>();
+            foreach (var job in jobs)
+            {
+                JobIds.Add(job.JobId);
+            }
+
+            foreach (var part in carParts)
+            {
+                PartIds.Add(part.PartId);
+            }
+
             Booking currentBooking = new Booking
             {
+                
                 startDate = startDate,
+                JobIds = JobIds,
+                PartIds = PartIds
 
             };
 
             var BookingVm = new BookingFormViewModel
             {
-                Jobs = jobs,
-                startDate = startDate
+                Booking = currentBooking
             };
             return View("CreateBookingTwo", BookingVm);
         }
@@ -64,6 +78,7 @@ namespace DonaldsonMotorsThree.Controllers
             // Nested within try catch to pull entity validation properties into message// 
             try
             {
+
                 // Pull current user id// 
                 var userId = User.Identity.GetUserId();
                 //pull associated customer// 
@@ -169,6 +184,9 @@ namespace DonaldsonMotorsThree.Controllers
             var customer = _context.Customers.SingleOrDefault(c => c.Id == userId);
             //pull current customer id//
             var customerId = customer.CustomerId;
+            // If customer is null, return not found// 
+            if (customerId == 0)
+                return HttpNotFound();
 
             // Pull Customers Booking History//
             var BookingHistory = _context.Bookings.Where(b =>
