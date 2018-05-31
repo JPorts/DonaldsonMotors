@@ -12,11 +12,13 @@ namespace DonaldsonMotorsThree.Controllers
     [AllowAnonymous]
     public class HomeController : Controller
     {
+        private ApplicationDbContext _context;
         private JobRepository repository;
        
         public HomeController()
         {
             repository = new JobRepository();
+            _context = new ApplicationDbContext();
         }
 
         public ActionResult Index()
@@ -72,7 +74,11 @@ namespace DonaldsonMotorsThree.Controllers
 
 
 
+        public ActionResult MechanicJobs()
+        {
 
+            return View();
+        }
 
 
         public ActionResult Contact()

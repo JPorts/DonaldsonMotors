@@ -33,6 +33,10 @@
                         {
                             @Html.Partial("_GarageManageMenuPartial")
                         }
+                        else if (User.IsInRole("Mechanic"))
+                        {
+                            @Html.Partial("_MechanicManageMenu")
+                        }
                     }
 
 
