@@ -37,8 +37,12 @@ namespace DonaldsonMotorsThree.Controllers
         // GET: Stock
         public ActionResult Index()
         {
-            
-            return View(PartRepo.GetAll());
+            var parts = PartRepo.GetAll();
+
+            if (User.IsInRole("Customer") || User.Identity.IsAuthenticated == false)
+                return View("CustomerIndex", parts);
+
+            return View(parts);
         }
 
         public ActionResult CustomerIndex()

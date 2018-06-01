@@ -8,19 +8,22 @@
 <h2>Details</h2>
 
 <div>
-    <h4>RoleViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+        <h3 style="text-align: center">Role Details</h3>
+        <hr />
+        <div class="form-border">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
 
-    </dl>
+            </dl>
+        </div>
 </div>
+<br/>
 <p>
    @Html.Partial("_SingleButtonPartial", new SingleButtonPartial
     {
@@ -31,5 +34,7 @@
         RoleId = Model.Id
 
     })
-    @Html.ActionLink("Back to List", "Index")
+    <br/>
+    <br/>
+    @Html.Partial("_BackToListButtonPartial")
 </p>

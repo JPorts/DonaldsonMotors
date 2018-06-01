@@ -16,7 +16,11 @@
                 <li>@Html.ActionLink("Bookings", "Index", "Booking")</li>
                 <li>@Html.ActionLink("Jobs", "ViewJobs", "Home")</li>
                 <li>@Html.ActionLink("Stock", "CustomerIndex", "Stock")</li>
-                <li>@Html.ActionLink("Feedback", "Index", "Review")</li>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li>@Html.ActionLink("Feedback", "Index", "Review")</li>
+                }
                 <li>
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -26,6 +30,7 @@
 
                         }
                         else if (User.IsInRole("StoreManager"))
+
                         {
                             @Html.Partial("_StoreManageMenuPartial")
                         }
