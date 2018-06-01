@@ -31,9 +31,6 @@ namespace DonaldsonMotorsThree.Controllers
         // GET: Booking
         public ActionResult Index()
         {
-            
-
-            
             return View();
         }
 
@@ -42,38 +39,25 @@ namespace DonaldsonMotorsThree.Controllers
             return View();
         }
 
-        public ActionResult CreateVehicleDetailsForm(List<Job> jobs, DateTime? startDate, List<CarPart> carParts)
+        
+        public ActionResult CreateBooking(Booking booking, FormCollection formCollection)
         {
-            var JobIds = new List<int>();
-            var PartIds = new List<int>();
-            foreach (var job in jobs)
-            {
-                JobIds.Add(job.JobId);
-            }
+            var strParts = formCollection.GetValue("PartIds").AttemptedValue;
+            var strJobs = formCollection.GetValue("JobIds").AttemptedValue;
 
-            foreach (var part in carParts)
-            {
-                PartIds.Add(part.PartId);
-            }
+            booking.JobIds.AddRange(strJobs.Split(',').Select(Int32.Parse).ToList());
+            booking.PartIds.AddRange(strParts.Split(',').Select(Int32.Parse).ToList());
 
-            Booking currentBooking = new Booking
+            BookingFormViewModel vm = new BookingFormViewModel
             {
-                
-                startDate = startDate,
-                JobIds = JobIds,
-                PartIds = PartIds
-
-            };
-
-            var BookingVm = new BookingFormViewModel
-            {
-                Booking = currentBooking
-            };
-            return View("CreateBookingTwo", BookingVm);
+                Booking = booking
+            }; 
+            
+            return View("CreateBookingTwo", vm);
         }
 
         //POST: Booking/AddVehicle
-        public ActionResult AddVehicle(VehicleDetails vehicle)
+        public ActionResult AddVehicle(VehicleDetails vehicle, BookingFormViewModel bookingVm)
         {
             // Nested within try catch to pull entity validation properties into message// 
             try
@@ -84,6 +68,9 @@ namespace DonaldsonMotorsThree.Controllers
                 //pull associated customer// 
                 var customer = _context.Customers.SingleOrDefault(c => c.Id == userId);
                 //pull current customer id//
+                if (userId == null)
+                    RedirectToAction("Register", "Account");
+
                 var customerId = customer.CustomerId;
                 // Assign to vehicle customer Id// 
                 vehicle.CustomerId = customerId;
@@ -93,13 +80,11 @@ namespace DonaldsonMotorsThree.Controllers
                     vehicleRepo.Add(vehicle);
                     vehicleRepo.SaveChanges();
                 // Return customer to confirm booking view// 
-                var BookingVm = new BookingFormViewModel
-                {
-                    Vehicle = vehicle,
-                    Customer = customer
+                bookingVm.Customer = customer;
+                bookingVm.Vehicle = vehicle;
+                bookingVm.Booking.BookingStatus = Booking.BookingStatusEnum.Requested;
 
-                };
-                return View("ConfirmBooking", BookingVm);
+                return View("ConfirmBooking", bookingVm);
 
               
             }

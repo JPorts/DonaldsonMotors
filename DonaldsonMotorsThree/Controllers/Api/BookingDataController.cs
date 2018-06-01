@@ -58,10 +58,8 @@ namespace DonaldsonMotorsThree.Controllers.Api
                 var booking = new Booking
                 {
                     Customer = customer,
-                    Job = job
-
-
-
+                    Job = job,
+                    StartDate = bookingDto.StartDate,
                 };
                 _context.Bookings.Add(booking);
             }

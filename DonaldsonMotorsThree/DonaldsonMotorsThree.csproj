@@ -390,6 +390,10 @@
     <Compile Include="Migrations\201805311350137_UpdateBookingModel1.Designer.cs">
       <DependentUpon>201805311350137_UpdateBookingModel1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805311824202_UpdateBookingModeltoFitForPurpose.cs" />
+    <Compile Include="Migrations\201805311824202_UpdateBookingModeltoFitForPurpose.Designer.cs">
+      <DependentUpon>201805311824202_UpdateBookingModeltoFitForPurpose.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Basket.cs" />
@@ -983,6 +987,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805311350137_UpdateBookingModel1.resx">
       <DependentUpon>201805311350137_UpdateBookingModel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805311824202_UpdateBookingModeltoFitForPurpose.resx">
+      <DependentUpon>201805311824202_UpdateBookingModeltoFitForPurpose.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

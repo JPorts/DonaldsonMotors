@@ -1,87 +1,107 @@
-﻿@model DonaldsonMotorsThree.ViewModels.BookingFormViewModel
-
+﻿@using System.Web.Mvc.Html
+@model DonaldsonMotorsThree.Models.Booking
 
 @{
-    ViewBag.Title = "Book Job";
+    ViewBag.Title = "Bookings";
 }
-<br />
-<h3><b><em>Book a Job</em></b></h3>
 
-<br/>
-<br/>
 
-<form id="newBooking">
+@using (Html.BeginForm("CreateBooking", "Booking", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <br />
+    <h4><b><em>Book a Job</em></b></h4>
+    <br />
+
+    @Html.HiddenFor(m => m.PartIds)
+    @Html.HiddenFor(m => m.JobIds)
 
     <div class="form-group" id="job">
         <label>Job</label>
         <div class="tt-container">
-            <input class="typeahead form-control" type="text" value=""/>
+            <input id="jbookingjobs" name="jbookingjobs" class="typeahead form-control" type="text" value="" />
         </div>
-
     </div>
     <div class="row">
         <div class="col-md-4 col-sm-4">
             <ul class="list-group" id="jobs"></ul>
         </div>
     </div>
-    
+
 
     <div class="form-group" id="carpart">
         <label>Parts</label>
         <div class="tt-container">
-            <input type="text" value="" class="typeahead form-control"/>
+
+            <input id="jbookingparts" name="jbookingparts" type="text" value="" class="typeahead form-control" />
         </div>
 
         <div class="row">
             <div class="col-md-4 col-sm-4">
-                <ul class="list-group" id="carparts"></ul>
+                <ul class="list-group" id="partslist"></ul>
             </div>
         </div>
-
-    </div>
-    <br/>
-    <br/>
-
+      </div>
+    <br />
     <div class="form-group">
         <label>Desired Start Date</label>
-        <input type="date" value="startDate" class="form-control"/>
+        <input name="startdate" type="date" value="StartDate" class="form-control" />
     </div>
-    <br/>
-    <br/>
-    @Html.ActionLink("Continue", "CreateVehicleDetailsForm", "Booking", new {@class = "btn btn-primary"})
-</form>
-
+    <br />
+    
    
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a type="button" class="btn btn-success btn-sm" href="#" onclick="$(this).closest('form').submit()">
+                Proceed with booking
+                <span class="glyphicon glyphicon-plus"></span>
+            </a>
 
+        </div>
+    </div>
+}
+
+<br />
+<div class="col-md-offset-2 col-md-10">
+    @Html.Partial("_BackToListButtonPartial")
+</div>
 
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
-
     <script>
+        var vm = {
+            jobIds: [],
+            carPartIds: []
+        };
 
         // When DOM is Ready //
         $(document).ready(function() {
             // Initialise ViewModel with Array for JobIds //
-            var vm = {
-                jobIds: [],
-                carPartIds:[]
-            };
 
-            // Bloodhound engine for search optimization // 
+
+            // Bloodhound engine for search optimization //
             var jobs = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('jobRequirements'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
-
                 remote: {
                     url: '/api/jobs?query=%QUERY',
                     wildcard: '%QUERY'
                 }
             });
 
+            var carParts = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/carparts?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
             // Start typeahead when length = 2 chars name:<> display:<> source:<> //
             $('#job .typeahead').typeahead({
-                    minLength: 2,
+                    minLength: 0,
                     highlight: true
                 },
                 {
@@ -89,83 +109,39 @@
                     display: 'jobRequirements',
                     source: jobs
                 });
-        }).on("typeahead:select",
-            function (e, job) {
-                //When a Job item has been selected, append selected job onto list //
-                $("#jobs").append("<li class='list-group-item'>" + job.jobRequirements + "</li>");
 
-                $("#job").typeahead("val", "");
-
-                vm.jobIds.push(job.jobId);
-
-                $("#newBooking").submit(function(e) {
-                    e.preventDefault();
-
-                    $.ajax({
-                            url: "api/bookingData",
-                            method: "post",
-                            data: vm
-                        })
-                        .done(function() {
-                            console.log("done");
-                        })
-                        .fail(function() {
-
-                        });
+            $('#carpart .typeahead').typeahead(
+                { minlength: 0, highlight: true },
+                {
+                    name: 'carparts',
+                    display: 'name',
+                    source: carParts
                 });
-            });
-        
 
-        var carParts = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('Name'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            remote: {
-                url: '/api/carparts?query=%QUERY',
-                wildcard: '%QUERY'
-            }
+            $('#job .typeahead').on("typeahead:select",
+                function (e, job) {
+
+                    console.log(job);
+                    //When a Job item has been selected, append selected job onto list //
+                    $("#jobs").append("<li class='list-group-item' value='" + job.jobId + "'>" + job.jobRequirements + "</li>");
+                    setTimeout(function () { $("#jbookingjobs").val(''); }, 500);
+                    vm.jobIds.push(job.jobId);
+                    // bug? No way to remove job ids yet
+                    $("#JobIds").val(vm.jobIds.toString());
+                });
+
+            $('#carpart .typeahead').on("typeahead:select",
+                function (e, carpart) {
+                    console.log(carpart);
+                    //When a Job item has been selected, append selected job onto list //
+                    setTimeout(function () { $("#jbookingparts").val(''); },500);
+                    $("#partslist").append("<li class='list-group-item' value='" + carpart.partId + "'>" + carpart.name + "</li>");
+                    vm.carPartIds.push(carpart.partId);
+                    $("#PartIds").val(vm.carPartIds.toString());
+                });
+
         });
 
-        $('#carpart').typeahead(
-            {
-                minlength:2,
-                highlight:true
-            }, {
-            name: 'carparts',
-            display: 'Name',
-            source: carparts
-            }).on("typeahead:select",
-            function (e, carpart) {
-
-                //When a Job item has been selected, append selected job onto list //
-                $("#carparts").append("<li class='list-group-item'>" + carpart.Name + "</li>");
-
-                $("#carpart").typeahead("val", "");
-
-                vm.carPartIds.push(carpart.PartId);
-
-                $("#newBooking").submit(function (e) {
-                    e.preventDefault();
-
-                    $.ajax({
-                            url: "api/bookingData",
-                            method: "post",
-                            data: vm
-                        })
-                        .done(function () {
-                            console.log("Booking Data Post Succeeded");
-                        })
-                        .fail(function () {
-                            console.log("Function Failed");
-
-                        });
-                });
-            });
-
-
-
-
-
     </script>
-
 }
 
