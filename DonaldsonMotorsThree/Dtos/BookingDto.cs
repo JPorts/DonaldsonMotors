@@ -43,14 +43,8 @@ namespace DonaldsonMotorsThree.Dtos
 
         public virtual Job Job { get; set; }
 
-        public Booking.BookingStatusEnum BookingStatus { get; set; }
-        public enum BookingStatusEnum
-        {
-            Requested,
-            Cancelled,
-            Active,
-            Complete
-        }
+        public String BookingStatus { get; set; }
+  
 
     }
 }

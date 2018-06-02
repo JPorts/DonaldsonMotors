@@ -1,5 +1,5 @@
 ﻿@using System.Web.Mvc.Html
-@model DonaldsonMotorsThree.Models.Booking
+@model DonaldsonMotorsThree.ViewModels.BookingFormViewModel
 
 @{
     ViewBag.Title = "Bookings";
@@ -9,47 +9,112 @@
 @using (Html.BeginForm("CreateBooking", "Booking", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
+
     <br />
-    <h4><b><em>Book a Job</em></b></h4>
-    <br />
+    <h4 style="text-align: center"><b><em>Book a Job</em></b></h4>
+    <hr/>
 
-    @Html.HiddenFor(m => m.PartIds)
-    @Html.HiddenFor(m => m.JobIds)
+    @Html.HiddenFor(m => m.Booking.PartIds)
+    @Html.HiddenFor(m => m.Booking.JobIds)
 
-    <div class="form-group" id="job">
-        <label>Job</label>
-        <div class="tt-container">
-            <input id="jbookingjobs" name="jbookingjobs" class="typeahead form-control" type="text" value="" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4 col-sm-4">
-            <ul class="list-group" id="jobs"></ul>
-        </div>
-    </div>
+    <div class="form-horizontal">
+        <div class="form-group" id="job">
+            <div class="col-md-offset-2 col-md-10">
+                <label>Search for a job type to book: </label>
+                <div class="tt-container">
+                    <input id="jbookingjobs" name="jbookingjobs" class="typeahead form-control" type="text" value=""/>
+                </div>
+            </div>
+            <br/>
 
-
-    <div class="form-group" id="carpart">
-        <label>Parts</label>
-        <div class="tt-container">
-
-            <input id="jbookingparts" name="jbookingparts" type="text" value="" class="typeahead form-control" />
-        </div>
-
-        <div class="row">
-            <div class="col-md-4 col-sm-4">
-                <ul class="list-group" id="partslist"></ul>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <ul class="list-group" id="jobs"></ul>
+                </div>
             </div>
         </div>
-      </div>
-    <br />
-    <div class="form-group">
-        <label>Desired Start Date</label>
-        <input name="startdate" type="date" value="StartDate" class="form-control" />
+
+
+        @*<div class="form-group" id="carpart">
+            <div class="col-md-offset-2 col-md-10">
+                <label>Parts</label>
+                <div class="tt-container">
+
+                    <input id="jbookingparts" name="jbookingparts" type="text" value="" class="typeahead form-control"/>
+                </div>
+                <br/>
+
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-10">
+                        <ul class="list-group" id="partslist"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+        <br/>
+        <br/>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <label>Desired Start Date</label>
+                <input name="startdate" type="date" value="StartDate" class="form-control"/>
+            </div>
+        </div>
+        <br/>
+
+
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <h4 style="text-align: center">Add Vehicle Details</h4>
+        <hr/>
+        <br/>
+
+        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+        <div class="form-group">
+            @Html.LabelFor(model => model.Vehicle.RegNumber, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Vehicle.RegNumber, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Vehicle.RegNumber, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Vehicle.Make, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Vehicle.Make, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Vehicle.Make, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Vehicle.Model, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Vehicle.Model, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Vehicle.Model, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Vehicle.EngineSize, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Vehicle.EngineSize, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Vehicle.EngineSize, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Vehicle.Milage, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Vehicle.Milage, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Vehicle.Milage, "", new {@class = "text-danger"})
+            </div>
+        </div>
     </div>
-    <br />
-    
-   
+
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <a type="button" class="btn btn-success btn-sm" href="#" onclick="$(this).closest('form').submit()">
@@ -62,9 +127,13 @@
 }
 
 <br />
+<br/>
+
 <div class="col-md-offset-2 col-md-10">
     @Html.Partial("_BackToListButtonPartial")
 </div>
+
+
 
 @section scripts
 {
@@ -90,14 +159,14 @@
                 }
             });
 
-            var carParts = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                remote: {
-                    url: '/api/carparts?query=%QUERY',
-                    wildcard: '%QUERY'
-                }
-            });
+            //var carParts = new Bloodhound({
+            //    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            //    queryTokenizer: Bloodhound.tokenizers.whitespace,
+            //    remote: {
+            //        url: '/api/carparts?query=%QUERY',
+            //        wildcard: '%QUERY'
+            //    }
+            //});
 
             // Start typeahead when length = 2 chars name:<> display:<> source:<> //
             $('#job .typeahead').typeahead({
@@ -110,13 +179,13 @@
                     source: jobs
                 });
 
-            $('#carpart .typeahead').typeahead(
-                { minlength: 0, highlight: true },
-                {
-                    name: 'carparts',
-                    display: 'name',
-                    source: carParts
-                });
+            //$('#carpart .typeahead').typeahead(
+            //    { minlength: 0, highlight: true },
+            //    {
+            //        name: 'carparts',
+            //        display: 'name',
+            //        source: carParts
+            //    });
 
             $('#job .typeahead').on("typeahead:select",
                 function (e, job) {
@@ -127,18 +196,18 @@
                     setTimeout(function () { $("#jbookingjobs").val(''); }, 500);
                     vm.jobIds.push(job.jobId);
                     // bug? No way to remove job ids yet
-                    $("#JobIds").val(vm.jobIds.toString());
+                    $("#Booking_JobIds").val(vm.jobIds.toString());
                 });
 
-            $('#carpart .typeahead').on("typeahead:select",
-                function (e, carpart) {
-                    console.log(carpart);
-                    //When a Job item has been selected, append selected job onto list //
-                    setTimeout(function () { $("#jbookingparts").val(''); },500);
-                    $("#partslist").append("<li class='list-group-item' value='" + carpart.partId + "'>" + carpart.name + "</li>");
-                    vm.carPartIds.push(carpart.partId);
-                    $("#PartIds").val(vm.carPartIds.toString());
-                });
+            //$('#carpart .typeahead').on("typeahead:select",
+            //    function (e, carpart) {
+            //        console.log(carpart);
+            //        //When a Job item has been selected, append selected job onto list //
+            //        setTimeout(function () { $("#jbookingparts").val(''); },500);
+            //        $("#partslist").append("<li class='list-group-item' value='" + carpart.partId + "'>" + carpart.name + "</li>");
+            //        vm.carPartIds.push(carpart.partId);
+            //        $("#Booking_PartIds").val(vm.carPartIds.toString());
+            //    });
 
         });
 

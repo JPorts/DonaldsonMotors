@@ -31,6 +31,7 @@ namespace DonaldsonMotorsThree
 
      void sendMail(IdentityMessage message)
     {
+    
 
     #region formatter
     string text = string.Format("Please click on this link to {0}: {1}", message.Subject, message.Body);

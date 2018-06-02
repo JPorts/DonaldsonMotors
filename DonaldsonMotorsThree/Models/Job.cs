@@ -31,7 +31,7 @@ namespace DonaldsonMotorsThree.Models
 
         [Display(Name = "Price")]
         [Required]
-        public decimal JobCost { get; set; }
+        public double JobCost { get; set; }
 
         [Display(Name = "Status")]
         [Required]

@@ -233,6 +233,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\BookingDataController.cs" />
     <Compile Include="Controllers\Api\CarPartsController.cs" />
@@ -419,6 +420,18 @@
     <Compile Include="Migrations\201805311824202_UpdateBookingModeltoFitForPurpose.cs" />
     <Compile Include="Migrations\201805311824202_UpdateBookingModeltoFitForPurpose.Designer.cs">
       <DependentUpon>201805311824202_UpdateBookingModeltoFitForPurpose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806011911493_AnotherUpdateToBooking.cs" />
+    <Compile Include="Migrations\201806011911493_AnotherUpdateToBooking.Designer.cs">
+      <DependentUpon>201806011911493_AnotherUpdateToBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806011937201_CPMig1.cs" />
+    <Compile Include="Migrations\201806011937201_CPMig1.Designer.cs">
+      <DependentUpon>201806011937201_CPMig1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806012100560_changeBookingTotalToDouble.cs" />
+    <Compile Include="Migrations\201806012100560_changeBookingTotalToDouble.Designer.cs">
+      <DependentUpon>201806012100560_changeBookingTotalToDouble.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -1017,6 +1030,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805311824202_UpdateBookingModeltoFitForPurpose.resx">
       <DependentUpon>201805311824202_UpdateBookingModeltoFitForPurpose.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806011911493_AnotherUpdateToBooking.resx">
+      <DependentUpon>201806011911493_AnotherUpdateToBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806011937201_CPMig1.resx">
+      <DependentUpon>201806011937201_CPMig1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806012100560_changeBookingTotalToDouble.resx">
+      <DependentUpon>201806012100560_changeBookingTotalToDouble.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

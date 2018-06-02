@@ -12,6 +12,7 @@ namespace DonaldsonMotorsThree.Models
         [Key]
         public int BookingId { get; set; }
 
+
         [Display(Name="Booking Paid")]
         public bool PaidFor { get; set; }
 
@@ -21,7 +22,10 @@ namespace DonaldsonMotorsThree.Models
         public double? Total { get; set; }
 
         // Dates concerned with booking // 
+        [Display(Name = "Start Date")]
         public DateTime? StartDate { get; set; }
+
+        [Display(Name = "Date Completed")]
 
         public DateTime? DateCompleted { get; set; }
 
@@ -42,14 +46,10 @@ namespace DonaldsonMotorsThree.Models
 
         public  virtual Job Job { get; set; }
 
-        public BookingStatusEnum BookingStatus { get; set; }
-        public enum BookingStatusEnum
-        {
-            Requested,
-            Cancelled,
-            Active,
-            Complete
-        }
+        public string BookingStatus { get; set; }
+
 
     }
+
+   
 }
