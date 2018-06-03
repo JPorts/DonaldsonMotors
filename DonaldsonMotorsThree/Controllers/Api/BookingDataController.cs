@@ -27,7 +27,7 @@ namespace DonaldsonMotorsThree.Controllers.Api
         public IHttpActionResult CreateBooking(BookingDto bookingDto)
         {
             //
-            var customer = _context.Customers.SingleOrDefault(c => c.CustomerId == bookingDto.Customer.CustomerId);
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == bookingDto.Customer.Id);
 
             if (customer == null)
                 return BadRequest("Customer Id is not valid.");
@@ -58,7 +58,6 @@ namespace DonaldsonMotorsThree.Controllers.Api
                 var booking = new Booking
                 {
                     Customer = customer,
-                    Job = job,
                     StartDate = bookingDto.StartDate,
                 };
                 _context.Bookings.Add(booking);

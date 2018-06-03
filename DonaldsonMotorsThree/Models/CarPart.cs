@@ -11,21 +11,15 @@ namespace DonaldsonMotorsThree.Models
     {
         [Key]
         public int PartId { get; set; }
-
-
         [Display(Name = "Supplier ID")]
         public int SupplierId { get; set; }
-        
+        [Required]
         public string Name { get; set; }
-
         [Required]
         public string Description { get; set; }
-
         public string Colour { get; set; }
-
         [Required]
         public decimal Price { get; set; }
-
         [Required]
         [Display(Name = "Reorder Level")]
         public int ReorderLevel { get; set; }
@@ -33,11 +27,8 @@ namespace DonaldsonMotorsThree.Models
         [Display(Name = "Reorder Quantity")]
         [Required]
         public int ReorderQuantity { get; set; }
-
         [Display(Name = "Quantity")]
         [Required]
         public int CurrentQuantity { get; set; }
-
-
     }
 }

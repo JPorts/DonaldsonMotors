@@ -38,9 +38,9 @@ namespace DonaldsonMotorsThree.Controllers
 
 
         // GET: Customer/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            var customer = _context.Customers.SingleOrDefault(c => c.CustomerId == id);
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
             if (customer == null)
                 return HttpNotFound();
             var viewModel = new CustomerViewModel
@@ -63,12 +63,9 @@ namespace DonaldsonMotorsThree.Controllers
         {
             try
             {
-                if (customer.CustomerId == 0)
-                {
+                
                     repo.Add(customer);
                     repo.SaveChanges();
-                }
-
                 return RedirectToAction("Index");
             }
             catch
@@ -78,9 +75,9 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
         // GET: Customer/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            var customer = _context.Customers.SingleOrDefault(c => c.CustomerId == id);
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
             if (customer == null)
                 return HttpNotFound();
             var viewModel = new CustomerViewModel

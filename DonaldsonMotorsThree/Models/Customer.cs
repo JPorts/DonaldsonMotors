@@ -9,10 +9,9 @@ namespace DonaldsonMotorsThree.Models
 {
     public class Customer : User
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Display(Name = "Customer Id")]
-        public int CustomerId { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //[Display(Name = "Customer Id")]
+        //public new int CustomerId { get; set; }
 
         [Display(Name="Vehicle Id")]
         public int VehicleId { get; set; }
@@ -20,11 +19,8 @@ namespace DonaldsonMotorsThree.Models
         [Display(Name = "Payment Id")]
         public int PaymentId { get; set; }
 
+        public string PaymentMethod { get; set; }
+
         public List<Booking> Bookings { get; set; }
-
-       
-
-
-
     }
 }

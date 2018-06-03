@@ -15,51 +15,37 @@ namespace DonaldsonMotorsThree.App_Start
 
         public MappingProfile()
         {
-
             // AutoMapper finds properties and maps objects by convention - Currently using version 4.1.1 // 
-
             // Maps CarPartDto to CarPart // 
             Mapper.CreateMap<CarPart, CarPartDto>();
-
             Mapper.CreateMap<CarPartDto, CarPart>();
 
+            Mapper.CreateMap<JobTypes, JobTypesDto>();
+            Mapper.CreateMap<JobTypesDto, JobTypes>();
 
             // Maps JobDto to Job //
             Mapper.CreateMap<Job, JobDto>();
-
             Mapper.CreateMap<JobDto, Job>();
-
 
             // Maps SupplierDto to Supplier // 
             Mapper.CreateMap<Supplier, SupplierDto>();
-
             Mapper.CreateMap<SupplierDto, Supplier>();
-
 
             //Maps Staff to StaffDto //
             Mapper.CreateMap<Staff, StaffDto>();
-
             Mapper.CreateMap<StaffDto, Staff>();
-
 
             // Maps Customer to CustomerDto// 
             Mapper.CreateMap<Customer, CustomerDto>();
-
             Mapper.CreateMap<CustomerDto, Customer>();
-
 
             //Maps Reviews To ReviewDto // 
             Mapper.CreateMap<Review, ReviewDto>();
-
             Mapper.CreateMap<ReviewDto, Review>();
-
 
             // Maps Bookings to Booking Dto //
             Mapper.CreateMap<Booking, BookingDto>();
-
             Mapper.CreateMap<BookingDto, Booking>();
-
-
         }
 
     }

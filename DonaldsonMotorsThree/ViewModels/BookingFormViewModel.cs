@@ -9,20 +9,10 @@ namespace DonaldsonMotorsThree.ViewModels
 {
     public class BookingFormViewModel
     {
-        [Display(Name = "Jobs")]
-        public IEnumerable<Job> Jobs { get; set; }
 
-        public Job Job { get; set; }
 
-        public Customer Customer { get; set; }
-
-        public Booking Booking { get; set; }
-
+        public Customer BookedCustomer { get; set; }
+        public Booking BookedBooking { get; set; }
         public VehicleDetails Vehicle { get; set; }
-
-
-
-
-
     }
 }

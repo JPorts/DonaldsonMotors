@@ -30,10 +30,12 @@ namespace DonaldsonMotorsThree.Models
 
                 public DbSet<Basket> Baskets { get; set; }
 
-               public DbSet<BasketItem> BasketItems { get; set; }
-                
+        public DbSet<BasketItem> BasketItems { get; set; }
 
-                public ApplicationDbContext()
+        public DbSet<JobTypes> JobTypes { get; set; }
+
+
+        public ApplicationDbContext()
 
                     : base("DonaldsonMotorsDb", throwIfV1Schema: false)
                 {

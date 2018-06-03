@@ -30,10 +30,10 @@ namespace DonaldsonMotorsThree.Controllers.Api
         }
 
         //GET /api/customers/1
-        public IHttpActionResult GetCustomer(int id)
+        public IHttpActionResult GetCustomer(string id)
         {
             // Search the context for staff using passed id//
-            var customer = _context.Customers.SingleOrDefault(c => c.CustomerId == id);
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
 
             // if customer is null retuen not found//
             if (customer == null)
@@ -60,21 +60,21 @@ namespace DonaldsonMotorsThree.Controllers.Api
             _context.SaveChanges();
 
             //Check that CustomerDto ID and Customer Id Match// 
-            customerDto.CustomerId = customer.CustomerId;
+            customerDto.CustomerId = customer.Id;
             //Return Created URI// 
-            return Created(new Uri(Request.RequestUri + "/" + customer.CustomerId), customerDto);
+            return Created(new Uri(Request.RequestUri + "/" + customer.Id), customerDto);
         }
 
         //PUT /api/customers/1
         [HttpPut]
-        public void UpdateCustomer(int id, CustomerDto customerDto)
+        public void UpdateCustomer(string id, CustomerDto customerDto)
         {
             // If Model State is valid, throw new bad request//
             if(!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
             // customerInDb is assigned to pbject through id match // 
-            var customerInDb = _context.Customers.SingleOrDefault(c => c.CustomerId == id);
+            var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);
 
             //if customer is null throw new http not found status code// 
             if (customerInDb == null)
@@ -89,11 +89,11 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
         //DELETE /api/customers/1
         [HttpDelete]
-        public void DeleteCustomer(int id)
+        public void DeleteCustomer(string id)
         {
             //Create customerInDb which is assigned to customer through id match//
 
-            var customerInDb = _context.Customers.SingleOrDefault(c => c.CustomerId == id);
+            var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);
 
             //if customerInDb is null throw not found // 
             if(customerInDb == null)

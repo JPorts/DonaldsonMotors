@@ -22,6 +22,7 @@ namespace DonaldsonMotorsThree.Controllers
 
         private ApplicationDbContext _context;
         private VehicleRepository vehicleRepo;
+        private BookingRepository bookingRepo;
 
         public BookingController()
         {
@@ -44,11 +45,11 @@ namespace DonaldsonMotorsThree.Controllers
         public double SumTotal(BookingFormViewModel bookingVm)
         {
             var total = 0.00;
-            foreach (var jobId in bookingVm.Booking.JobIds)
+            foreach (var jobId in bookingVm.BookedBooking.JobIds)
             {
                 try
                 {
-                    var job = _context.Jobs.SingleOrDefault(j => j.JobId == jobId);
+                    var job = _context.JobTypes.SingleOrDefault(j => j.Id == jobId);
 
                     total += job.JobCost;
                 }
@@ -60,15 +61,46 @@ namespace DonaldsonMotorsThree.Controllers
 
             return total;
         }
+        
+        [System.Web.Mvc.HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(BookingFormViewModel vm, FormCollection formCollection)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    //var strJobs = formCollection.GetValue("Booking.JobIds").AttemptedValue;
+
+                    bookingRepo.Add(vm.BookedBooking);
+                    bookingRepo.SaveChanges();
+                }
+                return View("Home");
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Debug.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Debug.WriteLine("- Property: \"{0}\", Value: \"{1}\", Error: \"{2}\"",
+                            ve.PropertyName,
+                            eve.Entry.CurrentValues.GetValue<object>(ve.PropertyName),
+                            ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+            return View("Home");
+        }
 
         public ActionResult CreateBooking(BookingFormViewModel bookingVm, FormCollection formCollection)
         {
+            var strJobs = formCollection.GetValue("BookedBooking.JobIds").AttemptedValue;
 
-            var strParts = formCollection.GetValue("Booking.PartIds").AttemptedValue;
-            var strJobs = formCollection.GetValue("Booking.JobIds").AttemptedValue;
-
-            if (strJobs.IsNullOrWhiteSpace()) bookingVm.Booking.JobIds.AddRange(strJobs.Split(',').Select(Int32.Parse).ToList());
-            if (strParts.IsNullOrWhiteSpace()) bookingVm.Booking.PartIds.AddRange(strParts.Split(',').Select(Int32.Parse).ToList());
+             if (!strJobs.IsNullOrWhiteSpace()) bookingVm.BookedBooking.JobIds.AddRange(strJobs.Split(',').Select(Int32.Parse).ToList());
 
             // Nested within try catch to pull entity validation properties into message// 
             try
@@ -79,7 +111,12 @@ namespace DonaldsonMotorsThree.Controllers
                 //pull current customer id//
                 if (userId == null) RedirectToAction("Register", "Account");
 
-                var customerId = customer.CustomerId;
+                var customerId = customer.Id;
+
+                AddJobsToBooking(bookingVm, strJobs, customerId);
+
+
+
                 // Assign to vehicle customer Id 
                 bookingVm.Vehicle.CustomerId = customerId;
                 // Assign vehicle to varc
@@ -91,12 +128,12 @@ namespace DonaldsonMotorsThree.Controllers
                 vehicleRepo.SaveChanges();
                 // Return customer to confirm booking view// 
                 //Assign booking properties to VM//
-                bookingVm.Customer = customer;
+                bookingVm.BookedCustomer = customer;
                 bookingVm.Vehicle = vehicle;
-                bookingVm.Booking.BookingStatus = Constants.BookingStatus.Requested;
+                bookingVm.BookedBooking.BookingStatus = Constants.BookingStatus.Requested;
                 var bookingTotal = SumTotal(bookingVm);
-                bookingVm.Booking.Total = bookingTotal;
-
+                bookingVm.BookedBooking.Total = bookingTotal;
+                
                 return View("ConfirmBooking", bookingVm);
 
 
@@ -120,6 +157,32 @@ namespace DonaldsonMotorsThree.Controllers
 
         }
 
+        private void AddJobsToBooking(BookingFormViewModel bookingVm, string strJobs, string customerId)
+        {
+            var jobIds = strJobs.Split(',').Select(Int32.Parse).ToList();
+
+            // Instantiate new JobsList 
+            if (null == bookingVm.BookedBooking.Jobs)
+                bookingVm.BookedBooking.Jobs = new List<Job>();
+
+            var selectedJobs = _context.JobTypes
+                                       .Where(t => jobIds.Contains(t.Id))
+                                       .Select(r => new { r.Id, r.JobRequirements, r.JobCost });
+
+            foreach (var selectedJob in selectedJobs)
+            {
+                var bookedJob = new Job
+                {
+                    JobRequirements = selectedJob.JobRequirements,
+                    JobCost = selectedJob.JobCost,
+                    JobTypeId = selectedJob.Id,
+                    CustomerId = customerId,
+                    JobStatus = Constants.JobStatus.Requested
+                };
+                bookingVm.BookedBooking.Jobs.Add(bookedJob);
+            }
+        }
+
         //POST: Booking/AddVehicle
         public ActionResult AddVehicle(VehicleDetails vehicle, BookingFormViewModel bookingVm)
         {
@@ -135,7 +198,7 @@ namespace DonaldsonMotorsThree.Controllers
                 if (userId == null)
                     RedirectToAction("Register", "Account");
 
-                var customerId = customer.CustomerId;
+                var customerId = customer.Id;
                 // Assign to vehicle customer Id// 
                 vehicle.CustomerId = customerId;
                 // Ensure new vehicle entry//
@@ -145,9 +208,9 @@ namespace DonaldsonMotorsThree.Controllers
                 vehicleRepo.SaveChanges();
                 // Return customer to confirm booking view// 
 
-                bookingVm.Customer = customer;
+                bookingVm.BookedCustomer = customer;
                 bookingVm.Vehicle = vehicle;
-                bookingVm.Booking.BookingStatus = Constants.BookingStatus.Requested;
+                bookingVm.BookedBooking.BookingStatus = Constants.BookingStatus.Requested;
 
                 return View("ConfirmBooking", bookingVm);
 
@@ -174,46 +237,9 @@ namespace DonaldsonMotorsThree.Controllers
 
         public ActionResult ConfirmBooking(Booking Booking, VehicleDetails vehicle)
         {
-            // Pull current user id// 
-            var userId = User.Identity.GetUserId();
-            //pull associated customer// 
-            var customer = _context.Customers.SingleOrDefault(c => c.Id == userId);
-            //pull current customer id//
-            var customerId = customer.CustomerId;
-            // pull associated vehicle// 
-            VehicleDetails Vehicle = _context.VehicleDetails.SingleOrDefault(v => v.CustomerId == customerId);
-            // pull Job 
-            var JobIds = Booking.JobIds.ToList();
-            return View("Invoice");
+            return View("Home");
         }
-
-        //// POST: Booking/Create
-        //[System.Web.Http.HttpPost]
-        //public ActionResult CreateBooking(int id)
-        //{
-        //    //// If Model is not valid, throw bad request //
-        //    if(!ModelState.IsValid)
-        //      throw new HttpResponseException(HttpStatusCode.BadRequest);
-
-        //    //  Grab customer from DB // 
-        //    var customer = _context.Customers.SingleOrDefault(c => c.CustomerId == id);
-
-        //    //// If Customer is null, redirect as not found //
-        //    if (customer == null)
-        //        RedirectToAction("Register", "Account");
-
-
-        //    var jobs = _context.Jobs.ToList();
-        //    var viewModel = new BookingFormViewModel
-        //    {
-        //        Jobs = jobs
-        //    };
-
-        //    return View(viewModel);
-        //}
-
-
-
+        
         public ActionResult ViewAll()
         {
             var bookings = _context.Bookings.ToList();
@@ -231,16 +257,9 @@ namespace DonaldsonMotorsThree.Controllers
             // Pull current user id// 
             var userId = User.Identity.GetUserId();
             //pull associated customer// 
-            var customer = _context.Customers.SingleOrDefault(c => c.Id == userId);
-            //pull current customer id//
-            var customerId = customer.CustomerId;
-            // If customer is null, return not found// 
-            if (customerId == 0)
-                return HttpNotFound();
 
-            // Pull Customers Booking History//
             var BookingHistory = _context.Bookings.Where(b =>
-                b.BookingStatus == Constants.BookingStatus.Complete && b.CustomerId == customerId).ToList();
+                b.BookingStatus == Constants.BookingStatus.Complete && b.CustomerId == userId).ToList();
 
             return View(BookingHistory);
         }

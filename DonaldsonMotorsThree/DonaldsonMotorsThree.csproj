@@ -27,6 +27,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -259,179 +260,33 @@
     <Compile Include="Dtos\CarPartDto.cs" />
     <Compile Include="Dtos\CustomerDto.cs" />
     <Compile Include="Dtos\JobDto.cs" />
+    <Compile Include="Dtos\JobTypeDto.cs" />
     <Compile Include="Dtos\ReviewDto.cs" />
     <Compile Include="Dtos\StaffDto.cs" />
     <Compile Include="Dtos\SupplierDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804261352009_InitialModel.cs" />
-    <Compile Include="Migrations\201804261352009_InitialModel.Designer.cs">
-      <DependentUpon>201804261352009_InitialModel.cs</DependentUpon>
+    <Compile Include="HtmlHelperExtensions.cs" />
+    <Compile Include="Migrations\201806021518217_seedusers.cs" />
+    <Compile Include="Migrations\201806021518217_seedusers.Designer.cs">
+      <DependentUpon>201806021518217_seedusers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804272234435_DropColumnFromJobsVehicleId.cs" />
-    <Compile Include="Migrations\201804272234435_DropColumnFromJobsVehicleId.Designer.cs">
-      <DependentUpon>201804272234435_DropColumnFromJobsVehicleId.cs</DependentUpon>
+    <Compile Include="Migrations\201806021748008_jobtypes1.cs" />
+    <Compile Include="Migrations\201806021748008_jobtypes1.Designer.cs">
+      <DependentUpon>201806021748008_jobtypes1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804272237166_PopulateSupplierCarPartAndJobsTable.cs" />
-    <Compile Include="Migrations\201804272237166_PopulateSupplierCarPartAndJobsTable.Designer.cs">
-      <DependentUpon>201804272237166_PopulateSupplierCarPartAndJobsTable.cs</DependentUpon>
+    <Compile Include="Migrations\201806021752587_addjobtypes2.cs" />
+    <Compile Include="Migrations\201806021752587_addjobtypes2.Designer.cs">
+      <DependentUpon>201806021752587_addjobtypes2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804282147155_AddTotalPropToDatabase.cs" />
-    <Compile Include="Migrations\201804282147155_AddTotalPropToDatabase.Designer.cs">
-      <DependentUpon>201804282147155_AddTotalPropToDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\201806031329558_changemodel1.cs" />
+    <Compile Include="Migrations\201806031329558_changemodel1.Designer.cs">
+      <DependentUpon>201806031329558_changemodel1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804290008354_TruncateToFixTableIdIssue.cs" />
-    <Compile Include="Migrations\201804290008354_TruncateToFixTableIdIssue.Designer.cs">
-      <DependentUpon>201804290008354_TruncateToFixTableIdIssue.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804290014355_DeleteAllFromJobs.cs" />
-    <Compile Include="Migrations\201804290014355_DeleteAllFromJobs.Designer.cs">
-      <DependentUpon>201804290014355_DeleteAllFromJobs.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804290016349_ReAddJobsData.cs" />
-    <Compile Include="Migrations\201804290016349_ReAddJobsData.Designer.cs">
-      <DependentUpon>201804290016349_ReAddJobsData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804301414116_UpdateUserModelAndRegister.cs" />
-    <Compile Include="Migrations\201804301414116_UpdateUserModelAndRegister.Designer.cs">
-      <DependentUpon>201804301414116_UpdateUserModelAndRegister.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804301430100_AddCustomerIdToUser.cs" />
-    <Compile Include="Migrations\201804301430100_AddCustomerIdToUser.Designer.cs">
-      <DependentUpon>201804301430100_AddCustomerIdToUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804301459320_EmptyAspNetUsersTable.cs" />
-    <Compile Include="Migrations\201804301459320_EmptyAspNetUsersTable.Designer.cs">
-      <DependentUpon>201804301459320_EmptyAspNetUsersTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804302000368_GUIDCustomerId.cs" />
-    <Compile Include="Migrations\201804302000368_GUIDCustomerId.Designer.cs">
-      <DependentUpon>201804302000368_GUIDCustomerId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804302041147_FixCustomerIdIssue.cs" />
-    <Compile Include="Migrations\201804302041147_FixCustomerIdIssue.Designer.cs">
-      <DependentUpon>201804302041147_FixCustomerIdIssue.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805011402509_updateSeedMethod.cs" />
-    <Compile Include="Migrations\201805011402509_updateSeedMethod.Designer.cs">
-      <DependentUpon>201805011402509_updateSeedMethod.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805011623133_NewReviewModelsAdded.cs" />
-    <Compile Include="Migrations\201805011623133_NewReviewModelsAdded.Designer.cs">
-      <DependentUpon>201805011623133_NewReviewModelsAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805012155336_ChangeBookingDurationPropTonullable.cs" />
-    <Compile Include="Migrations\201805012155336_ChangeBookingDurationPropTonullable.Designer.cs">
-      <DependentUpon>201805012155336_ChangeBookingDurationPropTonullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805012217029_updateBookingModelWithJobIdList.cs" />
-    <Compile Include="Migrations\201805012217029_updateBookingModelWithJobIdList.Designer.cs">
-      <DependentUpon>201805012217029_updateBookingModelWithJobIdList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805012245351_addPropQuantityToCarpart.cs" />
-    <Compile Include="Migrations\201805012245351_addPropQuantityToCarpart.Designer.cs">
-      <DependentUpon>201805012245351_addPropQuantityToCarpart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805020142476_UpdatePartModelWithForeignKey.cs" />
-    <Compile Include="Migrations\201805020142476_UpdatePartModelWithForeignKey.Designer.cs">
-      <DependentUpon>201805020142476_UpdatePartModelWithForeignKey.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805021058507_AddRolePropToStaff.cs" />
-    <Compile Include="Migrations\201805021058507_AddRolePropToStaff.Designer.cs">
-      <DependentUpon>201805021058507_AddRolePropToStaff.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805022049306_updateRolesAndCreateStaff.cs" />
-    <Compile Include="Migrations\201805022049306_updateRolesAndCreateStaff.Designer.cs">
-      <DependentUpon>201805022049306_updateRolesAndCreateStaff.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805031402501_updateStaffModel.cs" />
-    <Compile Include="Migrations\201805031402501_updateStaffModel.Designer.cs">
-      <DependentUpon>201805031402501_updateStaffModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805221156437_UpdateBookingModel.cs" />
-    <Compile Include="Migrations\201805221156437_UpdateBookingModel.Designer.cs">
-      <DependentUpon>201805221156437_UpdateBookingModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805221203519_addPostDateForReviews.cs" />
-    <Compile Include="Migrations\201805221203519_addPostDateForReviews.Designer.cs">
-      <DependentUpon>201805221203519_addPostDateForReviews.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805221205305_UpdateNullableDateForReview.cs" />
-    <Compile Include="Migrations\201805221205305_UpdateNullableDateForReview.Designer.cs">
-      <DependentUpon>201805221205305_UpdateNullableDateForReview.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805221819294_AddEnumToBookingStatus.cs" />
-    <Compile Include="Migrations\201805221819294_AddEnumToBookingStatus.Designer.cs">
-      <DependentUpon>201805221819294_AddEnumToBookingStatus.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805261626124_addingBasketModels.cs" />
-    <Compile Include="Migrations\201805261626124_addingBasketModels.Designer.cs">
-      <DependentUpon>201805261626124_addingBasketModels.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805261924231_SingleButtonPartials.cs" />
-    <Compile Include="Migrations\201805261924231_SingleButtonPartials.Designer.cs">
-      <DependentUpon>201805261924231_SingleButtonPartials.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805271631234_VehicleDatabaseAddition.cs" />
-    <Compile Include="Migrations\201805271631234_VehicleDatabaseAddition.Designer.cs">
-      <DependentUpon>201805271631234_VehicleDatabaseAddition.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805272156207_addPasswordToStaff.cs" />
-    <Compile Include="Migrations\201805272156207_addPasswordToStaff.Designer.cs">
-      <DependentUpon>201805272156207_addPasswordToStaff.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805272223034_addIncrementKeyToStaff.cs" />
-    <Compile Include="Migrations\201805272223034_addIncrementKeyToStaff.Designer.cs">
-      <DependentUpon>201805272223034_addIncrementKeyToStaff.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805281348197_ChangeUserModelID.cs" />
-    <Compile Include="Migrations\201805281348197_ChangeUserModelID.Designer.cs">
-      <DependentUpon>201805281348197_ChangeUserModelID.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805291250353_UpdateVehicleDetailsModel.cs" />
-    <Compile Include="Migrations\201805291250353_UpdateVehicleDetailsModel.Designer.cs">
-      <DependentUpon>201805291250353_UpdateVehicleDetailsModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805291600246_updateModelSomewhere.cs" />
-    <Compile Include="Migrations\201805291600246_updateModelSomewhere.Designer.cs">
-      <DependentUpon>201805291600246_updateModelSomewhere.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805291748057_role.cs" />
-    <Compile Include="Migrations\201805291748057_role.Designer.cs">
-      <DependentUpon>201805291748057_role.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805291820459_roleSelection.cs" />
-    <Compile Include="Migrations\201805291820459_roleSelection.Designer.cs">
-      <DependentUpon>201805291820459_roleSelection.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805291847008_truncateAspNetRoles.cs" />
-    <Compile Include="Migrations\201805291847008_truncateAspNetRoles.Designer.cs">
-      <DependentUpon>201805291847008_truncateAspNetRoles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805292025165_loseEmployeeId.cs" />
-    <Compile Include="Migrations\201805292025165_loseEmployeeId.Designer.cs">
-      <DependentUpon>201805292025165_loseEmployeeId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805311350137_UpdateBookingModel1.cs" />
-    <Compile Include="Migrations\201805311350137_UpdateBookingModel1.Designer.cs">
-      <DependentUpon>201805311350137_UpdateBookingModel1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805311824202_UpdateBookingModeltoFitForPurpose.cs" />
-    <Compile Include="Migrations\201805311824202_UpdateBookingModeltoFitForPurpose.Designer.cs">
-      <DependentUpon>201805311824202_UpdateBookingModeltoFitForPurpose.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806011911493_AnotherUpdateToBooking.cs" />
-    <Compile Include="Migrations\201806011911493_AnotherUpdateToBooking.Designer.cs">
-      <DependentUpon>201806011911493_AnotherUpdateToBooking.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806011937201_CPMig1.cs" />
-    <Compile Include="Migrations\201806011937201_CPMig1.Designer.cs">
-      <DependentUpon>201806011937201_CPMig1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806012100560_changeBookingTotalToDouble.cs" />
-    <Compile Include="Migrations\201806012100560_changeBookingTotalToDouble.Designer.cs">
-      <DependentUpon>201806012100560_changeBookingTotalToDouble.cs</DependentUpon>
+    <Compile Include="Migrations\201806031336468_createparts.cs" />
+    <Compile Include="Migrations\201806031336468_createparts.Designer.cs">
+      <DependentUpon>201806031336468_createparts.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -451,10 +306,12 @@
     <Compile Include="Models\Repositories\CarPartRepository.cs" />
     <Compile Include="Models\Repositories\CustomerRepository.cs" />
     <Compile Include="Models\Repositories\JobRepository.cs" />
+    <Compile Include="Models\JobTypes.cs" />
     <Compile Include="Models\Repositories\Repository.cs" />
     <Compile Include="Models\Repositories\ReviewRepository.cs" />
     <Compile Include="Models\Repositories\StaffRepository.cs" />
     <Compile Include="Models\Repositories\SupplierRepository.cs" />
+    <Compile Include="Models\Repositories\BookingRepository.cs" />
     <Compile Include="Models\Repositories\VehicleRepository.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\SingleButtonPartial.cs" />
@@ -462,6 +319,7 @@
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\VehicleDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seed.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\BookingFormViewModel.cs" />
     <Compile Include="ViewModels\CarPartViewModel.cs" />
@@ -892,13 +750,15 @@
     <Content Include="Views\Supplier\Create.cshtml" />
     <Content Include="Views\Home\CustomerViewJobs.cshtml" />
     <Content Include="Views\Shared\_MechanicManageMenu.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\Old\Job.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Basket\" />
+    <Folder Include="Views\Booking\Create\EditorTemplates\" />
     <Folder Include="Views\Mail\" />
     <Folder Include="Views\Shared\DisplayTemplates\" />
-    <Folder Include="Views\Shared\EditorTemplates\" />
     <Folder Include="Views\Sms\" />
   </ItemGroup>
   <ItemGroup>
@@ -914,131 +774,20 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804261352009_InitialModel.resx">
-      <DependentUpon>201804261352009_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806021518217_seedusers.resx">
+      <DependentUpon>201806021518217_seedusers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804272234435_DropColumnFromJobsVehicleId.resx">
-      <DependentUpon>201804272234435_DropColumnFromJobsVehicleId.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806021748008_jobtypes1.resx">
+      <DependentUpon>201806021748008_jobtypes1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804272237166_PopulateSupplierCarPartAndJobsTable.resx">
-      <DependentUpon>201804272237166_PopulateSupplierCarPartAndJobsTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806021752587_addjobtypes2.resx">
+      <DependentUpon>201806021752587_addjobtypes2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804282147155_AddTotalPropToDatabase.resx">
-      <DependentUpon>201804282147155_AddTotalPropToDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806031329558_changemodel1.resx">
+      <DependentUpon>201806031329558_changemodel1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804290008354_TruncateToFixTableIdIssue.resx">
-      <DependentUpon>201804290008354_TruncateToFixTableIdIssue.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804290014355_DeleteAllFromJobs.resx">
-      <DependentUpon>201804290014355_DeleteAllFromJobs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804290016349_ReAddJobsData.resx">
-      <DependentUpon>201804290016349_ReAddJobsData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804301414116_UpdateUserModelAndRegister.resx">
-      <DependentUpon>201804301414116_UpdateUserModelAndRegister.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804301430100_AddCustomerIdToUser.resx">
-      <DependentUpon>201804301430100_AddCustomerIdToUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804301459320_EmptyAspNetUsersTable.resx">
-      <DependentUpon>201804301459320_EmptyAspNetUsersTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804302000368_GUIDCustomerId.resx">
-      <DependentUpon>201804302000368_GUIDCustomerId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804302041147_FixCustomerIdIssue.resx">
-      <DependentUpon>201804302041147_FixCustomerIdIssue.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805011402509_updateSeedMethod.resx">
-      <DependentUpon>201805011402509_updateSeedMethod.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805011623133_NewReviewModelsAdded.resx">
-      <DependentUpon>201805011623133_NewReviewModelsAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805012155336_ChangeBookingDurationPropTonullable.resx">
-      <DependentUpon>201805012155336_ChangeBookingDurationPropTonullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805012217029_updateBookingModelWithJobIdList.resx">
-      <DependentUpon>201805012217029_updateBookingModelWithJobIdList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805012245351_addPropQuantityToCarpart.resx">
-      <DependentUpon>201805012245351_addPropQuantityToCarpart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805020142476_UpdatePartModelWithForeignKey.resx">
-      <DependentUpon>201805020142476_UpdatePartModelWithForeignKey.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805021058507_AddRolePropToStaff.resx">
-      <DependentUpon>201805021058507_AddRolePropToStaff.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805022049306_updateRolesAndCreateStaff.resx">
-      <DependentUpon>201805022049306_updateRolesAndCreateStaff.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805031402501_updateStaffModel.resx">
-      <DependentUpon>201805031402501_updateStaffModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805221156437_UpdateBookingModel.resx">
-      <DependentUpon>201805221156437_UpdateBookingModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805221203519_addPostDateForReviews.resx">
-      <DependentUpon>201805221203519_addPostDateForReviews.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805221205305_UpdateNullableDateForReview.resx">
-      <DependentUpon>201805221205305_UpdateNullableDateForReview.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805221819294_AddEnumToBookingStatus.resx">
-      <DependentUpon>201805221819294_AddEnumToBookingStatus.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805261626124_addingBasketModels.resx">
-      <DependentUpon>201805261626124_addingBasketModels.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805261924231_SingleButtonPartials.resx">
-      <DependentUpon>201805261924231_SingleButtonPartials.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805271631234_VehicleDatabaseAddition.resx">
-      <DependentUpon>201805271631234_VehicleDatabaseAddition.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805272156207_addPasswordToStaff.resx">
-      <DependentUpon>201805272156207_addPasswordToStaff.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805272223034_addIncrementKeyToStaff.resx">
-      <DependentUpon>201805272223034_addIncrementKeyToStaff.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805281348197_ChangeUserModelID.resx">
-      <DependentUpon>201805281348197_ChangeUserModelID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805291250353_UpdateVehicleDetailsModel.resx">
-      <DependentUpon>201805291250353_UpdateVehicleDetailsModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805291600246_updateModelSomewhere.resx">
-      <DependentUpon>201805291600246_updateModelSomewhere.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805291748057_role.resx">
-      <DependentUpon>201805291748057_role.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805291820459_roleSelection.resx">
-      <DependentUpon>201805291820459_roleSelection.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805291847008_truncateAspNetRoles.resx">
-      <DependentUpon>201805291847008_truncateAspNetRoles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805292025165_loseEmployeeId.resx">
-      <DependentUpon>201805292025165_loseEmployeeId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805311350137_UpdateBookingModel1.resx">
-      <DependentUpon>201805311350137_UpdateBookingModel1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805311824202_UpdateBookingModeltoFitForPurpose.resx">
-      <DependentUpon>201805311824202_UpdateBookingModeltoFitForPurpose.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806011911493_AnotherUpdateToBooking.resx">
-      <DependentUpon>201806011911493_AnotherUpdateToBooking.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806011937201_CPMig1.resx">
-      <DependentUpon>201806011937201_CPMig1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806012100560_changeBookingTotalToDouble.resx">
-      <DependentUpon>201806012100560_changeBookingTotalToDouble.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806031336468_createparts.resx">
+      <DependentUpon>201806031336468_createparts.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

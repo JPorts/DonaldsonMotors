@@ -27,15 +27,19 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
         // GET /api/jobs/        //
-        public IEnumerable<JobDto> GetJobs(string query = null)
+        public IEnumerable<JobTypesDto> GetJobTypes(string query = null)
         {
-           // var jobQuery = _context.Jobs.Include( j => j.Job)
-            return _context.Jobs.ToList().Select(Mapper.Map<Job, JobDto>);
+            var jq = _context.JobTypes.Where(m => m.JobCost > 0);
 
+            if (!String.IsNullOrWhiteSpace(query))
+                jq = jq.Where(m => m.JobRequirements.Contains(query));
+
+            return jq.ToList().Select(Mapper.Map<JobTypes, JobTypesDto>);
         }
 
 
-        // Get /api/jobs/1           //
+
+            // Get /api/jobs/1           //
         public IHttpActionResult GetJob(int id)
         {
             // Search context in table jobs where c goes to c.JobId and checks id to return a match //

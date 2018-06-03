@@ -1,0 +1,6 @@
+﻿@model IEnumerable<DonaldsonMotorsThree.Models.Job>
+@foreach (DonaldsonMotorsThree.Models.Job j in ViewBag.Classes)
+{
+    <div>Hello</div>
+    @Html.TextBoxFor(m => j.JobRequirements)
+}

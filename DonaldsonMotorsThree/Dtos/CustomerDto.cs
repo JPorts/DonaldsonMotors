@@ -13,7 +13,7 @@ namespace DonaldsonMotorsThree.Dtos
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name = "Customer Id")]
-        public int CustomerId { get; set; }
+        public string CustomerId { get; set; }
 
         [Display(Name = "Vehicle Id")]
         public int VehicleId { get; set; }
