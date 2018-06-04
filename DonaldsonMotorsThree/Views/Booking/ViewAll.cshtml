@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.BookingId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Customer.CustomerId)
+            @Html.DisplayNameFor(model => model.CustomerId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PaidFor)
@@ -23,12 +23,12 @@
         <th>
             @Html.DisplayNameFor(model => model.DurationInDays)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Job.JobRequirements)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Job.JobCost)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Total)
         </th>
@@ -43,7 +43,7 @@
             @Html.DisplayFor(modelItem => item.BookingId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Customer.CustomerId)
+            @Html.DisplayFor(modelItem => item.CustomerId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PaidFor)
@@ -51,12 +51,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.DurationInDays)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Job.JobRequirements)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Job.JobCost)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Total)
         </td>

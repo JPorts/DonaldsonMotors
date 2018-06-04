@@ -244,6 +244,7 @@
     <Compile Include="Controllers\Api\StaffDataController.cs" />
     <Compile Include="Controllers\Api\SuppliersController.cs" />
     <Compile Include="Controllers\BasketController.cs" />
+    <Compile Include="Controllers\ConfirmedBookingController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -287,6 +288,18 @@
     <Compile Include="Migrations\201806031336468_createparts.cs" />
     <Compile Include="Migrations\201806031336468_createparts.Designer.cs">
       <DependentUpon>201806031336468_createparts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806032305274_smallchanges.cs" />
+    <Compile Include="Migrations\201806032305274_smallchanges.Designer.cs">
+      <DependentUpon>201806032305274_smallchanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806041959125_StartDateNotNull.cs" />
+    <Compile Include="Migrations\201806041959125_StartDateNotNull.Designer.cs">
+      <DependentUpon>201806041959125_StartDateNotNull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806042059409_newfiddle.cs" />
+    <Compile Include="Migrations\201806042059409_newfiddle.Designer.cs">
+      <DependentUpon>201806042059409_newfiddle.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -752,13 +765,14 @@
     <Content Include="Views\Shared\_MechanicManageMenu.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\Old\Job.cshtml" />
+    <Content Include="Views\ConfirmedBooking\ThankYou.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\JobsTemplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Basket\" />
     <Folder Include="Views\Booking\Create\EditorTemplates\" />
     <Folder Include="Views\Mail\" />
-    <Folder Include="Views\Shared\DisplayTemplates\" />
     <Folder Include="Views\Sms\" />
   </ItemGroup>
   <ItemGroup>
@@ -788,6 +802,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806031336468_createparts.resx">
       <DependentUpon>201806031336468_createparts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806032305274_smallchanges.resx">
+      <DependentUpon>201806032305274_smallchanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806041959125_StartDateNotNull.resx">
+      <DependentUpon>201806041959125_StartDateNotNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806042059409_newfiddle.resx">
+      <DependentUpon>201806042059409_newfiddle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

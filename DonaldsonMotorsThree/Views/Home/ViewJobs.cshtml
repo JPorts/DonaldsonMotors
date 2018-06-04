@@ -33,11 +33,16 @@
             <th>
                 @Html.DisplayNameFor(model => model.JobRequirements)
             </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.JobCost)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PartId)
+                @Html.DisplayNameFor(model => model.Parts)
             </th>
             <th>
                 Options
@@ -48,21 +53,24 @@
     <tbody>
         @foreach (var item in Model)
             {
-            <tr class="notfirst">
-                <td>
-                    @Html.ActionLink(item.JobRequirements,"Details","Home", new { id = item.JobId}, null)
-                    @*@Html.DisplayFor(modelItem => item.JobRequirements)*@
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.JobCost)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PartId)
-                </td>
-                <td>
-                    <button data-job-id="@item.JobId" class="btn btn-link js-delete">Delete</button>
-                </td>
-            </tr>
+        <tr class="notfirst">
+            <td>
+                @Html.ActionLink(item.JobRequirements, "Details", "Home", new { id = item.JobId }, null)
+                @*@Html.DisplayFor(modelItem => item.JobRequirements)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Parts)
+            </td>
+            <td>
+                <button data-job-id="@item.JobId" class="btn btn-link js-delete">Delete</button>
+            </td>
+        </tr>
         }
     </tbody>
 

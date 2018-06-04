@@ -15,6 +15,8 @@ namespace DonaldsonMotorsThree.Models
         [Required]
         public string JobRequirements { get; set; }
 
+        public virtual List<CarPart> Parts { get; set; }
+
         [Display(Name = "Price")]
         [Required]
         public double JobCost { get; set; }
@@ -28,15 +30,11 @@ namespace DonaldsonMotorsThree.Models
 
         public int? JobTypeId { get; set; }
 
-        [Display(Name = "Part Id")]
-        public int PartId { get; set; }
-
-
         [Display(Name = "Start Date")]
         [DataType(DataType.Date)]
-        public DateTime? StartDate { get; set; }
+        public DateTime StartDate { get; set; }
 
-
+    
         [Display(Name = "Completed By:")]
         public string CompletedBy { get; set; }
 
@@ -44,7 +42,6 @@ namespace DonaldsonMotorsThree.Models
         [DataType(DataType.Date)]
         public DateTime? DateCompleted { get; set; }
         
-        public virtual CarPart CarPart { get; set; }
-
+        
     }
 }

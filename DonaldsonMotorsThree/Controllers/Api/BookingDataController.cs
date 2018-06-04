@@ -45,20 +45,21 @@ namespace DonaldsonMotorsThree.Controllers.Api
             foreach (var job in jobs)
             {
 
-                // find part required for job completion
-                var part = _context.CarParts.Find(job.PartId);
+                foreach (CarPart p in job.Parts)
+                {
 
-                // check part quantity is available
-                if (part.CurrentQuantity == 0)
-                    return BadRequest("Parts needed are currently not available.");
-                // Take away one from quantity of part//
-                part.CurrentQuantity--;
+                    // check part quantity is available
+                    if (p.CurrentQuantity == 0)
+                        return BadRequest("Parts needed are currently not available.");
+                    // Take away one from quantity of part//
+                    p.CurrentQuantity--;
+                }
 
                 // Create initial booking object // 
                 var booking = new Booking
                 {
                     Customer = customer,
-                    StartDate = bookingDto.StartDate,
+                    StartDate = (DateTime)bookingDto.StartDate,
                 };
                 _context.Bookings.Add(booking);
             }

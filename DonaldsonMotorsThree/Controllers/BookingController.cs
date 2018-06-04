@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
@@ -61,7 +63,7 @@ namespace DonaldsonMotorsThree.Controllers
 
             return total;
         }
-        
+
         [System.Web.Mvc.HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(BookingFormViewModel vm, FormCollection formCollection)
@@ -100,7 +102,7 @@ namespace DonaldsonMotorsThree.Controllers
         {
             var strJobs = formCollection.GetValue("BookedBooking.JobIds").AttemptedValue;
 
-             if (!strJobs.IsNullOrWhiteSpace()) bookingVm.BookedBooking.JobIds.AddRange(strJobs.Split(',').Select(Int32.Parse).ToList());
+            if (!strJobs.IsNullOrWhiteSpace()) bookingVm.BookedBooking.JobIds.AddRange(strJobs.Split(',').Select(Int32.Parse).ToList());
 
             // Nested within try catch to pull entity validation properties into message// 
             try
@@ -112,10 +114,11 @@ namespace DonaldsonMotorsThree.Controllers
                 if (userId == null) RedirectToAction("Register", "Account");
 
                 var customerId = customer.Id;
+                var startDate = bookingVm.BookedBooking.StartDate; 
 
-                AddJobsToBooking(bookingVm, strJobs, customerId);
+                AddJobsToBooking(bookingVm, strJobs, customerId, startDate);
 
-
+                bookingVm.BookedBooking.CustomerId = customerId;
 
                 // Assign to vehicle customer Id 
                 bookingVm.Vehicle.CustomerId = customerId;
@@ -133,7 +136,7 @@ namespace DonaldsonMotorsThree.Controllers
                 bookingVm.BookedBooking.BookingStatus = Constants.BookingStatus.Requested;
                 var bookingTotal = SumTotal(bookingVm);
                 bookingVm.BookedBooking.Total = bookingTotal;
-                
+
                 return View("ConfirmBooking", bookingVm);
 
 
@@ -157,7 +160,7 @@ namespace DonaldsonMotorsThree.Controllers
 
         }
 
-        private void AddJobsToBooking(BookingFormViewModel bookingVm, string strJobs, string customerId)
+        private void AddJobsToBooking(BookingFormViewModel bookingVm, string strJobs, string customerId, DateTime startDate)
         {
             var jobIds = strJobs.Split(',').Select(Int32.Parse).ToList();
 
@@ -173,6 +176,7 @@ namespace DonaldsonMotorsThree.Controllers
             {
                 var bookedJob = new Job
                 {
+                    StartDate = startDate,
                     JobRequirements = selectedJob.JobRequirements,
                     JobCost = selectedJob.JobCost,
                     JobTypeId = selectedJob.Id,
@@ -239,7 +243,7 @@ namespace DonaldsonMotorsThree.Controllers
         {
             return View("Home");
         }
-        
+
         public ActionResult ViewAll()
         {
             var bookings = _context.Bookings.ToList();

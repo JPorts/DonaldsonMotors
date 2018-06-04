@@ -1,0 +1,11 @@
+﻿@model IEnumerable<DonaldsonMotorsThree.Models.Job>
+<table style="width: 100%">
+    <tr><th>Requirements</th><th>Job Cost</th></tr>
+    @foreach (var j in Model)
+    {
+    <tr>
+        <td>@Html.DisplayFor(m => j.JobRequirements)</td>
+        <td>£@Html.DisplayFor(m => j.JobCost)</td>
+    </tr>
+    }
+</table>

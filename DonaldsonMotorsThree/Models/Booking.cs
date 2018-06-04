@@ -24,8 +24,9 @@ namespace DonaldsonMotorsThree.Models
         public int? DurationInDays { get; set; }
         public double? Total { get; set; }
         // Dates concerned with booking // 
+        [Required]
         [Display(Name = "Start Date")]
-        public DateTime? StartDate { get; set; }
+        public DateTime StartDate { get; set; }
         [Display(Name = "Date Completed")]
         public DateTime? DateCompleted { get; set; }
         // IDs Linking other entitities // 

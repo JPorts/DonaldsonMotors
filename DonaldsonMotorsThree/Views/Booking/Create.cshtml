@@ -157,7 +157,7 @@
                     console.log(job);
                     //When a Job item has been selected, append selected job onto list //
                     $("#selectedjobslist").append("<li class='list-group-item' value='" + job.id + "'>" + job.jobRequirements + "</li>");
-                    setTimeout(function () { $("#jbookingjobs").val(''); }, 500);
+                    setTimeout(function () { $("#jobinput").val(''); }, 500);
                     vm.jobIds.push(job.id);
                     // bug? No way to remove job ids yet
                     $("#BookedBooking_JobIds").val(vm.jobIds.toString());

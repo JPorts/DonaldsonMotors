@@ -18,7 +18,7 @@
 
 
 
-@using (Html.BeginForm("Create", "Booking", FormMethod.Post))
+@using (Html.BeginForm("Create", "ConfirmedBooking", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -28,15 +28,20 @@
         <div class="form-border">
             <br />
             <br />
-            <fieldset disabled>
-
+            <fieldset>
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.BookedBooking.CustomerId)
+
                 <div class="form-group row">
                     <div class="col-md-3">
                         @Html.LabelFor(model => model.BookedBooking.StartDate, htmlAttributes: new { @class = "control-label" })
                     </div>
+
                     <div class="col-md-9">
-                        @Html.EditorFor(model => model.BookedBooking.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.DisplayFor(model => model.BookedBooking.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.BookedBooking.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+
+                        @* @Html.EditorFor(model => model.BookedBooking.StartDate, new { htmlAttributes = new { @class = "form-control" } })*@
                         @Html.ValidationMessageFor(model => model.BookedBooking.StartDate, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -54,7 +59,8 @@
                         @Html.LabelFor(model => model.BookedBooking.BookingStatus, htmlAttributes: new { @class = "control-label" })
                     </div>
                     <div class="col-md-9">
-                        @Html.EditorFor(model => model.BookedBooking.BookingStatus, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.DisplayFor(model => model.BookedBooking.BookingStatus, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.BookedBooking.BookingStatus, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.BookedBooking.BookingStatus, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -63,7 +69,8 @@
                         @Html.LabelFor(model => model.BookedCustomer.FirstName, htmlAttributes: new { @class = "control-label" })
                     </div>
                     <div class="col-md-9">
-                        @Html.EditorFor(model => model.BookedCustomer.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.DisplayFor(model => model.BookedCustomer.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.BookedCustomer.FirstName, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.BookedCustomer.FirstName, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -72,7 +79,8 @@
                         @Html.LabelFor(model => model.BookedCustomer.LastName, htmlAttributes: new { @class = "control-label" })
                     </div>
                     <div class="col-md-9">
-                        @Html.EditorFor(model => model.BookedCustomer.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.DisplayFor(model => model.BookedCustomer.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.BookedCustomer.LastName, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.BookedCustomer.LastName, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -81,7 +89,8 @@
                         @Html.LabelFor(model => model.BookedCustomer.AddressLine1, htmlAttributes: new { @class = "control-label" })
                     </div>
                     <div class="col-md-9">
-                        @Html.EditorFor(model => model.BookedCustomer.AddressLine1, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.DisplayFor(model => model.BookedCustomer.AddressLine1, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.BookedCustomer.AddressLine1, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.BookedCustomer.AddressLine1, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -90,7 +99,8 @@
                         @Html.LabelFor(model => model.BookedCustomer.AddressLine2, htmlAttributes: new { @class = "control-label" })
                     </div>
                     <div class="col-md-9">
-                        @Html.EditorFor(model => model.BookedCustomer.AddressLine2, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.DisplayFor(model => model.BookedCustomer.AddressLine2, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.BookedCustomer.AddressLine2, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.BookedCustomer.AddressLine2, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -99,7 +109,8 @@
                         @Html.LabelFor(model => model.Vehicle.RegNumber, htmlAttributes: new { @class = "control-label" })
                     </div>
                     <div class="col-md-9">
-                        @Html.EditorFor(model => model.Vehicle.RegNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.DisplayFor(model => model.Vehicle.RegNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.Vehicle.RegNumber, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Vehicle.RegNumber, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -109,7 +120,8 @@
                         @Html.LabelFor(model => model.Vehicle.Make, htmlAttributes: new { @class = "control-label" })
                     </div>
                     <div class="col-md-9">
-                        @Html.EditorFor(model => model.Vehicle.Make, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.DisplayFor(model => model.Vehicle.Make, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.Vehicle.Make, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Vehicle.Make, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -119,7 +131,8 @@
                         @Html.LabelFor(model => model.Vehicle.Model, htmlAttributes: new { @class = "control-label" })
                     </div>
                     <div class="col-md-9">
-                        @Html.EditorFor(model => model.Vehicle.Model, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.DisplayFor(model => model.Vehicle.Model, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.Vehicle.Model, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Vehicle.Model, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -129,7 +142,8 @@
                         @Html.LabelFor(model => model.Vehicle.EngineSize, htmlAttributes: new { @class = "control-label" })
                     </div>
                     <div class="col-md-9">
-                        @Html.EditorFor(model => model.Vehicle.EngineSize, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.DisplayFor(model => model.Vehicle.EngineSize, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.Vehicle.EngineSize, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Vehicle.EngineSize, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -139,15 +153,20 @@
                         @Html.LabelFor(model => model.Vehicle.Milage, htmlAttributes: new { @class = "control-label" })
                     </div>
                     <div class="col-md-9">
-                        @Html.EditorFor(model => model.Vehicle.Milage, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.DisplayFor(model => model.Vehicle.Milage, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.Vehicle.Milage, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Vehicle.Milage, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                
 
-
-
-
+                <div class="form-group row hidden">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.BookedBooking.Jobs, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-9">
+                        @Html.EditorForJob(model => model.BookedBooking.Jobs)
+                    </div>
+                </div>
 
 
                 <div class="form-group row">
@@ -155,7 +174,7 @@
                         @Html.LabelFor(model => model.BookedBooking.Jobs, htmlAttributes: new { @class = "control-label" })
                     </div>
                     <div class="col-md-9">
-                        @Html.EditorForMany(model => model.BookedBooking.Jobs)
+                        @Html.DisplayFor(model => model.BookedBooking.Jobs,templateName: "JobsTemplate")
                     </div>
                 </div>
 
@@ -167,29 +186,49 @@
                     <div class="col-md-9">
                         <span class="currencyinput">
                             £
-                            @Html.EditorFor(model => model.BookedBooking.Total, new { htmlAttributes = new { @class = "form-control  col-md-11" } })
+                            @Html.DisplayFor(model => model.BookedBooking.Total, new { htmlAttributes = new { @class = "form-control  col-md-11" } })
+                            @Html.HiddenFor(model => model.BookedBooking.Total, new { htmlAttributes = new { @class = "form-control  col-md-11" } })
                         </span>
-
                         @Html.ValidationMessageFor(model => model.BookedBooking.Total, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </fieldset>
-                <div class="form-group row">
-                    <br />
-                    @Html.ActionLink("Action Link", "Create", "Booking")
+            <div class="form-group row">
+                <div class="col-md-offset-2 col-md-4">
+                    @Html.Partial("_BackToListButtonPartial")
                 </div>
-                <div class="form-group row">
-
-                    <div class="col-md-offset-2 col-md-4">
-                        @Html.Partial("_BackToListButtonPartial")
-                    </div>
-                    <div class="col-md-4">
-                        <a type="button" class="btn btn-success btn-sm" href="#" onclick="$(this).closest('form').submit()">
-                            Confirm Job Booking
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </a>
-                    </div>
+                <div class="col-md-4">
+                    <a type="button" class="btn btn-success btn-sm" href="#" onclick="fixAndSubmit(this)">
+                        Confirm Job Booking
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </a>
                 </div>
+            </div>
         </div>
     </div>
+}
+@section scripts{
+    <script language="javascript">
+        $(function () {
+            var dateInputsWithValue = $('input[type="date"][value!=""]');
+
+            dateInputsWithValue.each(function (idx, elem) {
+                    //checks.push($(elem).val());
+                var inputFld = $(elem).get();
+                inputFld[0].type = "text"; 
+                    inputFld[0].value = inputFld[0].defaultValue;
+                //inputFld[0].type = "date"; 
+                ////$(elem).val(inputFld[0].defaultValue.toString());
+                //console.log("Name:", inputFld[0].name);
+                //console.log("Input:", inputFld);
+                //console.log("Value:", inputFld[0].value);
+                //console.log("defaultValue:", inputFld[0].defaultValue);
+                });
+        });
+
+
+        function fixAndSubmit(callingAnchor) {
+            $(callingAnchor).closest('form').submit();
+        }
+    </script>
 }

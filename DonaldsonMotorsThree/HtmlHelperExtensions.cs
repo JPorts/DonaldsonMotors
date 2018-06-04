@@ -76,8 +76,12 @@ namespace DonaldsonMotorsThree
                 // Now when the form collection is submitted, the default model binder will be able to bind it exactly as it was.
                 //var itemFieldName = String.Format("{0}[{1}]", fullHtmlFieldPrefix, index++);
                 var itemFieldName = String.Format("{0}[{1}]", fieldName, index++);
-                string singleItemHtml = html.EditorFor(singleItemExpression, templateName, itemFieldName, data).ToString();
-                sb.AppendFormat(singleItemHtml);
+                if (itemFieldName != "JobRequirements")
+                {
+                    string singleItemHtml = html.EditorFor(singleItemExpression, templateName, itemFieldName, data).ToString();
+                    sb.AppendFormat(singleItemHtml);
+                }
+
 
             }
             return new MvcHtmlString(sb.ToString());

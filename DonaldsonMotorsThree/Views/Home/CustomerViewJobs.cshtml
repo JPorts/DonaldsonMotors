@@ -37,7 +37,7 @@
                 @Html.DisplayNameFor(model => model.JobCost)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PartId)
+                @Html.DisplayNameFor(model => model.Parts)
             </th>
             <th>
                 Options
@@ -57,7 +57,7 @@
                     @Html.DisplayFor(modelItem => item.JobCost)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PartId)
+                    @Html.DisplayFor(modelItem => item.Parts)
                 </td>
                 <td>
                     <button data-job-id="@item.JobId" class="btn btn-link js-delete">Delete</button>
