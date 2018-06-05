@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
@@ -15,6 +16,7 @@ using DonaldsonMotorsThree.ViewModels;
 using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using Postal;
+using Stripe; 
 
 namespace DonaldsonMotorsThree.Controllers
 {
@@ -35,6 +37,32 @@ namespace DonaldsonMotorsThree.Controllers
         // GET: Confirmed Bookings
         public ActionResult Index()
         {
+                var stripePublishKey = ConfigurationManager.AppSettings["stripePublishableKey"];
+                ViewBag.StripePublishKey = stripePublishKey;
+                return View();
+        }
+
+        public ActionResult Charge(string stripeEmail, string stripeToken)
+        {
+            var customers = new StripeCustomerService();
+            var charges = new StripeChargeService();
+
+            var customer = customers.Create(new StripeCustomerCreateOptions
+            {
+                Email = stripeEmail,
+                SourceToken = stripeToken
+            });
+
+            var charge = charges.Create(new StripeChargeCreateOptions
+            {
+                Amount = 500,//charge in cents
+                Description = "Sample Charge",
+                Currency = "usd",
+                CustomerId = customer.Id
+            });
+
+            // further application specific code goes here
+
             return View();
         }
 

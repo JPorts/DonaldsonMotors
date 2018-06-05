@@ -128,12 +128,12 @@
       <HintPath>..\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Stripe, Version=1.12.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Stripe.1.12.0\lib\net40\Stripe.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Stripe.net, Version=16.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stripe.net.16.4.0\lib\net45\Stripe.net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.1.2\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
@@ -760,7 +760,9 @@
     <Content Include="Views\Staff\Edit.cshtml" />
     <Content Include="Views\Booking\GetBookingHistory.cshtml" />
     <Content Include="Views\Emails\_ViewStart.cshtml" />
-    <Content Include="Views\Emails\Web.config" />
+    <Content Include="Views\Emails\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Report\StockReport.cshtml" />
     <Content Include="Views\Shared\_StoreManageMenuPartial.cshtml" />
     <Content Include="Views\Shared\_GarageManageMenuPartial.cshtml" />
@@ -779,6 +781,7 @@
     <Content Include="Views\Booking\Details.cshtml" />
     <Content Include="Views\Booking\Edit.cshtml" />
     <Content Include="Views\Emails\BookingInvoice.cshtml" />
+    <Content Include="Views\ConfirmedBooking\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
