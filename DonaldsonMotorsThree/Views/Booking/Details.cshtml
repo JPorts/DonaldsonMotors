@@ -1,4 +1,5 @@
-﻿@model DonaldsonMotorsThree.Models.Booking
+﻿@using DonaldsonMotorsThree.Models
+@model DonaldsonMotorsThree.Models.Booking
 
 @{
     ViewBag.Title = "Details";
@@ -85,6 +86,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Amend My Booking", "Edit", new { id = Model.BookingId }) |
+
+    @Html.ActionLink("Amend My Booking", "Edit", new {id = Model.BookingId}) |
     @Html.Partial("_BackToListButtonPartial");
 </p>

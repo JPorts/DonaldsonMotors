@@ -250,6 +250,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -769,12 +770,14 @@
     <Content Include="Views\Shared\DisplayTemplates\JobsTemplate.cshtml" />
     <Content Include="Views\Booking\Details.cshtml" />
     <Content Include="Views\Booking\Edit.cshtml" />
+    <Content Include="Views\Emails\BookingInvoice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Basket\" />
     <Folder Include="Views\Booking\Create\EditorTemplates\" />
     <Folder Include="Views\Mail\" />
+    <Folder Include="Views\Payment\" />
     <Folder Include="Views\Sms\" />
   </ItemGroup>
   <ItemGroup>

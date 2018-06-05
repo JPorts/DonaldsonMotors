@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper.Mappers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -21,6 +22,7 @@ namespace DonaldsonMotorsThree.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        // Declare Signin, User, DbContext and Role Managers for account functions.
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private ApplicationDbContext _context;
@@ -28,12 +30,13 @@ namespace DonaldsonMotorsThree.Controllers
 
 
 
-
+        // Account controller constructor
         public AccountController()
         {
 
         }
 
+        // Initialise above declarations in constructor
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,
             ApplicationDbContext _context, ApplicationRoleManager roleManager)
         {
@@ -44,25 +47,28 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
 
+        // Create ApplicationRoleManager
         public ApplicationRoleManager RoleManager
         {
             get { return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>(); }
             private set { _roleManager = value; }
         }
 
-
+        // Create ApplicationSigninManager
         public ApplicationSignInManager SignInManager
         {
             get { return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>(); }
             private set { _signInManager = value; }
         }
 
+        // Create ApplicationUserManager
         public ApplicationUserManager UserManager
         {
             get { return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
             private set { _userManager = value; }
         }
 
+        
         [HttpPost]
         public async Task<ActionResult> CreateStaff(Staff staff, FormCollection form)
         {
@@ -71,13 +77,15 @@ namespace DonaldsonMotorsThree.Controllers
                 // Hash password using password hasher // 
                 var passwordHasher = new PasswordHasher();
                 var password = passwordHasher.HashPassword(staff.Password);
-
+                // Pull roleId from the form
                 string roleID = form["Roles"].ToString();
 
+                // Initialise DbContext
                 ApplicationDbContext thisdb = new ApplicationDbContext();
 
+                // Use lambda expression to get rolename 
                 var roleName = thisdb.Roles.Where(r => r.Id.Equals(roleID)).Select(r => r.Name).FirstOrDefault(); 
-                
+                // Create staff object
                 var user = new Staff()
                 {
                     UserName = staff.Email,
@@ -99,10 +107,12 @@ namespace DonaldsonMotorsThree.Controllers
                     Rolename = roleName
                 };
 
+                // Implement userManager async task to create new User with staff discriminator and assigned role//
                 var result = await UserManager.CreateAsync(user, staff.Password);
-
+                // If execution succeeds.
                 if (result.Succeeded)
                 {
+                    // Assign staff id in roles table //
                     var role = await UserManager.AddToRoleAsync(user.Id, roleName);
                     return RedirectToAction("Index", "Staff");
                 }
@@ -110,9 +120,10 @@ namespace DonaldsonMotorsThree.Controllers
                 AddErrors(result);
 
             }
-
+            // If we get this far, something has went wrong. 
             return RedirectToAction("Create", "Staff");
         }
+
 
         public ActionResult AddStaff()
         {

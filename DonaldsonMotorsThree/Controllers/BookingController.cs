@@ -15,6 +15,7 @@ using DonaldsonMotorsThree.Models.Repositories;
 using DonaldsonMotorsThree.ViewModels;
 using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
+using Postal;
 
 namespace DonaldsonMotorsThree.Controllers
 {
@@ -46,21 +47,26 @@ namespace DonaldsonMotorsThree.Controllers
 
         public double SumTotal(BookingFormViewModel bookingVm)
         {
+            // Initialise total to 0.
             var total = 0.00;
+            // loop through jobids in viewmodel
             foreach (var jobId in bookingVm.BookedBooking.JobIds)
             {
+                // try to assign job object to id 
                 try
                 {
                     var job = _context.JobTypes.SingleOrDefault(j => j.Id == jobId);
-
+                    // add jobcost from job object to total variable//
                     total += job.JobCost;
                 }
+                // catch any null references
                 catch (NullReferenceException e)
                 {
+                    // return 0 is something goes wrong//
                     return 0;
                 }
             }
-
+            // if we get this far, all is working properly and total is returned. 
             return total;
         }
 
@@ -68,17 +74,19 @@ namespace DonaldsonMotorsThree.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(BookingFormViewModel vm, FormCollection formCollection)
         {
+            // Try to create booking
             try
             {
                 if (ModelState.IsValid)
                 {
                     //var strJobs = formCollection.GetValue("Booking.JobIds").AttemptedValue;
-
+                    // If model state is valid, add booking and save changes.
                     bookingRepo.Add(vm.BookedBooking);
                     bookingRepo.SaveChanges();
                 }
                 return View("Home");
             }
+            // Else catch any validation exceptions and write to debug console// 
             catch (DbEntityValidationException e)
             {
                 foreach (var eve in e.EntityValidationErrors)
@@ -100,8 +108,10 @@ namespace DonaldsonMotorsThree.Controllers
 
         public ActionResult CreateBooking(BookingFormViewModel bookingVm, FormCollection formCollection)
         {
+            // grab string job ids from form collection //
             var strJobs = formCollection.GetValue("BookedBooking.JobIds").AttemptedValue;
 
+            // if jobs is not null or whitespace, split the job ids by the comman and parse to integers. add to list
             if (!strJobs.IsNullOrWhiteSpace()) bookingVm.BookedBooking.JobIds.AddRange(strJobs.Split(',').Select(Int32.Parse).ToList());
 
             // Nested within try catch to pull entity validation properties into message// 
@@ -136,15 +146,17 @@ namespace DonaldsonMotorsThree.Controllers
                 bookingVm.BookedBooking.BookingStatus = Constants.BookingStatus.Requested;
                 var bookingTotal = SumTotal(bookingVm);
                 bookingVm.BookedBooking.Total = bookingTotal;
-
+                
                 return View("ConfirmBooking", bookingVm);
 
 
             }
+            // if something goes wrong, catch validation exceptions 
             catch (DbEntityValidationException e)
             {
                 foreach (var eve in e.EntityValidationErrors)
                 {
+                    // foreach validation error, write to console//
                     Debug.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
                         eve.Entry.Entity.GetType().Name, eve.Entry.State);
                     foreach (var ve in eve.ValidationErrors)
@@ -239,10 +251,14 @@ namespace DonaldsonMotorsThree.Controllers
 
         }
 
-        public ActionResult ConfirmBooking(Booking Booking, VehicleDetails vehicle)
+        public ActionResult ConfirmBooking(Booking booking, VehicleDetails vehicle)
         {
+   
+            
             return View("Home");
         }
+
+
 
         public ActionResult ViewAll()
         {
@@ -265,27 +281,33 @@ namespace DonaldsonMotorsThree.Controllers
             var BookingHistory = _context.Bookings.Where(b =>
                 b.BookingStatus == Constants.BookingStatus.Complete && b.CustomerId == userId).ToList();
 
+            // return view with booking history
             return View(BookingHistory);
         }
 
+        
         public ActionResult Details(int id)
         {
+            // grab booking from id match
             var booking = _context.Bookings.SingleOrDefault(s => s.BookingId == id);
+            // return not found if bookking is null
             if (booking == null)
                 return HttpNotFound();
 
-
+            // return view with booking if all goes well
             return View(booking);
         }
 
+        
         public ActionResult Edit(int id)
         {
+            // pull booking from id match
             var booking = _context.Bookings.SingleOrDefault(b => b.BookingId == id);
-
+            // if booking is null, return not found
             if (booking == null)
                 return HttpNotFound();
 
-
+            // if all goes well, return booking for amendment
             return View(booking);
         }
 

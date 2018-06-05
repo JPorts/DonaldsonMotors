@@ -7,12 +7,14 @@ using System.Net;
 using System.Security.Principal;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Results;
 using System.Web.Mvc;
 using DonaldsonMotorsThree.Models;
 using DonaldsonMotorsThree.Models.Repositories;
 using DonaldsonMotorsThree.ViewModels;
 using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
+using Postal;
 
 namespace DonaldsonMotorsThree.Controllers
 {
@@ -58,6 +60,7 @@ namespace DonaldsonMotorsThree.Controllers
 
                         bookingRepo.Add(vm.BookedBooking);
                         bookingRepo.SaveChanges();
+                        sendInvoiceConfirmation(vm);
                     }
                 }
                 return View("ThankYou",vm.BookedCustomer);
@@ -79,5 +82,22 @@ namespace DonaldsonMotorsThree.Controllers
                 throw;
             }
         }
+
+        public ActionResult sendInvoiceConfirmation(BookingFormViewModel booking)
+        {
+            dynamic email = new Email("BookingInvoice");
+            email.To = booking.BookedCustomer;
+            email.Message = "Booking Invoice";
+            email.UserEmailAddress = booking.BookedCustomer.Email;
+            email.Name = booking.BookedCustomer.FirstName;
+            email.Total = booking.BookedBooking.Total;
+            email.Jobs = booking.BookedBooking.Jobs;
+            email.StartDate = booking.BookedBooking.StartDate;
+            email.BookingId = booking.BookedBooking.BookingId;
+            email.Send();
+            return View("ThankYou", booking.BookedCustomer);
+
+        }
+
     }
 }

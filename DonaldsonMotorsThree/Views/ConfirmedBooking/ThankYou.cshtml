@@ -13,5 +13,12 @@
 <div width="100%" style="text-align:center"><p>Thank you <em>@Model.FirstName</em>&nbsp;<em>@Model.LastName</em></p> </div>
 <br />
 <br />
-<br />
-<br />
+<div width="100%" style="text-align:center"><p>Pay Now or pay Later?</p> </div>
+<div width="100%" style="text-align:center">
+    @Html.ActionLink("Make Payment", "PayIndex", "Payment", new { @class="btn btn-primary"})
+</div>
+<br/>
+<br/>
+<div width="100%" style="text-align:center">
+    @Html.ActionLink("Pay Later", "", "Home", new {@class="btn btn-success"})
+</div>

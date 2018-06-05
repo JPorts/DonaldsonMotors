@@ -26,7 +26,7 @@ namespace DonaldsonMotorsThree.Controllers.Api
         [HttpPost]
         public IHttpActionResult CreateBooking(BookingDto bookingDto)
         {
-            //
+            // check if inputs are valid// 
             var customer = _context.Customers.SingleOrDefault(c => c.Id == bookingDto.Customer.Id);
 
             if (customer == null)
