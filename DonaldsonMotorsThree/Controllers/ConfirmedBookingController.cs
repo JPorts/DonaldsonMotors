@@ -57,10 +57,11 @@ namespace DonaldsonMotorsThree.Controllers
                         // Same ID for both at the moment.
                         //vm.BookedBooking.CustomerId = vm.BookedCustomer.Id;
                         //vm.BookedBooking.UserId = vm.BookedCustomer.Id;
-
+                        var customerId = vm.BookedBooking.CustomerId;
+                        var customerEmail = _context.Customers.Where(c => c.Id == customerId).Select(c => c.Email).SingleOrDefault(); 
                         bookingRepo.Add(vm.BookedBooking);
                         bookingRepo.SaveChanges();
-                        sendInvoiceConfirmation(vm);
+                        sendInvoiceConfirmation(vm, customerEmail);
                     }
                 }
                 return View("ThankYou",vm.BookedCustomer);
@@ -83,18 +84,23 @@ namespace DonaldsonMotorsThree.Controllers
             }
         }
 
-        public ActionResult sendInvoiceConfirmation(BookingFormViewModel booking)
+        public ActionResult sendInvoiceConfirmation(BookingFormViewModel booking, string customerEmail)
         {
+            // Instantiate dynamic email.
             dynamic email = new Email("BookingInvoice");
             email.To = booking.BookedCustomer;
+           // var userEmailAddress = booking.BookedCustomer.Email;
+
             email.Message = "Booking Invoice";
-            email.UserEmailAddress = booking.BookedCustomer.Email;
+            email.UserEmailAddress = customerEmail;
+
             email.Name = booking.BookedCustomer.FirstName;
             email.Total = booking.BookedBooking.Total;
             email.Jobs = booking.BookedBooking.Jobs;
             email.StartDate = booking.BookedBooking.StartDate;
             email.BookingId = booking.BookedBooking.BookingId;
             email.Send();
+
             return View("ThankYou", booking.BookedCustomer);
 
         }
