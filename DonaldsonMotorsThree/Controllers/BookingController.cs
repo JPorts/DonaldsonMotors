@@ -268,6 +268,26 @@ namespace DonaldsonMotorsThree.Controllers
             return View(BookingHistory);
         }
 
+        public ActionResult Details(int id)
+        {
+            var booking = _context.Bookings.SingleOrDefault(s => s.BookingId == id);
+            if (booking == null)
+                return HttpNotFound();
+
+
+            return View(booking);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var booking = _context.Bookings.SingleOrDefault(b => b.BookingId == id);
+
+            if (booking == null)
+                return HttpNotFound();
+
+
+            return View(booking);
+        }
 
     }
 }
