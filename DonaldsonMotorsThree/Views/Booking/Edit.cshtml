@@ -1,4 +1,5 @@
-﻿@model DonaldsonMotorsThree.Models.Booking
+﻿@using System.Web.Mvc.Html
+@model DonaldsonMotorsThree.ViewModels.BookingFormViewModel
 
 @{
     ViewBag.Title = "Edit";
@@ -10,91 +11,162 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Booking</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.BookingId)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.PaidFor, htmlAttributes: new { @class = "control-label col-md-2" })
+    <br />
+    <h4 style="text-align: center"><b><em>Book a Job</em></b></h4>
+    <hr />
+
+    @Html.HiddenFor(m => m.BookedBooking.PartIds)
+    @Html.HiddenFor(m => m.BookedBooking.JobIds)
+
+    <div class="form-horizontal">
+        <div class="form-group row">
+            <label class="control-label col-md-2">Search Jobs</label>
             <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.PaidFor)
-                    @Html.ValidationMessageFor(model => model.PaidFor, "", new { @class = "text-danger" })
+                <div class="tt-container">
+                    <input id="jobinput" class="typeahead form-control" type="text" />
                 </div>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DurationInDays, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DurationInDays, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DurationInDays, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Total, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DateCompleted, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DateCompleted, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DateCompleted, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.JobId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.JobId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.JobId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.BookingStatus, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BookingStatus, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BookingStatus, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
+        <div class="row">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <ul class="list-group" id="selectedjobslist"></ul>
             </div>
         </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.BookedBooking.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BookedBooking.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BookedBooking.StartDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Vehicle.RegNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Vehicle.RegNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Vehicle.RegNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Vehicle.Make, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Vehicle.Make, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Vehicle.Make, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Vehicle.Model, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Vehicle.Model, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Vehicle.Model, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Vehicle.EngineSize, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Vehicle.EngineSize, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Vehicle.EngineSize, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Vehicle.Milage, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Vehicle.Milage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Vehicle.Milage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+
+            <div class="col-md-offset-2 col-md-4">
+                @Html.Partial("_BackToListButtonPartial")
+            </div>
+            <div class="col-md-4">
+                <a type="button" class="btn btn-success btn-sm" href="#" onclick="$(this).closest('form').submit()">
+                    Proceed with booking
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </div>
+        </div>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
     </div>
+
 }
 
-<div>
-    @Html.Partial("_BackToListButtonPartial")
-</div>
 
-@section Scripts {
+
+
+
+@section scripts
+{
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        var vm = {
+            jobIds: [],
+            carPartIds: []
+        };
+
+        $(document).ready(function () {
+            //Set up "Bloodhound" Options
+            var my_Suggestion_class = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('jobRequirements'),
+                queryTokenizer: function (item) {
+                    //console.log("query",item);
+                    return Bloodhound.tokenizers.whitespace(item);
+                },
+                remote: {
+                    url: '/api/jobs?query=%QUERY',
+                    wildcard: '%QUERY'
+                    //,filter: function (x) {
+                    //    return $.map(x, function (item) {
+                    //        console.log(item);
+                    //        return { jobRequirements: item.jobRequirements};
+                    //    });
+                    //}
+                },
+                limit: 15
+            });
+
+            // Initialize Typeahead with Parameters
+            my_Suggestion_class.initialize();
+            var typeahead_elem = $('#jobinput');
+            typeahead_elem.typeahead({
+                hint: true,
+                highlight: true,
+                minLength: 0
+            },
+                {
+                    // `ttAdapter` wraps the suggestion engine in an adapter that
+                    // is compatible with the typeahead jQuery plugin
+                    name: 'jobRequirements',
+                    displayKey: 'jobRequirements',
+                    source: my_Suggestion_class.ttAdapter()
+                });
+
+
+            $('.typeahead').on("typeahead:select",
+                function (e, job) {
+                    console.log(job);
+                    //When a Job item has been selected, append selected job onto list //
+                    $("#selectedjobslist").append("<li class='list-group-item' value='" + job.id + "'>" + job.jobRequirements + "</li>");
+                    setTimeout(function () { $("#jobinput").val(''); }, 500);
+                    vm.jobIds.push(job.id);
+                    // bug? No way to remove job ids yet
+                    $("#BookedBooking_JobIds").val(vm.jobIds.toString());
+                });
+
+
+        });// Close document ready
+    </script>
 }
+

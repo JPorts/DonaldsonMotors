@@ -7,26 +7,40 @@
 }
 <!-- Bookings page shows actions to other pages for Create, ViewAllBookings, and View previous bookings for the logged in customer. -->
 
-    <br/>
-    <br/>
-    <h3>Bookings:</h3>
-    <br/>
+<br />
+<br />
+<h3>Bookings:</h3>
+<br />
+
+<div class="row">
+    <div class="col-md-offset-1">
+        @Html.ActionLink("Create Booking", "Create", "Booking", new { @class = "btn btn-info bold" })
+    </div>
+</div>
+
+<br />
+
+
+@if (EnvironmentGlobals.IsCustomer)
+{
 
     <div class="row">
         <div class="col-md-offset-1">
-            @Html.ActionLink("Create Booking", "Create", "Booking", new {@class = "btn btn-info bold"})
+            <button type="button" class="btn btn-info" onclick="location.href = '@Url.Action("GetCustomerBookings", "Booking")'"><strong>My Bookings</strong></button>
         </div>
     </div>
 
-    <br/>
 
+}
+else
+{
     <div class="row">
         <div class="col-md-offset-1">
             <button type="button" class="btn btn-info" onclick="location.href = '@Url.Action("GetBookingHistory", "Booking")'"><strong>View Previous Bookings</strong></button>
         </div>
     </div>
 
-    <br/>
+    <br />
 
     <div class="row">
         <div class="col-md-offset-1">
@@ -34,7 +48,7 @@
         </div>
     </div>
 
-    <br/>
+    <br />
 
     <div class="row">
         <div class="col-md-offset-1">
@@ -42,13 +56,13 @@
         </div>
     </div>
 
-
+}
 <!-- JS Code Below-->
-    @section scripts
+@section scripts
     {
-        
 
-        
 
-    }
+
+
+}
 

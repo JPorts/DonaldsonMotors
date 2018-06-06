@@ -188,11 +188,15 @@ namespace DonaldsonMotorsThree.Controllers
                 bookingVm.Vehicle.CustomerId = customerId;
                 // Assign vehicle to varc
                 var vehicle = bookingVm.Vehicle;
+                //vehicle.BookingId = bookingVm.BookedBooking.BookingId;
+                
                 // Ensure new vehicle entry
                 if (bookingVm.Vehicle.VehicleId == 0)
                     // Repo handles the database functions
                     vehicleRepo.Add(vehicle);
                 vehicleRepo.SaveChanges();
+
+                bookingVm.BookedBooking.VehicleId = vehicle.VehicleId;
                 // Return customer to confirm booking view// 
                 //Assign booking properties to VM//
                 bookingVm.BookedCustomer = customer;
@@ -371,6 +375,22 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
 
+
+
+        /// <summary>
+        /// Gets the booking history.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
+        public ActionResult GetCustomerBookings()
+        {
+            // Pull current user id// 
+            var userId = User.Identity.GetUserId();
+            //pull associated customer// 
+            var BookingHistory = _context.Bookings.Where(b => b.CustomerId == userId).ToList();
+            // return view with booking history
+            return View(BookingHistory);
+        }
+
         /// <summary>
         /// Detailses the specified identifier.
         /// </summary>
@@ -396,14 +416,19 @@ namespace DonaldsonMotorsThree.Controllers
         /// <returns>ActionResult.</returns>
         public ActionResult Edit(int id)
         {
+            BookingFormViewModel vm = new BookingFormViewModel();
+
+
             // pull booking from id match
-            var booking = _context.Bookings.SingleOrDefault(b => b.BookingId == id);
+            vm.BookedBooking = _context.Bookings.SingleOrDefault(b => b.BookingId == id);
+
             // if booking is null, return not found
-            if (booking == null)
+            if (vm.BookedBooking == null)
                 return HttpNotFound();
 
+            
             // if all goes well, return booking for amendment
-            return View(booking);
+            return View(vm);
         }
 
     }

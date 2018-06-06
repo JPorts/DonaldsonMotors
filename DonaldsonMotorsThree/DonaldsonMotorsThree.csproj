@@ -274,6 +274,7 @@
     <Compile Include="Dtos\ReviewDto.cs" />
     <Compile Include="Dtos\StaffDto.cs" />
     <Compile Include="Dtos\SupplierDto.cs" />
+    <Compile Include="EnvironmentGlobals.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -309,6 +310,14 @@
     <Compile Include="Migrations\201806042059409_newfiddle.cs" />
     <Compile Include="Migrations\201806042059409_newfiddle.Designer.cs">
       <DependentUpon>201806042059409_newfiddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806062208393_unsurewhy.cs" />
+    <Compile Include="Migrations\201806062208393_unsurewhy.Designer.cs">
+      <DependentUpon>201806062208393_unsurewhy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806062315301_Added vehcileid to booking.cs" />
+    <Compile Include="Migrations\201806062315301_Added vehcileid to booking.Designer.cs">
+      <DependentUpon>201806062315301_Added vehcileid to booking.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -781,6 +790,7 @@
     <Content Include="Views\Booking\Edit.cshtml" />
     <Content Include="Views\Emails\BookingInvoice.cshtml" />
     <Content Include="Views\ConfirmedBooking\index.cshtml" />
+    <Content Include="Views\Booking\GetCustomerBookings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -826,6 +836,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806042059409_newfiddle.resx">
       <DependentUpon>201806042059409_newfiddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806062208393_unsurewhy.resx">
+      <DependentUpon>201806062208393_unsurewhy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806062315301_Added vehcileid to booking.resx">
+      <DependentUpon>201806062315301_Added vehcileid to booking.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

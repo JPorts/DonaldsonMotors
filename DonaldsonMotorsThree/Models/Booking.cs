@@ -122,6 +122,12 @@ namespace DonaldsonMotorsThree.Models
         /// Gets or sets the booking status.
         /// </summary>
         /// <value>The booking status.</value>
+        public int VehicleId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the reg number.
+        /// </summary>
+        /// <value>The reg number.</value>
         public string BookingStatus { get; set; }
     }
 }

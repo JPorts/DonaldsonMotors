@@ -6,15 +6,15 @@
 
 
 
-@using (Html.BeginForm("UpdateCustomer","Customers"))
+@using (Html.BeginForm("UpdateCustomer", "Customer"))
 {
     @Html.AntiForgeryToken()
-    <br/>
-   
+    <br />
+
     <div class="form-horizontal">
         <h4 style="text-align: center">Edit Customer</h4>
         <hr />
-        <br/>
+        <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Customer.Id)
 
@@ -91,17 +91,28 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-offset-2 col-md-2">
                 <input type="submit" value="Save" class="btn btn-primary" />
-
             </div>
+
+            @*Is the current user viewing their own record *@
+            @if (EnvironmentGlobals.UserId == Model.Customer.Id)
+            {
+        <div class="col-md-2">
+            <input type="button" value="Unregister" class="btn btn-danger" href="/customer/delete?@Model.Customer.Id" />
+        </div>
+            }
         </div>
     </div>
+
+    if (EnvironmentGlobals.IsCustomer == false)
+        {
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.Partial("_BackToListButtonPartial")
+            </div>
+        </div>
+    }
+
+
 }
-
-<div class="form-group">
-    <div class="col-md-offset-2 col-md-10">
-      @Html.Partial("_BackToListButtonPartial")
-
-    </div>
-</div>

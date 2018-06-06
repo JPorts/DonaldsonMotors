@@ -60,104 +60,77 @@
                     }
                 </dd>
             *@
-            <dt>Two-Factor Authentication:</dt>
-            <dd>
-                <p>
-                    There are no two-factor authentication providers configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                    for details on setting up this ASP.NET application to support two-factor authentication.
-                </p>
-                @*@if (Model.TwoFactor)
-                    {
-                        using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            <text>Enabled
-                            <input type="submit" value="Disable" class="btn btn-link" />
-                            </text>
-                        }
-                    }
-                    else
-                    {
-                        using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            <text>Disabled
-                            <input type="submit" value="Enable" class="btn btn-link" />
-                            </text>
-                        }
-                    }*@
-            </dd>
-        </dl>
+                    </dl>
         <dl class="dl-horizontal">
-            <dt>
+            <dt class="control-label row">
                 @Html.DisplayNameFor(model => model.Customer.FirstName)
             </dt>
 
-            <dd>
+            <dd class="control-label row">
                 @Html.DisplayFor(model => model.Customer.FirstName)
             </dd>
 
-            <dt>
+            <dt class="control-label row">
                 @Html.DisplayNameFor(model => model.Customer.LastName)
             </dt>
 
-            <dd>
+            <dd class="control-label row">
                 @Html.DisplayFor(model => model.Customer.LastName)
             </dd>
 
-            <dt>
+            <dt class="control-label row">
                 @Html.DisplayNameFor(model => model.Customer.AddressLine1)
             </dt>
 
-            <dd>
+            <dd class="control-label row">
                 @Html.DisplayFor(model => model.Customer.AddressLine1)
             </dd>
 
-            <dt>
+            <dt class="control-label row">
                 @Html.DisplayNameFor(model => model.Customer.AddressLine2)
             </dt>
 
-            <dd>
+            <dd class="control-label row">
                 @Html.DisplayFor(model => model.Customer.AddressLine2)
             </dd>
 
-            <dt>
+            <dt class="control-label row">
                 @Html.DisplayNameFor(model => model.Customer.Town)
             </dt>
 
-            <dd>
+            <dd class="control-label row">
                 @Html.DisplayFor(model => model.Customer.Town)
             </dd>
 
-            <dt>
+            <dt class="control-label row">
                 @Html.DisplayNameFor(model => model.Customer.Postcode)
             </dt>
 
-            <dd>
+            <dd class="control-label row">
                 @Html.DisplayFor(model => model.Customer.Postcode)
             </dd>
 
-            <dt>
+            <dt class="control-label row">
                 @Html.DisplayNameFor(model => model.Customer.TelephoneNumber)
             </dt>
 
-            <dd>
+            <dd class="control-label row">
                 @Html.DisplayFor(model => model.Customer.TelephoneNumber)
             </dd>
 
-            <dt>
+            <dt class="control-label row">
                 @Html.DisplayNameFor(model => model.Customer.Id)
             </dt>
 
-            <dd>
+            <dd class="control-label row">
                 @Html.DisplayFor(model => model.Customer.Id)
             </dd>
 
-            <dt>
+            <dt class="control-label row">
                 @Html.DisplayNameFor(model => model.Customer.Email)
             </dt>
 
-            <dd>
+            <dd class="control-label row">
                 @Html.DisplayFor(model => model.Customer.Email)
             </dd>
 

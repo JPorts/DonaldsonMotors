@@ -50,6 +50,7 @@ namespace DonaldsonMotorsThree.Controllers
         /// </summary>
         public ManageController()
         {
+            _context = new ApplicationDbContext(); 
         }
 
         /// <summary>
@@ -115,13 +116,8 @@ namespace DonaldsonMotorsThree.Controllers
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
                 : "";
 
-           
-
             var userId = User.Identity.GetUserId();
             var user = _context.Customers.SingleOrDefault(c => c.Id == userId);
-
-
-
 
             var model = new IndexViewModel
             {

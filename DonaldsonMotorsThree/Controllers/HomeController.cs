@@ -19,6 +19,7 @@ using System.Web.Mvc;
 using DonaldsonMotorsThree.Models;
 using DonaldsonMotorsThree.Models.Repositories;
 using DonaldsonMotorsThree.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace DonaldsonMotorsThree.Controllers
 {
@@ -53,6 +54,12 @@ namespace DonaldsonMotorsThree.Controllers
         /// <returns>ActionResult.</returns>
         public ActionResult Index()
         {
+            var userID = User.Identity.GetUserId();
+            if (this.User.Identity.IsAuthenticated)
+            {
+                EnvironmentGlobals.UserId = userID;
+                EnvironmentGlobals.IsCustomer = _context.Customers.Any(a => a.Id == userID);
+            }
             return View();
         }
 

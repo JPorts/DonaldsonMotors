@@ -74,11 +74,31 @@ namespace DonaldsonMotorsThree.Controllers
             return View("Details", viewModel);
         }
 
-
+        [System.Web.Mvc.HttpPost]
         // GET: Customer/Create
-        public ActionResult Create()
+        public ActionResult UpdateCustomer(CustomerViewModel vm)
         {
-            return View();
+            var upd = vm.Customer; 
+
+                var customer = _context.Customers.SingleOrDefault(c => c.Id == vm.Customer.Id);
+                if (customer != null)
+                {
+                    customer.FirstName = upd.FirstName;
+                    customer.LastName = upd.LastName;
+                    customer.AddressLine1 = upd.AddressLine1;
+                    customer.AddressLine2 = upd.AddressLine2;
+                    customer.Town = upd.Town;
+                    customer.Postcode = upd.Postcode;
+                    customer.TelephoneNumber = upd.TelephoneNumber;
+
+                _context.SaveChanges();
+                }
+
+            var newVm = new CustomerViewModel();
+            newVm.Customer = customer; 
+            
+
+            return View("Details", newVm);
         }
 
         // POST: Customer/Create

@@ -9,8 +9,6 @@ namespace DonaldsonMotorsThree.ViewModels
 {
     public class BookingFormViewModel
     {
-
-
         public Customer BookedCustomer { get; set; }
         public Booking BookedBooking { get; set; }
         public VehicleDetails Vehicle { get; set; }

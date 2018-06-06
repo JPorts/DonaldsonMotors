@@ -7,7 +7,8 @@ using DonaldsonMotorsThree.Models;
 
 namespace DonaldsonMotorsThree.ViewModels
 {
-    public class CustomerViewModel { 
+    public class CustomerViewModel
+    { 
         public Customer Customer { get; set; }
 
         public IEnumerable<Customer> Customers { get; set; }
