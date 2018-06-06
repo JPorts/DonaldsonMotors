@@ -76,20 +76,20 @@
         </td>
 
         <td>
-            @Html.HiddenFor(modelItem => item.CustomerId)
+            @Html.HiddenFor(modelItem => item.Id)
         </td>
         
 
 
         <td>
-            <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("Edit", new {Id = item.CustomerId})">
+            <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("Edit", new {Id = item.Id})">
                 <span class="glyphicon glyphicon-pencil"></span>
             </a>
-            <a type="button" class="btn btn-success btn-sm" href="@Url.Action("Details", new {Id = item.CustomerId})">
+            <a type="button" class="btn btn-success btn-sm" href="@Url.Action("Details", new {Id = item.Id})">
                 <span class="glyphicon glyphicon-list"></span>
 
             </a>
-            <button data-customer-id="@item.CustomerId" class="btn btn-danger btn-sm js-delete" onclick="javascript: deleteCustomer(this, @item.CustomerId);">
+            <button data-customer-id="@item.Id" class="btn btn-danger btn-sm js-delete" onclick="javascript: deleteCustomer(this, @item.Id);">
                 <span class="glyphicon glyphicon-trash"></span>
             </button>
 

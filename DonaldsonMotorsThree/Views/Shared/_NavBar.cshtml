@@ -15,7 +15,17 @@
             <ul class="nav navbar-nav">
 
                 <li>@Html.ActionLink("Bookings", "Index", "Booking")</li>
-                <li>@Html.ActionLink("Jobs", "ViewJobs", "Home")</li>
+               
+                
+                @if (User.IsInRole("Customer") || User.Identity.IsAuthenticated == false)
+                {
+                    <li>@Html.ActionLink("Jobs", "CustomerViewJobs", "Home")</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("Jobs", "ViewJobs", "Home")</li>
+                }
+
                 <li>@Html.ActionLink("Stock", "CustomerIndex", "Stock")</li>
 
                 @if (User.Identity.IsAuthenticated)

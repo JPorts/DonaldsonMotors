@@ -39,9 +39,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Parts)
             </th>
-            <th>
-                Options
-            </th>
+
         </tr>
     </thead>
 
@@ -59,9 +57,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Parts)
                 </td>
-                <td>
-                    <button data-job-id="@item.JobId" class="btn btn-link js-delete">Delete</button>
-                </td>
+   
             </tr>
         }
     </tbody>
