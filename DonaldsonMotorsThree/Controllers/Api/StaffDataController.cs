@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : DonaldsonMotorsThree
+// Author           : Jordan-P
+// Created          : 06-06-2018
+//
+// Last Modified By : Jordan-P
+// Last Modified On : 06-06-2018
+// ***********************************************************************
+// <copyright file="StaffDataController.cs" company="">
+//     Copyright ©  2018
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -15,22 +28,38 @@ namespace DonaldsonMotorsThree.Controllers.Api
     /// <summary>
     /// Api Controller Class used to handle data services for staff members.
     /// </summary>
+    /// <seealso cref="System.Web.Http.ApiController" />
     public class StaffDataController : ApiController
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         private ApplicationDbContext _context;
 
         // Initialise DbContext in Constructor // 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StaffDataController"/> class.
+        /// </summary>
         public StaffDataController()
         {
            _context = new ApplicationDbContext();
         }
 
+        /// <summary>
+        /// Gets the staff.
+        /// </summary>
+        /// <returns>IEnumerable&lt;StaffDto&gt;.</returns>
         public IEnumerable<StaffDto> getStaff()
         {
             return _context.Staff.ToList().Select(Mapper.Map<Staff, StaffDto>);
         }
 
         //GET /api/staffdata/1
+        /// <summary>
+        /// Gets the staff.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>IHttpActionResult.</returns>
         public IHttpActionResult GetStaff(string id)
         {
             // Search the context for staff using id 
@@ -44,6 +73,13 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
 
+        /// <summary>
+        /// Updates the staff.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="staffDto">The staff dto.</param>
+        /// <exception cref="HttpResponseException">
+        /// </exception>
         [HttpPut]
         public void UpdateStaff(string id, StaffDto staffDto)
         {
@@ -66,6 +102,11 @@ namespace DonaldsonMotorsThree.Controllers.Api
             _context.SaveChanges();
         }
 
+        /// <summary>
+        /// Deletes the staff.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <exception cref="HttpResponseException"></exception>
         [HttpDelete]
         public void DeleteStaff(string id)
         {

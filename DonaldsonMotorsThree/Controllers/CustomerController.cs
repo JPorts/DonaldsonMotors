@@ -1,4 +1,17 @@
-﻿using DonaldsonMotorsThree.Models;
+﻿// ***********************************************************************
+// Assembly         : DonaldsonMotorsThree
+// Author           : Jordan-P
+// Created          : 06-06-2018
+//
+// Last Modified By : Jordan-P
+// Last Modified On : 06-06-2018
+// ***********************************************************************
+// <copyright file="CustomerController.cs" company="">
+//     Copyright ©  2018
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using DonaldsonMotorsThree.Models;
 using DonaldsonMotorsThree.Models.Repositories;
 using System;
 using System.Collections.Generic;
@@ -20,10 +33,15 @@ namespace DonaldsonMotorsThree.Controllers
         private CustomerRepository repo;
 
         // Instantiate repo and context in constructor // 
+        /// <summary>
+        /// Class ConfirmedBookingController.
+        /// </summary>
+        /// <seealso cref="System.Web.Mvc.Controller" />
         public CustomerController()
         {
             _context = new ApplicationDbContext();
             repo = new CustomerRepository();
+          
         }
 
 
@@ -42,6 +60,12 @@ namespace DonaldsonMotorsThree.Controllers
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
             if (customer == null)
+                /// <summary>
+                /// Charges the specified stripe email.
+                /// </summary>
+                /// <param name="stripeEmail">The stripe email.</param>
+                /// <param name="stripeToken">The stripe token.</param>
+                /// <returns>ActionResult.</returns>
                 return HttpNotFound();
             var viewModel = new CustomerViewModel
             {
@@ -66,6 +90,10 @@ namespace DonaldsonMotorsThree.Controllers
                 
                     repo.Add(customer);
                     repo.SaveChanges();
+                /// <summary>
+                /// Creates this instance.
+                /// </summary>
+                /// <returns>ActionResult.</returns>
                 return RedirectToAction("Index");
             }
             catch

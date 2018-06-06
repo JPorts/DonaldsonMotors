@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : DonaldsonMotorsThree
+// Author           : Jordan-P
+// Created          : 06-06-2018
+//
+// Last Modified By : Jordan-P
+// Last Modified On : 06-06-2018
+// ***********************************************************************
+// <copyright file="StockController.cs" company="">
+//     Copyright ©  2018
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,16 +30,32 @@ using DonaldsonMotorsThree.ViewModels;
 
 namespace DonaldsonMotorsThree.Controllers
 {
+    /// <summary>
+    /// Class StockController.
+    /// </summary>
+    /// <seealso cref="System.Web.Mvc.Controller" />
     public class StockController : Controller
     {
 
-       // Declare CarPart,Supplier Repository and Context
+        // Declare CarPart,Supplier Repository and Context
 
+        /// <summary>
+        /// The part repo
+        /// </summary>
         private CarPartRepository PartRepo;
+        /// <summary>
+        /// The supplier repo
+        /// </summary>
         private SupplierRepository SupplierRepo;
+        /// <summary>
+        /// The context
+        /// </summary>
         private ApplicationDbContext _context;
 
         // Instantiate Repos and Context in Constructor // 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StockController"/> class.
+        /// </summary>
         public StockController()
         {
             PartRepo = new CarPartRepository();
@@ -35,6 +64,10 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
         // GET: Stock
+        /// <summary>
+        /// Indexes this instance.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
         public ActionResult Index()
         {
             var parts = PartRepo.GetAll();
@@ -45,12 +78,21 @@ namespace DonaldsonMotorsThree.Controllers
             return View(parts);
         }
 
+        /// <summary>
+        /// Customers the index.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
         public ActionResult CustomerIndex()
         {
             return View(PartRepo.GetAll());
         }
 
         //GET: Stock/Details/1
+        /// <summary>
+        /// Detailses the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>ActionResult.</returns>
         public ActionResult Details(int id)
         {
             var carPart = PartRepo.Get(id);
@@ -62,7 +104,12 @@ namespace DonaldsonMotorsThree.Controllers
             return View(carPart);
         }
 
-       
+
+        /// <summary>
+        /// Edits the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>ActionResult.</returns>
         public ActionResult Edit(int id)
         {
             var carPart = PartRepo.Get(id);
@@ -80,6 +127,10 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
 
+        /// <summary>
+        /// Creates the car part.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
         public ActionResult CreateCarPart()
         {
             var Suppliers = SupplierRepo.GetAll();
@@ -91,6 +142,12 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
         // HTTP POST Which adds Car Part to the Table // 
+        /// <summary>
+        /// Adds the car part.
+        /// </summary>
+        /// <param name="carPart">The car part.</param>
+        /// <param name="supplier">The supplier.</param>
+        /// <returns>ActionResult.</returns>
         [System.Web.Http.HttpPost]
         public ActionResult AddCarPart(CarPart carPart, Supplier supplier)
         {

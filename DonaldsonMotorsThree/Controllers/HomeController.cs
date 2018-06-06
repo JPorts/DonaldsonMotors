@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : DonaldsonMotorsThree
+// Author           : Jordan-P
+// Created          : 06-06-2018
+//
+// Last Modified By : Jordan-P
+// Last Modified On : 06-06-2018
+// ***********************************************************************
+// <copyright file="HomeController.cs" company="">
+//     Copyright ©  2018
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,24 +22,45 @@ using DonaldsonMotorsThree.ViewModels;
 
 namespace DonaldsonMotorsThree.Controllers
 {
+    /// <summary>
+    /// Class HomeController.
+    /// </summary>
+    /// <seealso cref="System.Web.Mvc.Controller" />
     [AllowAnonymous]
     public class HomeController : Controller
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         private ApplicationDbContext _context;
+        /// <summary>
+        /// The repository
+        /// </summary>
         private JobRepository repository;
-       
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HomeController"/> class.
+        /// </summary>
         public HomeController()
         {
             repository = new JobRepository();
             _context = new ApplicationDbContext();
         }
 
+        /// <summary>
+        /// Indexes this instance.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
         public ActionResult Index()
         {
             return View();
         }
 
 
+        /// <summary>
+        /// Views the jobs.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
         public ActionResult ViewJobs()
         {
             ViewBag.Message = "Jobs";
@@ -34,6 +68,10 @@ namespace DonaldsonMotorsThree.Controllers
             
             return View(repository.GetAll());
         }
+        /// <summary>
+        /// Customers the view jobs.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
         public ActionResult CustomerViewJobs()
         {
             ViewBag.Message = "Jobs";
@@ -41,12 +79,21 @@ namespace DonaldsonMotorsThree.Controllers
 
             return View(repository.GetAll());
         }
+        /// <summary>
+        /// Creates the job.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
         public ActionResult CreateJob()
         {
             
             return View();
         }
 
+        /// <summary>
+        /// Adds the job.
+        /// </summary>
+        /// <param name="job">The job.</param>
+        /// <returns>ActionResult.</returns>
         [System.Web.Http.HttpPost]
         public ActionResult AddJob(Job job)
         {
@@ -56,6 +103,11 @@ namespace DonaldsonMotorsThree.Controllers
             return RedirectToAction("ViewJobs", "Home");
         }
 
+        /// <summary>
+        /// Edits the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>ActionResult.</returns>
         public ActionResult Edit(int id)
         {
             // Get Job From Repo //
@@ -74,6 +126,10 @@ namespace DonaldsonMotorsThree.Controllers
 
 
 
+        /// <summary>
+        /// Mechanics the jobs.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
         public ActionResult MechanicJobs()
         {
 
@@ -81,6 +137,10 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
 
+        /// <summary>
+        /// Contacts this instance.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
         public ActionResult Contact()
         {
             ViewBag.Message = "Contact Us.";
@@ -88,6 +148,11 @@ namespace DonaldsonMotorsThree.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Detailses the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>ActionResult.</returns>
         public ActionResult Details(int id)
         {
             var jobDetails = repository.Get(id);

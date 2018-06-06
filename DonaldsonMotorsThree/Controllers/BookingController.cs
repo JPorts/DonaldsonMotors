@@ -1,4 +1,17 @@
-﻿
+﻿// ***********************************************************************
+// Assembly         : DonaldsonMotorsThree
+// Author           : Jordan-P
+// Created          : 06-06-2018
+//
+// Last Modified By : Jordan-P
+// Last Modified On : 06-06-2018
+// ***********************************************************************
+// <copyright file="BookingController.cs" company="">
+//     Copyright ©  2018
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
 
 using System;
 using System.Collections.Generic;
@@ -19,14 +32,30 @@ using Microsoft.AspNet.Identity;
 
 namespace DonaldsonMotorsThree.Controllers
 {
+    /// <summary>
+    /// Class BookingController.
+    /// </summary>
+    /// <seealso cref="System.Web.Mvc.Controller" />
     [System.Web.Mvc.Authorize]
     public class BookingController : Controller
     {
 
+        /// <summary>
+        /// The context
+        /// </summary>
         private ApplicationDbContext _context;
+        /// <summary>
+        /// The vehicle repo
+        /// </summary>
         private VehicleRepository vehicleRepo;
+        /// <summary>
+        /// The booking repo
+        /// </summary>
         private BookingRepository bookingRepo;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BookingController"/> class.
+        /// </summary>
         public BookingController()
         {
             _context = new ApplicationDbContext();
@@ -35,16 +64,29 @@ namespace DonaldsonMotorsThree.Controllers
 
 
         // GET: Booking
+        /// <summary>
+        /// Indexes this instance.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
         public ActionResult Index()
         {
             return View();
         }
 
+        /// <summary>
+        /// Creates this instance.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
         public ActionResult Create()
         {
             return View();
         }
 
+        /// <summary>
+        /// Sums the total.
+        /// </summary>
+        /// <param name="bookingVm">The booking vm.</param>
+        /// <returns>System.Double.</returns>
         public double SumTotal(BookingFormViewModel bookingVm)
         {
             // Initialise total to 0.
@@ -70,6 +112,12 @@ namespace DonaldsonMotorsThree.Controllers
             return total;
         }
 
+        /// <summary>
+        /// Creates the specified vm.
+        /// </summary>
+        /// <param name="vm">The vm.</param>
+        /// <param name="formCollection">The form collection.</param>
+        /// <returns>ActionResult.</returns>
         [System.Web.Mvc.HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(BookingFormViewModel vm, FormCollection formCollection)
@@ -106,6 +154,12 @@ namespace DonaldsonMotorsThree.Controllers
             return View("Home");
         }
 
+        /// <summary>
+        /// Creates the booking.
+        /// </summary>
+        /// <param name="bookingVm">The booking vm.</param>
+        /// <param name="formCollection">The form collection.</param>
+        /// <returns>ActionResult.</returns>
         public ActionResult CreateBooking(BookingFormViewModel bookingVm, FormCollection formCollection)
         {
             // grab string job ids from form collection //
@@ -172,6 +226,13 @@ namespace DonaldsonMotorsThree.Controllers
 
         }
 
+        /// <summary>
+        /// Adds the jobs to booking.
+        /// </summary>
+        /// <param name="bookingVm">The booking vm.</param>
+        /// <param name="strJobs">The string jobs.</param>
+        /// <param name="customerId">The customer identifier.</param>
+        /// <param name="startDate">The start date.</param>
         private void AddJobsToBooking(BookingFormViewModel bookingVm, string strJobs, string customerId, DateTime startDate)
         {
             var jobIds = strJobs.Split(',').Select(Int32.Parse).ToList();
@@ -200,6 +261,12 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
         //POST: Booking/AddVehicle
+        /// <summary>
+        /// Adds the vehicle.
+        /// </summary>
+        /// <param name="vehicle">The vehicle.</param>
+        /// <param name="bookingVm">The booking vm.</param>
+        /// <returns>ActionResult.</returns>
         public ActionResult AddVehicle(VehicleDetails vehicle, BookingFormViewModel bookingVm)
         {
             // Nested within try catch to pull entity validation properties into message// 
@@ -251,6 +318,12 @@ namespace DonaldsonMotorsThree.Controllers
 
         }
 
+        /// <summary>
+        /// Confirms the booking.
+        /// </summary>
+        /// <param name="booking">The booking.</param>
+        /// <param name="vehicle">The vehicle.</param>
+        /// <returns>ActionResult.</returns>
         public ActionResult ConfirmBooking(Booking booking, VehicleDetails vehicle)
         {
    
@@ -260,18 +333,30 @@ namespace DonaldsonMotorsThree.Controllers
 
 
 
+        /// <summary>
+        /// Views all.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
         public ActionResult ViewAll()
         {
             var bookings = _context.Bookings.ToList();
             return View(bookings);
         }
 
+        /// <summary>
+        /// Actives the bookings.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
         public ActionResult ActiveBookings()
         {
             var ActiveBookings = _context.Bookings.Where(b => b.BookingStatus == Constants.BookingStatus.Active);
             return View(ActiveBookings);
         }
 
+        /// <summary>
+        /// Gets the booking history.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
         public ActionResult GetBookingHistory()
         {
             // Pull current user id// 
@@ -285,7 +370,12 @@ namespace DonaldsonMotorsThree.Controllers
             return View(BookingHistory);
         }
 
-        
+
+        /// <summary>
+        /// Detailses the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>ActionResult.</returns>
         public ActionResult Details(int id)
         {
             // grab booking from id match
@@ -298,7 +388,12 @@ namespace DonaldsonMotorsThree.Controllers
             return View(booking);
         }
 
-        
+
+        /// <summary>
+        /// Edits the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>ActionResult.</returns>
         public ActionResult Edit(int id)
         {
             // pull booking from id match

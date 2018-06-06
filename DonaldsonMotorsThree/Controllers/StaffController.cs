@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : DonaldsonMotorsThree
+// Author           : Jordan-P
+// Created          : 06-06-2018
+//
+// Last Modified By : Jordan-P
+// Last Modified On : 06-06-2018
+// ***********************************************************************
+// <copyright file="StaffController.cs" company="">
+//     Copyright ©  2018
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -12,20 +25,37 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace DonaldsonMotorsThree.Controllers
 {
-    
+
 
     //[Authorize]
+    /// <summary>
+    /// Class StaffController.
+    /// </summary>
+    /// <seealso cref="System.Web.Mvc.Controller" />
     public class StaffController : Controller
     {
         // Declare Db Context and repos
+        /// <summary>
+        /// The context
+        /// </summary>
         private ApplicationDbContext _context;
+        /// <summary>
+        /// The staff repo
+        /// </summary>
         private StaffRepository staffRepo;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StaffController" /> class.
+        /// </summary>
         public StaffController()
         {
             staffRepo = new StaffRepository();
             _context = new ApplicationDbContext();
         }
+        /// <summary>
+        /// Releases unmanaged resources and optionally releases managed resources.
+        /// </summary>
+        /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -45,6 +75,12 @@ namespace DonaldsonMotorsThree.Controllers
         //    return null;
         //}
 
+        /// <summary>
+        /// Adds the staff.
+        /// </summary>
+        /// <param name="staff">The staff.</param>
+        /// <param name="form">The form.</param>
+        /// <returns>ActionResult.</returns>
         [HttpPost]
         public ActionResult AddStaff(Staff staff, FormCollection form)
         {
@@ -93,6 +129,10 @@ namespace DonaldsonMotorsThree.Controllers
 
 
         // GET: Staff
+        /// <summary>
+        /// Indexes this instance.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
         public ActionResult Index()
         {
             var ViewAll = staffRepo.GetAll();
@@ -100,6 +140,11 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
         // GET: Staff/Details/5
+        /// <summary>
+        /// Detailses the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>ActionResult.</returns>
         public ActionResult Details(string id)
         {
             var staff = _context.Staff.SingleOrDefault(s => s.Id == id);
@@ -109,8 +154,12 @@ namespace DonaldsonMotorsThree.Controllers
 
             return View(staff);
         }
-        
+
         // POST: Staff/Create
+        /// <summary>
+        /// Creates this instance.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
         public ActionResult Create()
         {
             ViewBag.Roles = new SelectList(_context.Roles, "Id", "Name");
@@ -120,6 +169,11 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
         //DELETE VIEW//
+        /// <summary>
+        /// Deletes the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>ActionResult.</returns>
         public ActionResult Delete(string id)
         {
             var staff = _context.Staff.SingleOrDefault(s => s.Id == id);
@@ -128,6 +182,11 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
         //DELETE
+        /// <summary>
+        /// Deletes the confirmed.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>ActionResult.</returns>
         public ActionResult DeleteConfirmed(string id)
         {
             var staff = _context.Staff.SingleOrDefault(s => s.Id == id);
@@ -135,6 +194,11 @@ namespace DonaldsonMotorsThree.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// Edits the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>ActionResult.</returns>
         public ActionResult Edit(string id)
         {
             var staff = _context.Staff.SingleOrDefault(s => s.Id == id);

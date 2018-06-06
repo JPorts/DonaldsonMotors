@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : DonaldsonMotorsThree
+// Author           : Jordan-P
+// Created          : 06-06-2018
+//
+// Last Modified By : Jordan-P
+// Last Modified On : 06-06-2018
+// ***********************************************************************
+// <copyright file="SuppliersController.cs" company="">
+//     Copyright ©  2018
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -11,12 +24,19 @@ using DonaldsonMotorsThree.Models;
 namespace DonaldsonMotorsThree.Controllers.Api
 {
     /// <summary>
-    ///  Api Controller class used to handle data services for suppliers. 
+    /// Api Controller class used to handle data services for suppliers.
     /// </summary>
+    /// <seealso cref="System.Web.Http.ApiController" />
     public class SuppliersController : ApiController
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         private ApplicationDbContext _context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SuppliersController"/> class.
+        /// </summary>
         public SuppliersController()
         {
             _context = new ApplicationDbContext();
@@ -24,6 +44,10 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
         //GET /api/suppliers
+        /// <summary>
+        /// Gets the suppliers.
+        /// </summary>
+        /// <returns>IEnumerable&lt;SupplierDto&gt;.</returns>
         public IEnumerable<SupplierDto> GetSuppliers()
         {
             return _context.Suppliers.ToList().Select(Mapper.Map<Supplier, SupplierDto>);
@@ -31,6 +55,11 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
         //GET /api/suppliers/1
+        /// <summary>
+        /// Gets the supplier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>IHttpActionResult.</returns>
         public IHttpActionResult GetSupplier(int id)
         {
             var supplier = _context.Suppliers.SingleOrDefault(c => c.SupplierId == id);
@@ -43,6 +72,11 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
         //POST /api/suppliers
+        /// <summary>
+        /// Creates the supplier.
+        /// </summary>
+        /// <param name="supplierDto">The supplier dto.</param>
+        /// <returns>IHttpActionResult.</returns>
         [HttpPost]
         public IHttpActionResult CreateSupplier(SupplierDto supplierDto)
         {
@@ -62,6 +96,13 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
         //PUT /api/suppliers/1
+        /// <summary>
+        /// Updates the supplier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="supplierDto">The supplier dto.</param>
+        /// <exception cref="HttpResponseException">
+        /// </exception>
         [HttpPut]
         public void UpdateSupplier(int id, SupplierDto supplierDto)
         {
@@ -80,6 +121,11 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
         //DELETE /api/suppliers/1
+        /// <summary>
+        /// Deletes the supplier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <exception cref="HttpResponseException"></exception>
         [HttpDelete]
         public void DeleteSupplier(int id)
         {

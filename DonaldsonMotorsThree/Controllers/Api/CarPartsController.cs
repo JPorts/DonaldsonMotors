@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : DonaldsonMotorsThree
+// Author           : Jordan-P
+// Created          : 06-06-2018
+//
+// Last Modified By : Jordan-P
+// Last Modified On : 06-06-2018
+// ***********************************************************************
+// <copyright file="CarPartsController.cs" company="">
+//     Copyright ©  2018
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -13,18 +26,30 @@ using Microsoft.Ajax.Utilities;
 namespace DonaldsonMotorsThree.Controllers.Api
 {
     /// <summary>
-    ///  Api controller class used to handle data services for CarPart objects.
+    /// Api controller class used to handle data services for CarPart objects.
     /// </summary>
+    /// <seealso cref="System.Web.Http.ApiController" />
     public class CarPartsController : ApiController
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         private ApplicationDbContext _context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CarPartsController"/> class.
+        /// </summary>
         public CarPartsController()
         {
             _context = new ApplicationDbContext();
         }
 
         //GET /api/carparts
+        /// <summary>
+        /// Gets the car parts.
+        /// </summary>
+        /// <param name="query">The query.</param>
+        /// <returns>IEnumerable&lt;CarPartDto&gt;.</returns>
         [System.Web.Http.HttpGet]
         public IEnumerable<CarPartDto> GetCarParts(string query = null)
         {
@@ -42,6 +67,11 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
         //GET /api/carparts/1
+        /// <summary>
+        /// Gets the car part.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>IHttpActionResult.</returns>
         [System.Web.Http.HttpGet]
         public IHttpActionResult GetCarPart(int id)
         {
@@ -58,6 +88,11 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
         //POST /api/carparts
+        /// <summary>
+        /// Creates the car part.
+        /// </summary>
+        /// <param name="carPartDto">The car part dto.</param>
+        /// <returns>IHttpActionResult.</returns>
         [System.Web.Http.HttpPost]
         public IHttpActionResult CreateCarPart(CarPartDto carPartDto)
         {
@@ -77,6 +112,13 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
         //PUT /api/carparts/1
+        /// <summary>
+        /// Updates the car part.
+        /// </summary>
+        /// <param name="carPartDto">The car part dto.</param>
+        /// <param name="id">The identifier.</param>
+        /// <exception cref="HttpResponseException">
+        /// </exception>
         [System.Web.Http.HttpPut]
         public void UpdateCarPart(CarPartDto carPartDto, int id)
         {
@@ -98,6 +140,11 @@ namespace DonaldsonMotorsThree.Controllers.Api
         }
 
         //DELETE /api/carparts/1
+        /// <summary>
+        /// Deletes the car part.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <exception cref="HttpResponseException"></exception>
         [System.Web.Http.HttpDelete]
         public void DeleteCarPart(int id)
         {

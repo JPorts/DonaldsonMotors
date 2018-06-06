@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : DonaldsonMotorsThree
+// Author           : Jordan-P
+// Created          : 06-06-2018
+//
+// Last Modified By : Jordan-P
+// Last Modified On : 06-06-2018
+// ***********************************************************************
+// <copyright file="JobsController.cs" company="">
+//     Copyright ©  2018
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -11,15 +24,22 @@ using DonaldsonMotorsThree.Models;
 namespace DonaldsonMotorsThree.Controllers.Api
 {
     /// <summary>
-    /// Api Class handling data services for Jobs in the system. 
+    /// Api Class handling data services for Jobs in the system.
     /// </summary>
+    /// <seealso cref="System.Web.Http.ApiController" />
     //Jobs API using Job Data Transfer Object to map to objects from Db// 
     public class JobsController : ApiController
     {
         // Declare DbContext //
+        /// <summary>
+        /// The context
+        /// </summary>
         private ApplicationDbContext _context;
 
         // Initialise DbContext in constructor //
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JobsController"/> class.
+        /// </summary>
         public JobsController()
         {
            _context = new ApplicationDbContext();
@@ -27,6 +47,11 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
         // GET /api/jobs/        //
+        /// <summary>
+        /// Gets the job types.
+        /// </summary>
+        /// <param name="query">The query.</param>
+        /// <returns>IEnumerable&lt;JobTypesDto&gt;.</returns>
         public IEnumerable<JobTypesDto> GetJobTypes(string query = null)
         {
             var jq = _context.JobTypes.Where(m => m.JobCost > 0);
@@ -39,7 +64,12 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
 
-            // Get /api/jobs/1           //
+        // Get /api/jobs/1           //
+        /// <summary>
+        /// Gets the job.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>IHttpActionResult.</returns>
         public IHttpActionResult GetJob(int id)
         {
             // Search context in table jobs where c goes to c.JobId and checks id to return a match //
@@ -54,6 +84,11 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
         // POST /api/jobs
+        /// <summary>
+        /// Creates the job.
+        /// </summary>
+        /// <param name="jobDto">The job dto.</param>
+        /// <returns>IHttpActionResult.</returns>
         [HttpPost]
         public IHttpActionResult CreateJob(JobDto jobDto)
         {
@@ -76,6 +111,13 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
         // PUT /api/jobs/1
+        /// <summary>
+        /// Updates the job.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="jobDto">The job dto.</param>
+        /// <exception cref="HttpResponseException">
+        /// </exception>
         [HttpPut]
         public void UpdateJob(int id, JobDto jobDto)
         {
@@ -99,6 +141,11 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
         // DELETE /api/jobs/1
+        /// <summary>
+        /// Deletes the job.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <exception cref="HttpResponseException"></exception>
         [HttpDelete]
         public void DeleteJob(int id)
         {

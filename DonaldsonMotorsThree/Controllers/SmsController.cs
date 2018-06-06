@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : DonaldsonMotorsThree
+// Author           : Jordan-P
+// Created          : 06-06-2018
+//
+// Last Modified By : Jordan-P
+// Last Modified On : 06-06-2018
+// ***********************************************************************
+// <copyright file="SmsController.cs" company="">
+//     Copyright ©  2018
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -13,10 +26,20 @@ using Twilio.Types;
 
 namespace DonaldsonMotorsThree.Controllers
 {
+    /// <summary>
+    /// Class SmsController.
+    /// </summary>
+    /// <seealso cref="Twilio.AspNet.Mvc.TwilioController" />
     public class SmsController : TwilioController
     {
 
         // GET: Sms
+        /// <summary>
+        /// Sends the stock alert SMS.
+        /// </summary>
+        /// <param name="number">The number.</param>
+        /// <param name="part">The part.</param>
+        /// <returns>ActionResult.</returns>
         public ActionResult SendStockAlertSms(string number, CarPart part)
 
         {
@@ -41,6 +64,12 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
         //GET: Sms
+        /// <summary>
+        /// Sends the vehicle collection SMS.
+        /// </summary>
+        /// <param name="number">The number.</param>
+        /// <param name="vehicle">The vehicle.</param>
+        /// <returns>ActionResult.</returns>
         public ActionResult SendVehicleCollectionSms(string number, VehicleDetails vehicle)
 
         {
@@ -63,6 +92,11 @@ namespace DonaldsonMotorsThree.Controllers
             return Content(message.Sid);
         }
 
+        /// <summary>
+        /// Sends the invoice alert SMS.
+        /// </summary>
+        /// <param name="number">The number.</param>
+        /// <returns>ActionResult.</returns>
         public ActionResult SendInvoiceAlertSms(string number)
 
         {

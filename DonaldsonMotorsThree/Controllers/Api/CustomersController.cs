@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : DonaldsonMotorsThree
+// Author           : Jordan-P
+// Created          : 06-06-2018
+//
+// Last Modified By : Jordan-P
+// Last Modified On : 06-06-2018
+// ***********************************************************************
+// <copyright file="CustomersController.cs" company="">
+//     Copyright ©  2018
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -11,25 +24,41 @@ using DonaldsonMotorsThree.Models;
 namespace DonaldsonMotorsThree.Controllers.Api
 {
     /// <summary>
-    /// Api Controller Class used to handle data services for customers. 
+    /// Api Controller Class used to handle data services for customers.
     /// </summary>
+    /// <seealso cref="System.Web.Http.ApiController" />
     public class CustomersController : ApiController
     {
         // Declare d context// 
+        /// <summary>
+        /// The context
+        /// </summary>
         private ApplicationDbContext _context;
 
         //Initialise DbContext in Constructor // 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CustomersController"/> class.
+        /// </summary>
         public CustomersController()
         {
                 _context = new ApplicationDbContext();
         }
         //GET /api/customers
+        /// <summary>
+        /// Gets the customers.
+        /// </summary>
+        /// <returns>IEnumerable&lt;CustomerDto&gt;.</returns>
         public IEnumerable<CustomerDto> GetCustomers()
         {
             return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
         }
 
         //GET /api/customers/1
+        /// <summary>
+        /// Gets the customer.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>IHttpActionResult.</returns>
         public IHttpActionResult GetCustomer(string id)
         {
             // Search the context for staff using passed id//
@@ -43,6 +72,11 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
         //POST /api/customers
+        /// <summary>
+        /// Creates the customer.
+        /// </summary>
+        /// <param name="customerDto">The customer dto.</param>
+        /// <returns>IHttpActionResult.</returns>
         [HttpPost]
         public IHttpActionResult CreateCustomer(CustomerDto customerDto)
         {
@@ -66,6 +100,13 @@ namespace DonaldsonMotorsThree.Controllers.Api
         }
 
         //PUT /api/customers/1
+        /// <summary>
+        /// Updates the customer.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="customerDto">The customer dto.</param>
+        /// <exception cref="HttpResponseException">
+        /// </exception>
         [HttpPut]
         public void UpdateCustomer(string id, CustomerDto customerDto)
         {
@@ -88,6 +129,11 @@ namespace DonaldsonMotorsThree.Controllers.Api
         }
 
         //DELETE /api/customers/1
+        /// <summary>
+        /// Deletes the customer.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <exception cref="HttpResponseException"></exception>
         [HttpDelete]
         public void DeleteCustomer(string id)
         {

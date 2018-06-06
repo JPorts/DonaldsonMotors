@@ -256,7 +256,6 @@
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
@@ -321,7 +320,6 @@
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\DbInitializer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Payment.cs" />

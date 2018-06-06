@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : DonaldsonMotorsThree
+// Author           : Jordan-P
+// Created          : 06-06-2018
+//
+// Last Modified By : Jordan-P
+// Last Modified On : 06-06-2018
+// ***********************************************************************
+// <copyright file="ReviewsController.cs" company="">
+//     Copyright ©  2018
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,17 +25,24 @@ using DonaldsonMotorsThree.Models;
 namespace DonaldsonMotorsThree.Controllers.Api
 {
     /// <summary>
-    ///  Api controller class is used to direct data services within the application for reviews and feedback functions.
+    /// Api controller class is used to direct data services within the application for reviews and feedback functions.
     /// </summary>
+    /// <seealso cref="System.Web.Http.ApiController" />
     public class ReviewsController : ApiController
     {
         // This is the Reviews API controller // 
         // The controller is used to direct data services within the application for reviews and feedback functions //
 
         //Declare Context // 
+        /// <summary>
+        /// The context
+        /// </summary>
         private ApplicationDbContext _context;
 
         // Initialise DbContext in constructor //
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ReviewsController"/> class.
+        /// </summary>
         public ReviewsController()
         {
             _context = new ApplicationDbContext();
@@ -30,6 +50,10 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
         //GET /api/reviews
+        /// <summary>
+        /// Gets the reviews.
+        /// </summary>
+        /// <returns>IEnumerable&lt;ReviewDto&gt;.</returns>
         public IEnumerable<ReviewDto> GetReviews()
         {
             return _context.Reviews.ToList().Select(Mapper.Map<Review, ReviewDto>);
@@ -37,6 +61,11 @@ namespace DonaldsonMotorsThree.Controllers.Api
         }
 
         //GET /api/reviews/1
+        /// <summary>
+        /// Gets the review.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>IHttpActionResult.</returns>
         public IHttpActionResult GetReview(int id)
         {
             var review = _context.Reviews.SingleOrDefault(r => r.ReviewId == id);
@@ -49,6 +78,11 @@ namespace DonaldsonMotorsThree.Controllers.Api
         }
 
         //POST /api/reviews
+        /// <summary>
+        /// Creates the review.
+        /// </summary>
+        /// <param name="reviewDto">The review dto.</param>
+        /// <returns>IHttpActionResult.</returns>
         [HttpPost]
         public IHttpActionResult CreateReview(ReviewDto reviewDto)
         {
@@ -71,6 +105,13 @@ namespace DonaldsonMotorsThree.Controllers.Api
             return Created(new Uri(Request.RequestUri + "/" + review.ReviewId), reviewDto);
         }
 
+        /// <summary>
+        /// Updates the review.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="reviewDto">The review dto.</param>
+        /// <exception cref="HttpResponseException">
+        /// </exception>
         [HttpPut]
         public void UpdateReview(int id, ReviewDto reviewDto)
         {
@@ -93,6 +134,11 @@ namespace DonaldsonMotorsThree.Controllers.Api
         }
 
         //DELETE /api/reviews/1
+        /// <summary>
+        /// Deletes the review.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <exception cref="HttpResponseException"></exception>
         [HttpDelete]
         public void DeleteReview(int id)
         {

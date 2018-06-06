@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : DonaldsonMotorsThree
+// Author           : Jordan-P
+// Created          : 06-06-2018
+//
+// Last Modified By : Jordan-P
+// Last Modified On : 06-06-2018
+// ***********************************************************************
+// <copyright file="BookingDataController.cs" company="">
+//     Copyright ©  2018
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,12 +23,19 @@ using DonaldsonMotorsThree.Models;
 namespace DonaldsonMotorsThree.Controllers.Api
 {
     /// <summary>
-    /// Class to control Data Services around booking functions. 
+    /// Class to control Data Services around booking functions.
     /// </summary>
+    /// <seealso cref="System.Web.Http.ApiController" />
     public class BookingDataController : ApiController
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         private ApplicationDbContext _context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BookingDataController"/> class.
+        /// </summary>
         public BookingDataController()
         {
             _context = new ApplicationDbContext();
@@ -23,6 +43,11 @@ namespace DonaldsonMotorsThree.Controllers.Api
 
 
 
+        /// <summary>
+        /// Creates the booking.
+        /// </summary>
+        /// <param name="bookingDto">The booking dto.</param>
+        /// <returns>IHttpActionResult.</returns>
         [HttpPost]
         public IHttpActionResult CreateBooking(BookingDto bookingDto)
         {
