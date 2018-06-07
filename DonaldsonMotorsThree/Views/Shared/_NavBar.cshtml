@@ -19,11 +19,17 @@
 
 
 
-                @if (User.IsInRole("Customer") || User.Identity.IsAuthenticated == false)
+                @if (User.Identity.IsAuthenticated)
                 {
                     <li>@Html.ActionLink("Jobs", "CustomerViewJobs", "Home")</li>
                 }
-                else
+
+                else if (User.Identity.IsAuthenticated == false)
+                {
+                    <li>@Html.ActionLink("Jobs", "CustomerViewJobs", "Home")</li>
+                }
+
+                else if(User.IsInRole("Garage Manager") || User.IsInRole("Store Manager"))
                 {
                     <li>@Html.ActionLink("Jobs", "ViewJobs", "Home")</li>
                 }

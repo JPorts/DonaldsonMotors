@@ -4,10 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br />
-<h2>Stock</h2>
+<h3 style="text-align: center">Stock</h3>
 
 <br />
-<table class="table" id="carparts">
+<table class="table" id="stockreport">
     <thead>
         <tr>
 
@@ -76,16 +76,24 @@
 
 @section scripts
 {
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.16/b-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/datatables.min.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.16/b-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/datatables.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
+
+            $(document).ready(function () {
 
 
-            $("#carparts").DataTable();
+                $('#stockreport').DataTable({
+                    dom: "Bfrtip",
+                    buttons: ['excel', 'pdf']
+                });
 
-
+            });
         });
-
     </script>
 }
-
 
