@@ -1,0 +1,84 @@
+﻿@model IEnumerable<DonaldsonMotorsThree.Models.Job>
+
+@{
+    ViewBag.Title = "DailyJobsList";
+}
+
+<h2>Daily Jobs List</h2>
+
+
+<table class="table" id="joblist">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.JobRequirements)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobTypeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompletedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCompleted)
+            </th>
+           
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobRequirements)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobTypeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCompleted)
+            </td>
+
+        </tr>
+    }
+    </tbody>
+</table>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $('#joblist').DataTable();
+
+        });
+    </script>
+}

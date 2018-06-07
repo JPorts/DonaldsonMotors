@@ -81,7 +81,9 @@ namespace DonaldsonMotorsThree.Controllers
         /// <returns>ActionResult.</returns>
         public ActionResult ProductReport()
         {
-            return View();
+            var carparts = PartRepo.GetAll();
+
+            return View(carparts);
         }
 
         /// <summary>
@@ -90,6 +92,14 @@ namespace DonaldsonMotorsThree.Controllers
         /// <returns>ActionResult.</returns>
         public ActionResult CustomersAndJobsReport()
         {
+            ///
+            /// Staff Member must be logged into the system. Report generated must include:
+                //	Job ID
+                //	Date of Invoice
+                //	Job Total Cost
+               //Customer ID
+                //Overall Totals by Customer/ Job
+           
             return View();
         }
 
@@ -99,7 +109,8 @@ namespace DonaldsonMotorsThree.Controllers
         /// <returns>ActionResult.</returns>
         public ActionResult DailyJobsList()
         {
-            return View();
+            var jobList = _context.Jobs.Where(j => j.StartDate == DateTime.Today);
+            return View(jobList);
         }
     }
 }

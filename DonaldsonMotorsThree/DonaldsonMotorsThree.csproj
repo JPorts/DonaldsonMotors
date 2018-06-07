@@ -349,6 +349,7 @@
     <Compile Include="Models\Repositories\CustomerRepository.cs" />
     <Compile Include="Models\Repositories\JobRepository.cs" />
     <Compile Include="Models\JobTypes.cs" />
+    <Compile Include="Models\Repositories\JobTypesRepository.cs" />
     <Compile Include="Models\Repositories\Repository.cs" />
     <Compile Include="Models\Repositories\ReviewRepository.cs" />
     <Compile Include="Models\Repositories\StaffRepository.cs" />
@@ -803,6 +804,8 @@
     <Content Include="Views\Emails\BookingInvoice.cshtml" />
     <Content Include="Views\ConfirmedBooking\index.cshtml" />
     <Content Include="Views\Booking\GetCustomerBookings.cshtml" />
+    <Content Include="Views\Report\ProductReport.cshtml" />
+    <Content Include="Views\Report\DailyJobsList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -12,5 +12,7 @@ namespace DonaldsonMotorsThree.ViewModels
         public Job Job { get; set; }
 
         public JobDto JobDto { get; set; }
+
+        public JobTypes JobType { get; set; }
     }
 }

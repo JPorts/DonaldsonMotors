@@ -13,27 +13,22 @@
     <div class="form-border">
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Job.CarPart.Name)
+
+          
+            <dt>
+                @Html.DisplayNameFor(model => model.JobType.JobRequirements)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Job.CarPart.Name)
+                @Html.DisplayFor(model => model.JobType.JobRequirements)
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Job.JobRequirements)
+                @Html.DisplayNameFor(model => model.JobType.JobCost)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Job.JobRequirements)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Job.JobCost)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Job.JobCost)
+                @Html.DisplayFor(model => model.JobType.JobCost)
             </dd>
 
         </dl>
@@ -42,7 +37,7 @@
 <br/>
 <br/>
 <p>
-    @Html.Partial("_EditButtonPartial", Model.Job.JobId)
+    @Html.Partial("_EditButtonPartial", Model.JobType.Id)
     <br/>
     <br/>
     <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("ViewJobs", "Home")">

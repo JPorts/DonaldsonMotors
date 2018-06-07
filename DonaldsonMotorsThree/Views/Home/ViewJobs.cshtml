@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DonaldsonMotorsThree.Models.Job>
+﻿@model IEnumerable<DonaldsonMotorsThree.Models.JobTypes>
 @using DonaldsonMotorsThree.Models
 @{
     ViewBag.Title = "Jobs";
@@ -35,10 +35,6 @@
             </th>
 
             <th>
-                @Html.DisplayNameFor(model => model.StartDate)
-            </th>
-
-            <th>
                 @Html.DisplayNameFor(model => model.JobCost)
             </th>
             <th>
@@ -55,11 +51,8 @@
             {
         <tr class="notfirst">
             <td>
-                @Html.ActionLink(item.JobRequirements, "Details", "Home", new { id = item.JobId }, null)
+                @Html.ActionLink(item.JobRequirements, "Details", "Home", new { id = item.Id }, null)
                 @*@Html.DisplayFor(modelItem => item.JobRequirements)*@
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.JobCost)
@@ -68,7 +61,7 @@
                 @Html.DisplayFor(modelItem => item.Parts)
             </td>
             <td>
-                <button data-job-id="@item.JobId" class="btn btn-link js-delete">Delete</button>
+                <button data-job-id="@item.Id" class="btn btn-link js-delete">Delete</button>
             </td>
         </tr>
         }

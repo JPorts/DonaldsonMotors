@@ -39,11 +39,14 @@ namespace DonaldsonMotorsThree.Controllers
         /// </summary>
         private JobRepository repository;
 
+        private JobTypesRepository jobRepo;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="HomeController"/> class.
         /// </summary>
         public HomeController()
         {
+            jobRepo = new JobTypesRepository();
             repository = new JobRepository();
             _context = new ApplicationDbContext();
         }
@@ -73,7 +76,7 @@ namespace DonaldsonMotorsThree.Controllers
             ViewBag.Message = "Jobs";
 
             
-            return View(repository.GetAll());
+            return View(jobRepo.GetAll());
         }
         /// <summary>
         /// Customers the view jobs.
@@ -84,7 +87,7 @@ namespace DonaldsonMotorsThree.Controllers
             ViewBag.Message = "Jobs";
 
 
-            return View(repository.GetAll());
+            return View(jobRepo.GetAll());
         }
         /// <summary>
         /// Creates the job.
@@ -102,10 +105,10 @@ namespace DonaldsonMotorsThree.Controllers
         /// <param name="job">The job.</param>
         /// <returns>ActionResult.</returns>
         [System.Web.Http.HttpPost]
-        public ActionResult AddJob(Job job)
+        public ActionResult AddJob(JobTypes job)
         {
-            if (job.JobId == 0)
-                repository.Add(job);
+            if (job.Id == 0)
+                jobRepo.Add(job);
             repository.SaveChanges();
             return RedirectToAction("ViewJobs", "Home");
         }
@@ -118,14 +121,14 @@ namespace DonaldsonMotorsThree.Controllers
         public ActionResult Edit(int id)
         {
             // Get Job From Repo //
-            var job = repository.Get(id);
+            var job = jobRepo.Get(id);
             // Check If job is not null //
             if (job == null)
                 return HttpNotFound();
             //Construct VM //
             var viewModel = new JobViewModel
             {
-                Job = job
+                JobType = job
             };
             // Return View //
             return View("Edit", viewModel);
@@ -162,13 +165,13 @@ namespace DonaldsonMotorsThree.Controllers
         /// <returns>ActionResult.</returns>
         public ActionResult Details(int id)
         {
-            var jobDetails = repository.Get(id);
+            var jobDetails = jobRepo.Get(id);
 
             if (jobDetails == null)
                 return HttpNotFound();
             var JobVM = new JobViewModel
             {
-                Job = jobDetails
+                JobType = jobDetails
             };
 
             return View(JobVM);
