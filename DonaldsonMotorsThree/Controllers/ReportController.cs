@@ -109,7 +109,7 @@ namespace DonaldsonMotorsThree.Controllers
         /// <returns>ActionResult.</returns>
         public ActionResult DailyJobsList()
         {
-            var jobList = _context.Jobs.Where(j => j.StartDate == DateTime.Today);
+            var jobList = _context.Jobs.Where(j => j.StartDate == DateTime.Today);                
             return View(jobList);
         }
     }
