@@ -132,7 +132,12 @@ namespace DonaldsonMotorsThree.Controllers
                         //vm.BookedBooking.CustomerId = vm.BookedCustomer.Id;
                         //vm.BookedBooking.UserId = vm.BookedCustomer.Id;
                         var customerId = vm.BookedBooking.CustomerId;
-                        var customerEmail = _context.Customers.Where(c => c.Id == customerId).Select(c => c.Email).SingleOrDefault(); 
+                        var customer = _context.Customers.Where(c => c.Id == customerId).SingleOrDefault();
+                        var customerEmail = customer.Email; 
+                        //vm.BookedBooking.Customer = customer;
+                        vm.BookedBooking.Vehicle.CustomerId = customerId;
+                        vm.BookedBooking.Vehicle.Customer = customer;
+
                         bookingRepo.Add(vm.BookedBooking);
                         bookingRepo.SaveChanges();
                         sendInvoiceConfirmation(vm, customerEmail);

@@ -12,42 +12,42 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Vehicle.RegNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.BookedBooking.Vehicle.RegNumber, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Vehicle.RegNumber, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Vehicle.RegNumber, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.BookedBooking.Vehicle.RegNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BookedBooking.Vehicle.RegNumber, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Vehicle.Make, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.BookedBooking.Vehicle.Make, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Vehicle.Make, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Vehicle.Make, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.BookedBooking.Vehicle.Make, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BookedBooking.Vehicle.Make, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Vehicle.Model, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.BookedBooking.Vehicle.Model, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Vehicle.Model, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Vehicle.Model, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.BookedBooking.Vehicle.Model, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BookedBooking.Vehicle.Model, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Vehicle.EngineSize, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.BookedBooking.Vehicle.EngineSize, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Vehicle.EngineSize, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Vehicle.EngineSize, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.BookedBooking.Vehicle.EngineSize, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BookedBooking.Vehicle.EngineSize, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Vehicle.Milage, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.BookedBooking.Vehicle.Milage, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Vehicle.Milage, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Vehicle.Milage, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.BookedBooking.Vehicle.Milage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BookedBooking.Vehicle.Milage, "", new { @class = "text-danger" })
             </div>
         </div>
 

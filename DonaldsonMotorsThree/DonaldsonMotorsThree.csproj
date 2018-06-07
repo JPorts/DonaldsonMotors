@@ -319,6 +319,18 @@
     <Compile Include="Migrations\201806062315301_Added vehcileid to booking.Designer.cs">
       <DependentUpon>201806062315301_Added vehcileid to booking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806062333374_Model Change vehicle.cs" />
+    <Compile Include="Migrations\201806062333374_Model Change vehicle.Designer.cs">
+      <DependentUpon>201806062333374_Model Change vehicle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806062351396_changed vehicle to exclude booking id.cs" />
+    <Compile Include="Migrations\201806062351396_changed vehicle to exclude booking id.Designer.cs">
+      <DependentUpon>201806062351396_changed vehicle to exclude booking id.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806070030149_tidy booking.cs" />
+    <Compile Include="Migrations\201806070030149_tidy booking.Designer.cs">
+      <DependentUpon>201806070030149_tidy booking.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Basket.cs" />
@@ -842,6 +854,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806062315301_Added vehcileid to booking.resx">
       <DependentUpon>201806062315301_Added vehcileid to booking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806062333374_Model Change vehicle.resx">
+      <DependentUpon>201806062333374_Model Change vehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806062351396_changed vehicle to exclude booking id.resx">
+      <DependentUpon>201806062351396_changed vehicle to exclude booking id.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806070030149_tidy booking.resx">
+      <DependentUpon>201806070030149_tidy booking.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -164,6 +164,7 @@ namespace DonaldsonMotorsThree.Controllers
         {
             // grab string job ids from form collection //
             var strJobs = formCollection.GetValue("BookedBooking.JobIds").AttemptedValue;
+            bookingVm.BookedBooking.JobIds = new List<int>(); 
 
             // if jobs is not null or whitespace, split the job ids by the comman and parse to integers. add to list
             if (!strJobs.IsNullOrWhiteSpace()) bookingVm.BookedBooking.JobIds.AddRange(strJobs.Split(',').Select(Int32.Parse).ToList());
@@ -181,26 +182,21 @@ namespace DonaldsonMotorsThree.Controllers
                 var startDate = bookingVm.BookedBooking.StartDate; 
 
                 AddJobsToBooking(bookingVm, strJobs, customerId, startDate);
-
                 bookingVm.BookedBooking.CustomerId = customerId;
-
                 // Assign to vehicle customer Id 
-                bookingVm.Vehicle.CustomerId = customerId;
+                bookingVm.BookedBooking.Vehicle.CustomerId = customerId;
                 // Assign vehicle to varc
-                var vehicle = bookingVm.Vehicle;
-                //vehicle.BookingId = bookingVm.BookedBooking.BookingId;
-                
-                // Ensure new vehicle entry
-                if (bookingVm.Vehicle.VehicleId == 0)
-                    // Repo handles the database functions
-                    vehicleRepo.Add(vehicle);
-                vehicleRepo.SaveChanges();
+                //var vehicle = bookingVm.Vehicle;
+                ////vehicle.BookingId = bookingVm.BookedBooking.BookingId;
+                //// Ensure new vehicle entry
+                //if (bookingVm.Vehicle.VehicleId == 0)
+                //    // Repo handles the database functions
+                //    vehicleRepo.Add(vehicle);
+                //vehicleRepo.SaveChanges();
 
-                bookingVm.BookedBooking.VehicleId = vehicle.VehicleId;
                 // Return customer to confirm booking view// 
                 //Assign booking properties to VM//
                 bookingVm.BookedCustomer = customer;
-                bookingVm.Vehicle = vehicle;
                 bookingVm.BookedBooking.BookingStatus = Constants.BookingStatus.Requested;
                 var bookingTotal = SumTotal(bookingVm);
                 bookingVm.BookedBooking.Total = bookingTotal;
@@ -296,7 +292,7 @@ namespace DonaldsonMotorsThree.Controllers
                 // Return customer to confirm booking view// 
 
                 bookingVm.BookedCustomer = customer;
-                bookingVm.Vehicle = vehicle;
+                bookingVm.BookedBooking.Vehicle = vehicle;
                 bookingVm.BookedBooking.BookingStatus = Constants.BookingStatus.Requested;
 
                 return View("ConfirmBooking", bookingVm);
@@ -417,15 +413,17 @@ namespace DonaldsonMotorsThree.Controllers
         public ActionResult Edit(int id)
         {
             BookingFormViewModel vm = new BookingFormViewModel();
-
-
+            
             // pull booking from id match
             vm.BookedBooking = _context.Bookings.SingleOrDefault(b => b.BookingId == id);
+            var cust = _context.Customers.Where(c => c.Id == vm.BookedBooking.CustomerId).SingleOrDefault();
+            vm.BookedCustomer = cust;
+
+            var vehicle = _context.VehicleDetails.Where(v => v.VehicleId == vm.BookedBooking.Vehicle.VehicleId).SingleOrDefault();
 
             // if booking is null, return not found
             if (vm.BookedBooking == null)
                 return HttpNotFound();
-
             
             // if all goes well, return booking for amendment
             return View(vm);

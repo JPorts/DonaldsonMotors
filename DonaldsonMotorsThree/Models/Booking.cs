@@ -29,9 +29,8 @@ namespace DonaldsonMotorsThree.Models
         /// </summary>
         public Booking()
         {
+            Vehicle = new VehicleDetails(); 
             Jobs = new List<Job>();
-            JobIds = new List<int>();
-            PartIds = new List<int>();
         }
 
         // Booking properties // 
@@ -79,29 +78,14 @@ namespace DonaldsonMotorsThree.Models
         /// <value>The job ids.</value>
         public List<int> JobIds { get; set; }
         /// <summary>
-        /// Gets or sets the part ids.
-        /// </summary>
-        /// <value>The part ids.</value>
-        public List<int> PartIds { get; set; }
-        /// <summary>
         /// Gets or sets the customer identifier.
         /// </summary>
         /// <value>The customer identifier.</value>
         public string CustomerId { get; set; }
         /// <summary>
-        /// Gets or sets the user identifier.
-        /// </summary>
-        /// <value>The user identifier.</value>
-        public string UserId { get; set; }
-        /// <summary>
         /// Gets or sets the job identifier.
         /// </summary>
         /// <value>The job identifier.</value>
-        public int JobId { get; set; }
-        /// <summary>
-        /// Gets or sets the customer.
-        /// </summary>
-        /// <value>The customer.</value>
         public virtual Customer Customer { get; set; }
         /// <summary>
         /// Gets or sets the staff.
@@ -112,18 +96,13 @@ namespace DonaldsonMotorsThree.Models
         /// Gets or sets the part.
         /// </summary>
         /// <value>The part.</value>
-        public virtual CarPart Part { get; set; }
-        /// <summary>
-        /// Gets or sets the jobs.
-        /// </summary>
-        /// <value>The jobs.</value>
         public List<Job> Jobs { get; set; }
         /// <summary>
         /// Gets or sets the booking status.
         /// </summary>
         /// <value>The booking status.</value>
-        public int VehicleId { get; set; }
 
+        public VehicleDetails Vehicle { get; set; }
         /// <summary>
         /// Gets or sets the reg number.
         /// </summary>

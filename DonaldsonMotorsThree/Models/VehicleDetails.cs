@@ -85,12 +85,5 @@ namespace DonaldsonMotorsThree.Models
         /// Gets or sets the booking identifier.
         /// </summary>
         /// <value>The booking identifier.</value>
-        public int BookingId { get; set; }
-
-
-
-
-
-
-    }
+     }
 }

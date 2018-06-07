@@ -12,9 +12,9 @@
     <thead>
         
     <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.CompletedBy)
-        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.BookingId)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.PaidFor)
         </th>
@@ -31,7 +31,7 @@
             @Html.DisplayNameFor(model => model.DateCompleted)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CustomerId)
+            @Html.DisplayNameFor(model => model.Vehicle.VehicleId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.BookingStatus)
@@ -44,9 +44,9 @@
     {
         <tbody>
         <tr>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Job.CompletedBy)
-            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingId)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PaidFor)
             </td>
@@ -63,7 +63,7 @@
                 @Html.DisplayFor(modelItem => item.DateCompleted)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CustomerId)
+                @Html.DisplayFor(modelItem => item.Vehicle.VehicleId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BookingStatus)
