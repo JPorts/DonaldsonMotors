@@ -14,9 +14,11 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
 
+
                 <li>@Html.ActionLink("Bookings", "Index", "Booking")</li>
-               
-                
+
+
+
                 @if (User.IsInRole("Customer") || User.Identity.IsAuthenticated == false)
                 {
                     <li>@Html.ActionLink("Jobs", "CustomerViewJobs", "Home")</li>
@@ -26,12 +28,28 @@
                     <li>@Html.ActionLink("Jobs", "ViewJobs", "Home")</li>
                 }
 
-                <li>@Html.ActionLink("Stock", "CustomerIndex", "Stock")</li>
+
+
+                @if (User.IsInRole("Customer") || User.Identity.IsAuthenticated == false)
+                {
+                    <li>@Html.ActionLink("Stock", "CustomerIndex", "Stock")</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("Stock", "Index", "Stock")</li>
+                }
+
+
+
+
 
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li>@Html.ActionLink("Feedback", "Index", "Review")</li>
                 }
+
+
+
                 <li>
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -54,9 +72,9 @@
                             @Html.Partial("_MechanicManageMenu")
                         }
                     }
-
-
                 </li>
+
+
             </ul>
             @Html.Partial("_LoginPartial")
         </div>
