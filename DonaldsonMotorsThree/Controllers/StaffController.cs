@@ -82,38 +82,35 @@ namespace DonaldsonMotorsThree.Controllers
         /// <param name="form">The form.</param>
         /// <returns>ActionResult.</returns>
         [HttpPost]
-        public ActionResult AddStaff(Staff staff, FormCollection form)
+        public ActionResult AddStaff(StaffFormViewModel staff, FormCollection form)
         {
             if (ModelState.IsValid)
-            {
-
+            {   
                 // Hash password using password hasher // 
                 var passwordHasher = new PasswordHasher();
-                var password = passwordHasher.HashPassword(staff.Password);
-
+                var password = passwordHasher.HashPassword(staff.Staff.Password);
                 string roleName = form["Roles"].ToString();
-
 
                 // Create new Customer Object // 
                 var user = new Staff
                 {
-                    UserName = staff.Email,
-                    Email = staff.Email,
-                    FirstName = staff.FirstName,
-                    LastName = staff.LastName,
-                    AddressLine1 = staff.AddressLine1,
-                    AddressLine2 = staff.AddressLine2,
-                    Town = staff.Town,
-                    Postcode = staff.Postcode,
-                    Dob = staff.Dob,
-                    TelephoneNumber = staff.TelephoneNumber,
-                    MobileNumber = staff.MobileNumber,
-                    AreaOfExpertise = staff.AreaOfExpertise,
-                    EmergContactDetails = staff.EmergContactDetails,
-                    MedContactDetails = staff.MedContactDetails,
-                    NiNumber = staff.NiNumber,
+                    UserName = staff.Staff.Email,
+                    Email = staff.Staff.Email,
+                    FirstName = staff.Staff.FirstName,
+                    LastName = staff.Staff.LastName,
+                    AddressLine1 = staff.Staff.AddressLine1,
+                    AddressLine2 = staff.Staff.AddressLine2,
+                    Town = staff.Staff.Town,
+                    Postcode = staff.Staff.Postcode,
+                    Dob = staff.Staff.Dob,
+                    TelephoneNumber = staff.Staff.TelephoneNumber,
+                    MobileNumber = staff.Staff.MobileNumber,
+                    AreaOfExpertise = staff.Staff.AreaOfExpertise,
+                    EmergContactDetails = staff.Staff.EmergContactDetails,
+                    MedContactDetails = staff.Staff.MedContactDetails,
+                    NiNumber = staff.Staff.NiNumber,
                     PasswordHash = password,
-                    Rolename = staff.Rolename
+                    Rolename = staff.Staff.Rolename
                 };
 
                 var Account = new AccountController();

@@ -25,6 +25,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DonaldsonMotorsThree.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using DonaldsonMotorsThree.ViewModels; 
 
 namespace DonaldsonMotorsThree.Controllers
 {
