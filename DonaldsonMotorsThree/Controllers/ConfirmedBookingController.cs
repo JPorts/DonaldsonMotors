@@ -49,6 +49,8 @@ namespace DonaldsonMotorsThree.Controllers
         /// The booking repo
         /// </summary>
         private BookingRepository bookingRepo;
+        private CustomerRepository customerRepo;
+        private VehicleRepository vehicleRepo;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ConfirmedBookingController"/> class.
@@ -57,8 +59,9 @@ namespace DonaldsonMotorsThree.Controllers
         {
             _context = new ApplicationDbContext();
             bookingRepo = new BookingRepository();
-        }
-
+            customerRepo = new CustomerRepository();
+            vehicleRepo = new VehicleRepository(); 
+    }
 
         // GET: Confirmed Bookings
         /// <summary>
@@ -134,12 +137,16 @@ namespace DonaldsonMotorsThree.Controllers
                         var customerId = vm.BookedBooking.CustomerId;
                         var customer = _context.Customers.Where(c => c.Id == customerId).SingleOrDefault();
                         var customerEmail = customer.Email; 
+
                         //vm.BookedBooking.Customer = customer;
                         vm.BookedBooking.Vehicle.CustomerId = customerId;
                         vm.BookedBooking.Vehicle.Customer = customer;
-
-                        bookingRepo.Add(vm.BookedBooking);
-                        bookingRepo.SaveChanges();
+                        
+                        _context.Bookings.Add(vm.BookedBooking);
+                        _context.VehicleDetails.Add(vm.BookedBooking.Vehicle);
+                        //_context.Customers.Add(vm.BookedCustomer); 
+                        
+                        _context.SaveChanges();
                         sendInvoiceConfirmation(vm, customerEmail);
                     }
                 }

@@ -331,6 +331,10 @@
     <Compile Include="Migrations\201806070030149_tidy booking.Designer.cs">
       <DependentUpon>201806070030149_tidy booking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806072021559_make vehicle virtual.cs" />
+    <Compile Include="Migrations\201806072021559_make vehicle virtual.Designer.cs">
+      <DependentUpon>201806072021559_make vehicle virtual.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Basket.cs" />
@@ -866,6 +870,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806070030149_tidy booking.resx">
       <DependentUpon>201806070030149_tidy booking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806072021559_make vehicle virtual.resx">
+      <DependentUpon>201806072021559_make vehicle virtual.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

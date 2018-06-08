@@ -190,7 +190,9 @@ namespace DonaldsonMotorsThree.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             var staff = _context.Staff.SingleOrDefault(s => s.Id == id);
-            _context.Staff.Remove(staff);
+                _context.Staff.Remove(staff);
+                _context.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
@@ -202,8 +204,24 @@ namespace DonaldsonMotorsThree.Controllers
         public ActionResult Edit(string id)
         {
             var staff = _context.Staff.SingleOrDefault(s => s.Id == id);
+
             return View(staff);
         }
+
+        [HttpPost]
+        public ActionResult UpdateStaff(Staff staff, FormCollection form)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var staffToUpdate = _context.Staff.Find(staff.Id);
+
+                _context.Entry(staffToUpdate).CurrentValues.SetValues(staff);
+                _context.SaveChanges();
+            }
+           return RedirectToAction("Index");
+        }
+
 
     }
 }

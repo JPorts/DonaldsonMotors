@@ -62,6 +62,8 @@ namespace DonaldsonMotorsThree.Controllers
             {
                 EnvironmentGlobals.UserId = userID;
                 EnvironmentGlobals.IsCustomer = _context.Customers.Any(a => a.Id == userID);
+
+                //var roleId = _context.Database.SqlQuery(int,)
             }
             return View();
         }

@@ -104,6 +104,9 @@ namespace DonaldsonMotorsThree.Controllers
         {
             var supplier = repo.Get(id);
 
+            _context.Suppliers.Remove(supplier);
+            _context.SaveChanges();
+
             if (supplier == null)
                 return HttpNotFound();
 

@@ -405,6 +405,38 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
 
+
+        [System.Web.Mvc.HttpPost]
+        public ActionResult UpdateBooking(BookingFormViewModel vm, FormCollection form)
+        {
+            // if booking is null, return not found
+            if (vm.BookedBooking == null)
+                return HttpNotFound();
+
+            if (ModelState.IsValid)
+            {
+
+
+                var bookingToUpdate = _context.Bookings.Find(vm.BookedBooking.BookingId);
+                var vehicleToUpdate = _context.VehicleDetails.Find(vm.BookedBooking.Vehicle.VehicleId);
+
+                // if booking is null, return not found
+                if (bookingToUpdate == null)
+                    return HttpNotFound();
+
+                _context.Entry(bookingToUpdate).CurrentValues.SetValues(vm.BookedBooking);
+                _context.Entry(vehicleToUpdate).CurrentValues.SetValues(vm.BookedBooking.Vehicle);
+
+                _context.SaveChanges();
+
+                
+                // if all goes well, return booking for amendment
+            }
+            return RedirectToAction("GetCustomerBookings");
+        }
+
+
+
         /// <summary>
         /// Edits the specified identifier.
         /// </summary>
@@ -413,13 +445,11 @@ namespace DonaldsonMotorsThree.Controllers
         public ActionResult Edit(int id)
         {
             BookingFormViewModel vm = new BookingFormViewModel();
-            
+
             // pull booking from id match
-            vm.BookedBooking = _context.Bookings.SingleOrDefault(b => b.BookingId == id);
+            vm.BookedBooking = _context.Bookings.Include("Vehicle").Include("Jobs").SingleOrDefault(b => b.BookingId == id);
             var cust = _context.Customers.Where(c => c.Id == vm.BookedBooking.CustomerId).SingleOrDefault();
             vm.BookedCustomer = cust;
-
-            var vehicle = _context.VehicleDetails.Where(v => v.VehicleId == vm.BookedBooking.Vehicle.VehicleId).SingleOrDefault();
 
             // if booking is null, return not found
             if (vm.BookedBooking == null)

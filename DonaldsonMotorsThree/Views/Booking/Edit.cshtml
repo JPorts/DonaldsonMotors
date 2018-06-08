@@ -2,40 +2,52 @@
 @model DonaldsonMotorsThree.ViewModels.BookingFormViewModel
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Update booking details";
 }
 
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(
+    controllerName: "Booking", actionName: "UpdateBooking"))
 {
     @Html.AntiForgeryToken()
 
     <br />
-    <h4 style="text-align: center"><b><em>Book a Job</em></b></h4>
+    <h4 style="text-align: center"><b><em>Booked Jobs</em></b></h4>
     <hr />
 
     @Html.HiddenFor(m => m.BookedBooking.JobIds)
+    @Html.HiddenFor(m => m.BookedBooking.BookingId)
+    @Html.HiddenFor(m => m.BookedBooking.Vehicle.VehicleId)
+    @Html.HiddenFor(m => m.BookedBooking.Vehicle.CustomerId)
+    @Html.HiddenFor(m => m.BookedBooking.CustomerId)
+    @Html.HiddenFor(m => m.BookedBooking.BookingStatus)
 
     <div class="form-horizontal">
-        <div class="form-group row">
-            <label class="control-label col-md-2">Search Jobs</label>
-            <div class="col-md-10">
-                <div class="tt-container">
-                    <input id="jobinput" class="typeahead form-control" type="text" />
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-offset-2 col-md-10">
-                <ul class="list-group" id="selectedjobslist"></ul>
+        <div class="form-group row hidden">
+            <label class="control-label col-md-2">Booked Jobs</label>
+            <div class="col-md-9">
+                @Html.EditorForJob(model => model.BookedBooking.Jobs)
             </div>
         </div>
 
         <div class="form-group row">
-            @Html.LabelFor(model => model.BookedBooking.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.BookedBooking.Jobs, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.BookedBooking.Jobs, templateName: "JobsTemplate")
+            </div>
+        </div>
+        <hr />
+
+
+        <div class="form-group row">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.BookedBooking.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            <div class="col-md-9">
                 @Html.EditorFor(model => model.BookedBooking.StartDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.BookedBooking.StartDate, "", new { @class = "text-danger" })
             </div>
@@ -43,55 +55,63 @@
 
 
         <div class="form-group row">
-            @Html.LabelFor(model => model.BookedBooking.Vehicle.RegNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.BookedBooking.Vehicle.RegNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            <div class="col-md-9">
                 @Html.EditorFor(model => model.BookedBooking.Vehicle.RegNumber, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.BookedBooking.Vehicle.RegNumber, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group row">
-            @Html.LabelFor(model => model.BookedBooking.Vehicle.Make, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.BookedBooking.Vehicle.Make, htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            <div class="col-md-9">
                 @Html.EditorFor(model => model.BookedBooking.Vehicle.Make, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.BookedBooking.Vehicle.Make, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group row">
-            @Html.LabelFor(model => model.BookedBooking.Vehicle.Model, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.BookedBooking.Vehicle.Model, htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            <div class="col-md-9">
                 @Html.EditorFor(model => model.BookedBooking.Vehicle.Model, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.BookedBooking.Vehicle.Model, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group row">
-            @Html.LabelFor(model => model.BookedBooking.Vehicle.EngineSize, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.BookedBooking.Vehicle.EngineSize, htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            <div class="col-md-9">
                 @Html.EditorFor(model => model.BookedBooking.Vehicle.EngineSize, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.BookedBooking.Vehicle.EngineSize, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group row">
-            @Html.LabelFor(model => model.BookedBooking.Vehicle.Milage, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.BookedBooking.Vehicle.Milage, htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            <div class="col-md-9">
                 @Html.EditorFor(model => model.BookedBooking.Vehicle.Milage, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.BookedBooking.Vehicle.Milage, "", new { @class = "text-danger" })
             </div>
         </div>
 
-
         <div class="form-group row">
-
             <div class="col-md-offset-2 col-md-4">
                 @Html.Partial("_BackToListButtonPartial")
             </div>
             <div class="col-md-4">
                 <a type="button" class="btn btn-success btn-sm" href="#" onclick="$(this).closest('form').submit()">
-                    Proceed with booking
-                    <span class="glyphicon glyphicon-plus"></span>
+                    Update booking
+                    <span class="glyphicon glyphicon-save"></span>
                 </a>
             </div>
         </div>
@@ -101,10 +121,6 @@
     </div>
 
 }
-
-
-
-
 
 @section scripts
 {
@@ -116,6 +132,17 @@
         };
 
         $(document).ready(function () {
+
+
+            var dateInputsWithValue = $('input[type="date"][value!=""]');
+
+            dateInputsWithValue.each(function (idx, elem) {
+                var inputFld = $(elem).get();
+                inputFld[0].type = "text";
+                inputFld[0].value = inputFld[0].defaultValue;
+            });
+
+
             //Set up "Bloodhound" Options
             var my_Suggestion_class = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('jobRequirements'),
@@ -152,7 +179,6 @@
                     source: my_Suggestion_class.ttAdapter()
                 });
 
-
             $('.typeahead').on("typeahead:select",
                 function (e, job) {
                     console.log(job);
@@ -163,8 +189,6 @@
                     // bug? No way to remove job ids yet
                     $("#BookedBooking_JobIds").val(vm.jobIds.toString());
                 });
-
-
         });// Close document ready
     </script>
 }

@@ -102,7 +102,7 @@ namespace DonaldsonMotorsThree.Models
         /// </summary>
         /// <value>The booking status.</value>
 
-        public VehicleDetails Vehicle { get; set; }
+        public virtual VehicleDetails Vehicle { get; set; }
         /// <summary>
         /// Gets or sets the reg number.
         /// </summary>

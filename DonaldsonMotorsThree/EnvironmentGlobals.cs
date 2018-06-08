@@ -9,5 +9,7 @@ namespace DonaldsonMotorsThree
     {
         public static string UserId { get; set; }
         public static bool IsCustomer { get; set; }
+        public static bool Role { get; set; }
+
     }
 }
