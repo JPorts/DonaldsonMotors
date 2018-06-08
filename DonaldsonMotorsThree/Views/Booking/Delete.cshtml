@@ -1,0 +1,85 @@
+﻿@model DonaldsonMotorsThree.ViewModels.BookingFormViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>Delete</h3>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h3 style="text-align: center">Booking</h3>
+
+    <hr />
+    <br/>
+    <div class="form-border">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.BookedCustomer.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BookedCustomer.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BookedBooking.PaidFor)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BookedBooking.PaidFor)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BookedBooking.DurationInDays)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BookedBooking.DurationInDays)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BookedBooking.Total)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BookedBooking.Total)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BookedBooking.StartDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BookedBooking.StartDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BookedBooking.DateCompleted)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BookedBooking.DateCompleted)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BookedBooking.BookingStatus)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BookedBooking.BookingStatus)
+            </dd>
+
+        </dl>
+    </div>
+    <br/>
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Delete Booking", "DeleteBooking", "Booking", new {id = Model.BookedBooking.BookingId})
+            <br/>
+            @Html.Partial("_BackToListButtonPartial")
+        </div>
+    }
+</div>

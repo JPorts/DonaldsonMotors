@@ -810,6 +810,7 @@
     <Content Include="Views\Booking\GetCustomerBookings.cshtml" />
     <Content Include="Views\Report\ProductReport.cshtml" />
     <Content Include="Views\Report\DailyJobsList.cshtml" />
+    <Content Include="Views\Booking\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

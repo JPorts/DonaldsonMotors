@@ -405,6 +405,48 @@ namespace DonaldsonMotorsThree.Controllers
             return View(booking);
         }
 
+        public VehicleDetails UpdateVehicle(VehicleDetails vehicle)
+        {
+            try
+            {
+
+                if (ModelState.IsValid)
+                {
+
+                   // _context.Entry(vehicleThatUpdates).CurrentValues.SetValues(UpdatedVehicle);
+                   // _context.SaveChanges();
+
+                    _context.VehicleDetails.AddOrUpdate(vehicle);
+                    _context.SaveChanges();
+
+
+                    // if all goes well, return booking for amendment
+                }
+
+                return vehicle;
+
+                // Nested within try catch to pull entity validation properties into message// 
+
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Debug.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Debug.WriteLine("- Property: \"{0}\", Value: \"{1}\", Error: \"{2}\"",
+                            ve.PropertyName,
+                            eve.Entry.CurrentValues.GetValue<object>(ve.PropertyName),
+                            ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+  
+        }
+
 
 
         [System.Web.Mvc.HttpPost]
@@ -424,32 +466,20 @@ namespace DonaldsonMotorsThree.Controllers
 
                     var bookingToUpdate = _context.Bookings.Find(vm.BookedBooking.BookingId);
                     var vehicleToUpdate = _context.VehicleDetails.Find(vm.BookedBooking.Vehicle.VehicleId);
-
+                    var UpdatedVehicle = vm.BookedBooking.Vehicle;
                     // if booking is null, return not found
                     if (bookingToUpdate == null)
                         return HttpNotFound();
 
+                    UpdateVehicle(UpdatedVehicle);
                     _context.Entry(bookingToUpdate).CurrentValues.SetValues(vm.BookedBooking);
-                    //_context.Entry(vehicleToUpdate).CurrentValues.SetValues(vm.BookedBooking.Vehicle);
 
-                    var vehicleId = vehicleToUpdate.VehicleId;
-                    var make = vehicleToUpdate.Make;
-                    var model = vehicleToUpdate.Model;
-                    var engineSize = vehicleToUpdate.EngineSize;
-                    var custId = vehicleToUpdate.CustomerId;
-                    var regNo = vehicleToUpdate.RegNumber;
-                    var milage = vehicleToUpdate.Milage;
-                    var vehicle = new VehicleDetails();
-                    vehicle.Model = model;
-                    vehicle.VehicleId = vehicleId;
-                    vehicle.Make = make;
-                    vehicle.EngineSize = engineSize;
-                    vehicle.CustomerId = custId;
-                    vehicle.RegNumber = regNo;
-                    vehicle.Milage = milage;
-                    _context.VehicleDetails.AddOrUpdate(vehicle);
+                   // _context.Entry(vehicleToUpdate).CurrentValues.SetValues(UpdatedVehicle);
 
                     _context.SaveChanges();
+               
+                    //_context.Entry(vehicleToUpdate).CurrentValues.SetValues(UpdatedVehicle);
+                   // _context.SaveChanges();
 
 
                     // if all goes well, return booking for amendment
@@ -501,6 +531,46 @@ namespace DonaldsonMotorsThree.Controllers
             
             // if all goes well, return booking for amendment
             return View(vm);
+        }
+
+
+        public ActionResult Delete(int id)
+        {
+
+            BookingFormViewModel vm = new BookingFormViewModel();
+            vm.BookedBooking = _context.Bookings.Include("Vehicle").Include("Jobs").SingleOrDefault(b => b.BookingId == id);
+            var cust = _context.Customers.Where(c => c.Id == vm.BookedBooking.CustomerId).SingleOrDefault();
+            vm.BookedCustomer = cust;
+
+            return View(vm);
+        }
+
+        [System.Web.Mvc.HttpPost]
+        public ActionResult DeleteBooking(int id)
+        {
+            try { 
+            var booking = _context.Bookings.SingleOrDefault(b => b.BookingId == id);
+            _context.Bookings.Remove(booking);
+            _context.SaveChanges();
+            }
+
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Debug.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Debug.WriteLine("- Property: \"{0}\", Value: \"{1}\", Error: \"{2}\"",
+                            ve.PropertyName,
+                            eve.Entry.CurrentValues.GetValue<object>(ve.PropertyName),
+                            ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+            return View("GetCustomerBookings");
         }
 
     }
