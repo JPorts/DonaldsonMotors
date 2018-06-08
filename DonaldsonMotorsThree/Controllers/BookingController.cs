@@ -15,6 +15,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
@@ -409,31 +410,74 @@ namespace DonaldsonMotorsThree.Controllers
         [System.Web.Mvc.HttpPost]
         public ActionResult UpdateBooking(BookingFormViewModel vm, FormCollection form)
         {
-            // if booking is null, return not found
-            if (vm.BookedBooking == null)
-                return HttpNotFound();
-
-            if (ModelState.IsValid)
+             
+            try
             {
 
-
-                var bookingToUpdate = _context.Bookings.Find(vm.BookedBooking.BookingId);
-                var vehicleToUpdate = _context.VehicleDetails.Find(vm.BookedBooking.Vehicle.VehicleId);
-
                 // if booking is null, return not found
-                if (bookingToUpdate == null)
+                if (vm.BookedBooking == null)
                     return HttpNotFound();
 
-                _context.Entry(bookingToUpdate).CurrentValues.SetValues(vm.BookedBooking);
-                _context.Entry(vehicleToUpdate).CurrentValues.SetValues(vm.BookedBooking.Vehicle);
+                if (ModelState.IsValid)
+                {
 
-                _context.SaveChanges();
 
-                
-                // if all goes well, return booking for amendment
+                    var bookingToUpdate = _context.Bookings.Find(vm.BookedBooking.BookingId);
+                    var vehicleToUpdate = _context.VehicleDetails.Find(vm.BookedBooking.Vehicle.VehicleId);
+
+                    // if booking is null, return not found
+                    if (bookingToUpdate == null)
+                        return HttpNotFound();
+
+                    _context.Entry(bookingToUpdate).CurrentValues.SetValues(vm.BookedBooking);
+                    //_context.Entry(vehicleToUpdate).CurrentValues.SetValues(vm.BookedBooking.Vehicle);
+
+                    var vehicleId = vehicleToUpdate.VehicleId;
+                    var make = vehicleToUpdate.Make;
+                    var model = vehicleToUpdate.Model;
+                    var engineSize = vehicleToUpdate.EngineSize;
+                    var custId = vehicleToUpdate.CustomerId;
+                    var regNo = vehicleToUpdate.RegNumber;
+                    var milage = vehicleToUpdate.Milage;
+                    var vehicle = new VehicleDetails();
+                    vehicle.Model = model;
+                    vehicle.VehicleId = vehicleId;
+                    vehicle.Make = make;
+                    vehicle.EngineSize = engineSize;
+                    vehicle.CustomerId = custId;
+                    vehicle.RegNumber = regNo;
+                    vehicle.Milage = milage;
+                    _context.VehicleDetails.AddOrUpdate(vehicle);
+
+                    _context.SaveChanges();
+
+
+                    // if all goes well, return booking for amendment
+                }
+                return RedirectToAction("GetCustomerBookings");
+
+                // Nested within try catch to pull entity validation properties into message// 
+
             }
-            return RedirectToAction("GetCustomerBookings");
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Debug.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Debug.WriteLine("- Property: \"{0}\", Value: \"{1}\", Error: \"{2}\"",
+                            ve.PropertyName,
+                            eve.Entry.CurrentValues.GetValue<object>(ve.PropertyName),
+                            ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+
         }
+    
 
 
 

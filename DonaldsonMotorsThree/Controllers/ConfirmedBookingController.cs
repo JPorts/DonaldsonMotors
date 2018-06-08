@@ -95,8 +95,8 @@ namespace DonaldsonMotorsThree.Controllers
             var charge = charges.Create(new StripeChargeCreateOptions
             {
                 Amount = 500,//charge in cents
-                Description = "Sample Charge",
-                Currency = "usd",
+                Description = "Booking Charge",
+                Currency = "gbp",
                 CustomerId = customer.Id
             });
 
