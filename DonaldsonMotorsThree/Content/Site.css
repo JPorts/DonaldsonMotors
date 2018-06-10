@@ -129,6 +129,16 @@ pad-bottom {
     background: lightskyblue;
 
 }
+.manageStock {
+    text-align: center;
+    list-style-type: none;
+    
+}
+.manageStock:hover {
+
+    background: lightskyblue;
+
+}
 
 .blankLi {
     background: none;

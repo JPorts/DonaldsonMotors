@@ -147,6 +147,7 @@ namespace DonaldsonMotorsThree.Controllers.Api
             //else remove customerInDb from db and save changes// 
             _context.Customers.Remove(customerInDb);
             _context.SaveChanges();
+           
         }
 
     }

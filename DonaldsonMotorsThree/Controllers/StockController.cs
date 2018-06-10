@@ -27,6 +27,7 @@ using DonaldsonMotorsThree.Dtos;
 using DonaldsonMotorsThree.Models;
 using DonaldsonMotorsThree.Models.Repositories;
 using DonaldsonMotorsThree.ViewModels;
+using Postal;
 
 namespace DonaldsonMotorsThree.Controllers
 {
@@ -160,7 +161,96 @@ namespace DonaldsonMotorsThree.Controllers
             return RedirectToAction("Index", "Stock");
         }
 
+        public ActionResult Delete(int id)
+        {
+            var carpart = _context.CarParts.SingleOrDefault(c => c.PartId == id);
 
+            return View(carpart);
+
+        }
+
+        public ActionResult ManageStock()
+        {
+            var carparts = _context.CarParts.ToList();
+            var lowStockList = new List<CarPart>();
+            // find the car parts needing re-orders
+            foreach (var carpart in carparts)
+            {
+                // pull carpart through id match
+                var singleCarPart = _context.CarParts.SingleOrDefault(c => c.PartId == carpart.PartId);
+                // Get current quantity
+                var quantity = singleCarPart.CurrentQuantity;
+                // get reorder level to perform check 
+                var orderLevel = singleCarPart.ReorderLevel;
+                // Get order quantity for supplier order.
+                var orderQuantity = singleCarPart.ReorderQuantity;
+                // create low stock list
+                
+                // if the current quantity id less or equal to reorder level, add to list
+                if (quantity <= orderLevel)
+                    lowStockList.Add(singleCarPart);
+
+
+            }
+            //return view with list
+            return View(lowStockList);
+        }
+
+        public ActionResult LowStockOrder(int id)
+        {
+            // pull user id from environment globals//
+            var userId = EnvironmentGlobals.UserId;
+            // pull user with id match.
+            var user = _context.Users.SingleOrDefault(u => u.Id == userId);
+            // get part through Id match
+            var carpart = _context.CarParts.SingleOrDefault(c => c.PartId == id);
+            // Get current quantity
+            var quantity = carpart.CurrentQuantity;
+            // get reorder level to perform check 
+            var orderLevel = carpart.ReorderLevel;
+            // Get order quantity for supplier order.
+            var orderQuantity = carpart.ReorderQuantity;
+            // check if reorder needs to be performed.
+            if (quantity <= orderLevel)
+                quantity = quantity + orderQuantity;
+            UpdateStockLevel(id, quantity);
+            // Send email to current manager //
+            SendStockReorderEmail(carpart, user);
+
+            return View("StockOrdered");
+        }
+
+        public void UpdateStockLevel(int id, int quantity)
+        {
+            // Update carpart stock level using passed values
+            var carPart = _context.CarParts.SingleOrDefault(c => c.PartId == id);
+            var updatedCarPart = carPart;
+            updatedCarPart.CurrentQuantity = quantity;
+            _context.Entry(carPart).CurrentValues.SetValues(updatedCarPart);
+            _context.SaveChanges();
+        }
+
+  
+        public ActionResult SendStockReorderEmail(CarPart carPart, User user)
+        {
+
+            // Instantiate dynamic email.
+            dynamic email = new Email("StockReorder");
+            // Add properties to email model
+            email.To = user.UserName;
+            email.Message = "Stock Reorder";
+            email.PartId = carPart.PartId;
+            email.PartName = carPart.Name;
+            email.Name = user.FirstName;
+            email.ReorderQuantity = carPart.ReorderQuantity;
+            email.UserEmailAddress = user.UserName;
+            // Send email
+            email.Send();
+
+            return View("StockOrdered");
+
+
+        }
 
     }
 }

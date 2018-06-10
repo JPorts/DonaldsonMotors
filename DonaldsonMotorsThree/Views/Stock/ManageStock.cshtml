@@ -1,0 +1,102 @@
+﻿@using DonaldsonMotorsThree.Models
+@model IEnumerable<DonaldsonMotorsThree.Models.CarPart>
+
+@{
+    ViewBag.Title = "Manage Stock";
+}
+<br/>
+<h3 style="text-align: center">Manage Stock</h3>
+<br/>
+
+<table class="table" id="lowstock">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SupplierId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Colour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReorderLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReorderQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentQuantity)
+        </th>
+        <th>
+           Stock Options
+        </th>
+    </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr class="manageStock">
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplierId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Colour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReorderLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReorderQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentQuantity)
+            </td>
+            <td>
+                @Html.Partial("_TableButtonPartial", new SingleButtonPartial { CarPartId = item.PartId})
+            </td>
+            <td>
+                <input type="button" class="btn btn-info" value="Reorder Stock" onclick="location.href = '@Url.Action("LowStockOrder", "Stock", new {id = item.PartId})'" />
+
+            </td>
+        </tr>
+    }
+    </tbody>
+
+</table>
+
+
+
+@section scripts
+{
+    @*<script>
+
+
+        $(document).ready(function() {
+        
+
+            $('#lowstock').DataTable();
+        
+
+        });
+
+    </script>*@
+
+}

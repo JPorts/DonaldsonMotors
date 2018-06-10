@@ -14,7 +14,7 @@
         <h4>Review</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
+        <fieldset>
         <div class="form-group">
             @Html.HiddenFor(model => model.ReviewId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -37,19 +37,21 @@
                 @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        </fieldset>
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("CreatePost")">
+            <br/>
+            <div class="col-lg-offset-5">
+                <a type="button" class="btn btn-primary btn-sm" href="#" onclick="fixAndSubmit(this)">
+                    Add Post
                     <span class="glyphicon glyphicon-plus"></span>
-                    <span>Add Comment</span>
                 </a>
-
             </div>
         </div>
     </div>
 }
-
+<br/>
+<br/>
+<br/>
 <div>
     @Html.ActionLink("Back to Home", "Index", "Home", null , new { @class="btn btn-sm btn-success" } )
 </div>

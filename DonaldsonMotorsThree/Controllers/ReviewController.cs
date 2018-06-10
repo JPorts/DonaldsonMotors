@@ -80,7 +80,7 @@ namespace DonaldsonMotorsThree.Controllers
         /// <param name="review">The review.</param>
         /// <returns>ActionResult.</returns>
         [HttpPost]
-        public ActionResult CreatePost(Review review)
+        public ActionResult CreatePost(Review review, FormCollection form)
         {
             var userId = User.Identity.GetUserId();
 

@@ -811,6 +811,10 @@
     <Content Include="Views\Report\ProductReport.cshtml" />
     <Content Include="Views\Report\DailyJobsList.cshtml" />
     <Content Include="Views\Booking\Delete.cshtml" />
+    <Content Include="Views\Emails\StockReorder.cshtml" />
+    <Content Include="Views\Stock\ManageStock.cshtml" />
+    <Content Include="Views\Stock\Delete.cshtml" />
+    <Content Include="Views\Stock\StockOrdered.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
