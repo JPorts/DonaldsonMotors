@@ -8,6 +8,9 @@
 <h3 style="text-align: center">Manage Stock</h3>
 <br/>
 
+<h4> Low Stock! Please resupply listed stock items.</h4>
+<br/>
+
 <table class="table" id="lowstock">
     <thead>
     <tr>
@@ -73,7 +76,7 @@
                 @Html.Partial("_TableButtonPartial", new SingleButtonPartial { CarPartId = item.PartId})
             </td>
             <td>
-                <input type="button" class="btn btn-info" value="Reorder Stock" onclick="location.href = '@Url.Action("LowStockOrder", "Stock", new {id = item.PartId})'" />
+                <input type="button" class="btn btn-info" id="reorder" value="Reorder Stock" onclick="location.href = '@Url.Action("LowStockOrder", "Stock", new {id = item.PartId})'" />
 
             </td>
         </tr>
@@ -86,17 +89,19 @@
 
 @section scripts
 {
-    @*<script>
+    <script>
 
 
         $(document).ready(function() {
-        
 
-            $('#lowstock').DataTable();
-        
+
+            $('#reorder').on('click', function() {
+
+                bootbox.alert("Resupply Order has been submitted, Confirmation Details have been sent to your email.");
+            });
 
         });
 
-    </script>*@
+    </script>
 
 }

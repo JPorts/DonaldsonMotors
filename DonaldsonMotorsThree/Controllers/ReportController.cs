@@ -99,7 +99,14 @@ namespace DonaldsonMotorsThree.Controllers
                 //	Job Total Cost
                //Customer ID
                 //Overall Totals by Customer/ Job
-           
+            var Jobs = _context.Jobs.ToList();
+            var Customers = _context.Customers.ToList();
+            var CustomersWithJobs = Customers.Where(c => c.Bookings != null);
+
+            foreach(var customer in Customers) {
+                
+            }
+
             return View();
         }
 

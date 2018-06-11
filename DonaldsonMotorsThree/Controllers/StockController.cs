@@ -172,6 +172,7 @@ namespace DonaldsonMotorsThree.Controllers
         public ActionResult ManageStock()
         {
             var carparts = _context.CarParts.ToList();
+
             var lowStockList = new List<CarPart>();
             // find the car parts needing re-orders
             foreach (var carpart in carparts)
@@ -198,15 +199,15 @@ namespace DonaldsonMotorsThree.Controllers
 
         public ActionResult LowStockOrder(int id)
         {
-            // pull user id from environment globals//
+            // Pull user id from environment globals//
             var userId = EnvironmentGlobals.UserId;
-            // pull user with id match.
+            // Pull user with id match.
             var user = _context.Users.SingleOrDefault(u => u.Id == userId);
-            // get part through Id match
+            // Get part through Id match
             var carpart = _context.CarParts.SingleOrDefault(c => c.PartId == id);
             // Get current quantity
             var quantity = carpart.CurrentQuantity;
-            // get reorder level to perform check 
+            // get reorder level to perform check.
             var orderLevel = carpart.ReorderLevel;
             // Get order quantity for supplier order.
             var orderQuantity = carpart.ReorderQuantity;
@@ -224,9 +225,13 @@ namespace DonaldsonMotorsThree.Controllers
         {
             // Update carpart stock level using passed values
             var carPart = _context.CarParts.SingleOrDefault(c => c.PartId == id);
+            // assign values to updated car part
             var updatedCarPart = carPart;
+            // set new quantity 
             updatedCarPart.CurrentQuantity = quantity;
+            // Update changes in part quantity
             _context.Entry(carPart).CurrentValues.SetValues(updatedCarPart);
+            // Save changes
             _context.SaveChanges();
         }
 

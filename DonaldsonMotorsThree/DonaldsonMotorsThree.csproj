@@ -364,17 +364,20 @@
     <Compile Include="Models\SingleButtonPartial.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Models\Thumbnail.cs" />
     <Compile Include="Models\VehicleDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seed.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\BookingFormViewModel.cs" />
     <Compile Include="ViewModels\CarPartViewModel.cs" />
+    <Compile Include="ViewModels\CustomersJobsViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="ViewModels\RoleViewModel.cs" />
     <Compile Include="ViewModels\StaffFormViewModel.cs" />
     <Compile Include="ViewModels\JobViewModel.cs" />
+    <Compile Include="ViewModels\ThumbnailViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-readable.css" />
@@ -815,6 +818,7 @@
     <Content Include="Views\Stock\ManageStock.cshtml" />
     <Content Include="Views\Stock\Delete.cshtml" />
     <Content Include="Views\Stock\StockOrdered.cshtml" />
+    <Content Include="Views\Shared\_ThumbnailAreaPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
