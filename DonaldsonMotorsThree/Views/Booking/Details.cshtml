@@ -60,22 +60,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UserId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.JobId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.JobId)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.BookingStatus)
         </dt>
 
@@ -86,7 +70,8 @@
     </dl>
 </div>
 <p>
-
-    @Html.ActionLink("Amend My Booking", "Edit", new {id = Model.BookingId}) |
-    @Html.Partial("_BackToListButtonPartial");
+    
+    @Html.ActionLink("Amend My Booking", "Edit", new {id = Model.BookingId}) 
+    <br/>
+    @Html.Partial("_BackToListButtonPartial")
 </p>

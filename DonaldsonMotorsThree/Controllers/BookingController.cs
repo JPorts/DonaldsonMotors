@@ -405,25 +405,23 @@ namespace DonaldsonMotorsThree.Controllers
             return View(booking);
         }
 
-        public VehicleDetails UpdateVehicle(VehicleDetails vehicle)
+        public void UpdateVehicle(VehicleDetails vehicleToUpdate,VehicleDetails updatedVehicle)
         {
             try
             {
 
-                if (ModelState.IsValid)
-                {
 
-                   // _context.Entry(vehicleThatUpdates).CurrentValues.SetValues(UpdatedVehicle);
-                   // _context.SaveChanges();
 
-                    _context.VehicleDetails.AddOrUpdate(vehicle);
-                    _context.SaveChanges();
+                   _context.Entry(vehicleToUpdate).CurrentValues.SetValues(updatedVehicle);
+                   _context.SaveChanges();
+
+                    //_context.VehicleDetails.AddOrUpdate(updatedVehicle);
+                    //_context.SaveChanges();
 
 
                     // if all goes well, return booking for amendment
-                }
+                
 
-                return vehicle;
 
                 // Nested within try catch to pull entity validation properties into message// 
 
@@ -447,6 +445,42 @@ namespace DonaldsonMotorsThree.Controllers
   
         }
 
+        public void UpdateBookingSection(Booking bookingToUpdate, Booking updatedBooking)
+        {
+            try
+            {
+                bookingToUpdate.Vehicle.Model = updatedBooking.Vehicle.Model;
+                bookingToUpdate.Vehicle.Make = updatedBooking.Vehicle.Make;
+                bookingToUpdate.Vehicle.CustomerId = updatedBooking.Vehicle.CustomerId;
+                bookingToUpdate.Vehicle.EngineSize = updatedBooking.Vehicle.EngineSize;
+                bookingToUpdate.Vehicle.RegNumber = updatedBooking.Vehicle.RegNumber;
+                bookingToUpdate.Vehicle.Milage = updatedBooking.Vehicle.Milage;
+                bookingToUpdate.Vehicle.VehicleId = updatedBooking.Vehicle.VehicleId;
+
+                _context.Entry(bookingToUpdate).CurrentValues.SetValues(updatedBooking);
+                _context.SaveChanges();
+                // Nested within try catch to pull entity validation properties into message// 
+
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Debug.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Debug.WriteLine("- Property: \"{0}\", Value: \"{1}\", Error: \"{2}\"",
+                            ve.PropertyName,
+                            eve.Entry.CurrentValues.GetValue<object>(ve.PropertyName),
+                            ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+            
+        }
+
 
 
         [System.Web.Mvc.HttpPost]
@@ -460,31 +494,30 @@ namespace DonaldsonMotorsThree.Controllers
                 if (vm.BookedBooking == null)
                     return HttpNotFound();
 
-                if (ModelState.IsValid)
-                {
+               // if (ModelState.IsValid)
+               // {
 
 
                     var bookingToUpdate = _context.Bookings.Find(vm.BookedBooking.BookingId);
+                    var updatedBooking = vm.BookedBooking;
                     var vehicleToUpdate = _context.VehicleDetails.Find(vm.BookedBooking.Vehicle.VehicleId);
                     var UpdatedVehicle = vm.BookedBooking.Vehicle;
                     // if booking is null, return not found
                     if (bookingToUpdate == null)
                         return HttpNotFound();
 
-                    UpdateVehicle(UpdatedVehicle);
-                    _context.Entry(bookingToUpdate).CurrentValues.SetValues(vm.BookedBooking);
 
-                   // _context.Entry(vehicleToUpdate).CurrentValues.SetValues(UpdatedVehicle);
-
-                    _context.SaveChanges();
-               
+                UpdateBookingSection(bookingToUpdate, updatedBooking);
+                UpdateVehicle(vehicleToUpdate, UpdatedVehicle);
+                    
+                    
                     //_context.Entry(vehicleToUpdate).CurrentValues.SetValues(UpdatedVehicle);
                    // _context.SaveChanges();
 
 
                     // if all goes well, return booking for amendment
-                }
-                return RedirectToAction("GetCustomerBookings");
+               // }
+                return RedirectToAction("GetCustomerBookings",vm);
 
                 // Nested within try catch to pull entity validation properties into message// 
 
@@ -534,24 +567,27 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, BookingFormViewModel bookingVm)
         {
 
-            BookingFormViewModel vm = new BookingFormViewModel();
-            vm.BookedBooking = _context.Bookings.Include("Vehicle").Include("Jobs").SingleOrDefault(b => b.BookingId == id);
-            var cust = _context.Customers.Where(c => c.Id == vm.BookedBooking.CustomerId).SingleOrDefault();
-            vm.BookedCustomer = cust;
+           
+            bookingVm.BookedBooking = _context.Bookings.Include("Vehicle").Include("Jobs").SingleOrDefault(b => b.BookingId == id);
+            var cust = _context.Customers.Where(c => c.Id == bookingVm.BookedBooking.CustomerId).SingleOrDefault();
+            bookingVm.BookedCustomer = cust;
 
-            return View(vm);
+            return View(bookingVm);
         }
 
-        [System.Web.Mvc.HttpPost]
+
         public ActionResult DeleteBooking(int id)
         {
-            try { 
-            var booking = _context.Bookings.SingleOrDefault(b => b.BookingId == id);
-            _context.Bookings.Remove(booking);
-            _context.SaveChanges();
+            try {
+
+                var thisBooking = _context.Bookings.Include("Vehicle").Include("Jobs").SingleOrDefault(b => b.BookingId == id);
+                _context.Bookings.Remove(thisBooking);
+
+                _context.SaveChanges();
+
             }
 
             catch (DbEntityValidationException e)
@@ -570,8 +606,54 @@ namespace DonaldsonMotorsThree.Controllers
                 }
                 throw;
             }
-            return View("GetCustomerBookings");
+            return View("Index");
         }
 
+
+
+
+
+        public ActionResult ManageBookings()
+        {
+            // Create 4 tables for staff based on booking status - requested, active, canceled, complete
+            var bookings = _context.Bookings.ToList();
+
+            var activeBookings = new List<Booking>();
+            var requestedBookings = new List<Booking>();
+            var cancelledBookings = new List<Booking>();
+            var completeBookings = new List<Booking>();
+
+
+            // Loop through all bookings in database and assign to lists based on status
+            foreach (var booking in bookings)
+            {
+                if (booking.BookingStatus == Constants.BookingStatus.Requested)
+                {
+                    requestedBookings.Add(booking);
+                }
+                else if (booking.BookingStatus == Constants.BookingStatus.Active)
+                {
+                    activeBookings.Add(booking);
+                }
+                else if (booking.BookingStatus == Constants.BookingStatus.Cancelled)
+                {
+                    cancelledBookings.Add(booking);
+                }
+                else if (booking.BookingStatus == Constants.BookingStatus.Complete)
+                {
+                    completeBookings.Add(booking);
+                }
+            }
+
+            var vm = new ManageBookingsViewModel
+            {
+                RequestedBookings = requestedBookings,
+                ActiveBookings = activeBookings,
+                CompleteBookings = completeBookings,
+                CancelledBookings = cancelledBookings
+            };
+            // Create a viewmodel to pass to view to sort tables with data// 
+            return View(vm);
+        }
     }
 }

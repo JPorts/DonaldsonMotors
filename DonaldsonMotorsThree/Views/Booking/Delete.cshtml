@@ -76,8 +76,15 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
+
         <div class="form-actions no-color">
-            @Html.ActionLink("Delete Booking", "DeleteBooking", "Booking", new {id = Model.BookedBooking.BookingId})
+            <a type="button" class="btn btn-danger btn-sm" href="@Url.Action("DeleteBooking", new {id = Model.BookedBooking.BookingId})">
+                <span class="glyphicon glyphicon-trash"></span>
+                <span>Delete</span>
+            </a>
+
+            @*@Html.ActionLink("Delete Booking", "DeleteBooking", "Booking", new {id = Model.BookedBooking.BookingId})*@
+            <br/>
             <br/>
             @Html.Partial("_BackToListButtonPartial")
         </div>

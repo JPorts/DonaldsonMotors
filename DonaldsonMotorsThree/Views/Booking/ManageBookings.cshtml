@@ -1,0 +1,98 @@
+﻿@using DonaldsonMotorsThree.Models
+@using DonaldsonMotorsThree.ViewModels
+@model ManageBookingsViewModel
+
+<br />
+
+<table class="table" id="requestedbookings">
+    <tr>
+        <th>
+        </th>
+        <th>
+        </th>
+        <th>
+        </th>
+        <th>     
+        </th>
+    </tr>
+
+    @foreach (Booking booking in Model.RequestedBookings) {
+        <tr>
+            <td>
+                @Html.DisplayFor(m => m.RequestedBookings)
+            </td>
+        </tr>
+    }
+
+
+</table>
+<table class="table" id="activebookings">
+    <tr>
+        <th>
+        </th>
+        <th>     
+        </th>
+        <th>
+        </th>
+        <th>     
+        </th>
+    </tr>
+
+    @foreach (Booking booking in Model.ActiveBookings) {
+        <tr>
+            <td>
+                @Html.DisplayFor(m => m.ActiveBookings)
+
+            </td>
+        </tr>
+    }
+    
+
+</table>
+<table class="table" id="completebookings">
+    <tr>
+        <th>
+        
+        </th>
+        <th>
+        </th>
+        <th>     
+        </th>
+        <th>
+        </th>
+      
+    </tr>
+
+    @foreach (Booking booking in Model.CompleteBookings) {
+        <tr>
+            <td>
+
+                @Html.DisplayFor(m => m.CompleteBookings)
+
+            </td>
+        </tr>
+    }
+    
+
+</table>
+<table class="table" id="cancelledbookings">
+    <tr>
+        <th>
+        </th>
+        <th>     
+        </th>
+        <th>
+        </th>
+        <th>     
+        </th>
+    </tr>
+
+    @foreach (Booking booking in Model.CancelledBookings) {
+        <tr>
+            <td>
+                @Html.DisplayFor(m => m.CancelledBookings);
+            </td>
+        </tr>
+    }
+
+</table>

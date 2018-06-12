@@ -373,6 +373,7 @@
     <Compile Include="ViewModels\CarPartViewModel.cs" />
     <Compile Include="ViewModels\CustomersJobsViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
+    <Compile Include="ViewModels\ManageBookingsViewModel.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="ViewModels\RoleViewModel.cs" />
     <Compile Include="ViewModels\StaffFormViewModel.cs" />
@@ -819,6 +820,7 @@
     <Content Include="Views\Stock\Delete.cshtml" />
     <Content Include="Views\Stock\StockOrdered.cshtml" />
     <Content Include="Views\Shared\_ThumbnailAreaPartial.cshtml" />
+    <Content Include="Views\Booking\ManageBookings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
