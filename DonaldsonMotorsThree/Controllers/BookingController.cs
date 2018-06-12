@@ -55,7 +55,7 @@ namespace DonaldsonMotorsThree.Controllers
         private BookingRepository bookingRepo;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BookingController"/> class.
+        /// Initializes a new instance of the <see cref="BookingController" /> class.
         /// </summary>
         public BookingController()
         {
@@ -405,6 +405,11 @@ namespace DonaldsonMotorsThree.Controllers
             return View(booking);
         }
 
+        /// <summary>
+        /// Updates the vehicle.
+        /// </summary>
+        /// <param name="vehicleToUpdate">The vehicle to update.</param>
+        /// <param name="updatedVehicle">The updated vehicle.</param>
         public void UpdateVehicle(VehicleDetails vehicleToUpdate,VehicleDetails updatedVehicle)
         {
             try
@@ -445,6 +450,11 @@ namespace DonaldsonMotorsThree.Controllers
   
         }
 
+        /// <summary>
+        /// Updates the booking section.
+        /// </summary>
+        /// <param name="bookingToUpdate">The booking to update.</param>
+        /// <param name="updatedBooking">The updated booking.</param>
         public void UpdateBookingSection(Booking bookingToUpdate, Booking updatedBooking)
         {
             try
@@ -483,6 +493,12 @@ namespace DonaldsonMotorsThree.Controllers
 
 
 
+        /// <summary>
+        /// Updates the booking.
+        /// </summary>
+        /// <param name="vm">The vm.</param>
+        /// <param name="form">The form.</param>
+        /// <returns>ActionResult.</returns>
         [System.Web.Mvc.HttpPost]
         public ActionResult UpdateBooking(BookingFormViewModel vm, FormCollection form)
         {
@@ -540,7 +556,7 @@ namespace DonaldsonMotorsThree.Controllers
             }
 
         }
-    
+
 
 
 
@@ -567,6 +583,12 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
 
+        /// <summary>
+        /// Deletes the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="bookingVm">The booking vm.</param>
+        /// <returns>ActionResult.</returns>
         public ActionResult Delete(int id, BookingFormViewModel bookingVm)
         {
 
@@ -579,6 +601,11 @@ namespace DonaldsonMotorsThree.Controllers
         }
 
 
+        /// <summary>
+        /// Deletes the booking.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>ActionResult.</returns>
         public ActionResult DeleteBooking(int id)
         {
             try {
@@ -613,6 +640,10 @@ namespace DonaldsonMotorsThree.Controllers
 
 
 
+        /// <summary>
+        /// Manages the bookings.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
         public ActionResult ManageBookings()
         {
             // Create 4 tables for staff based on booking status - requested, active, canceled, complete
